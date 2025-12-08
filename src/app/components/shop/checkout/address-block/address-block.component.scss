@@ -1,0 +1,114 @@
+// ============================================
+// Address Block Styling
+// ============================================
+$theme-primary: #1B4B45;
+$theme-primary-light: #2A6B63;
+$border-color: #E0E0E0;
+$text-primary: #212121;
+$text-secondary: #757575;
+$bg-light: #FAFAFA;
+$radius-sm: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+
+.delivery-address-box {
+    border: 2px solid $border-color;
+    border-radius: $radius-sm;
+    padding: $spacing-md;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: white;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: $theme-primary;
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+    }
+
+    &:hover {
+        border-color: $theme-primary;
+        box-shadow: 0 4px 12px rgba($theme-primary, 0.15);
+        transform: translateY(-2px);
+
+        &::before {
+            transform: scaleY(1);
+        }
+    }
+
+    .form-check {
+        position: absolute;
+        top: $spacing-md;
+        right: $spacing-md;
+
+        .form-check-input {
+            width: 20px;
+            height: 20px;
+            border: 2px solid $border-color;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:checked {
+                background-color: $theme-primary;
+                border-color: $theme-primary;
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 4px rgba($theme-primary, 0.1);
+            }
+        }
+    }
+
+    .delivery-address-detail {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        padding-right: 40px;
+
+        li {
+            margin-bottom: $spacing-sm;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            h4 {
+                font-size: 16px;
+                font-weight: 700;
+                color: $theme-primary;
+                margin: 0 0 $spacing-sm 0;
+            }
+
+            p,
+            h6 {
+                font-size: 14px;
+                color: $text-secondary;
+                margin: 0;
+                line-height: 1.6;
+
+                .text-title {
+                    font-weight: 600;
+                    color: $text-primary;
+                }
+            }
+        }
+    }
+}
+
+// Selected state
+input[type="radio"]:checked~.delivery-address-box,
+label:has(input[type="radio"]:checked) .delivery-address-box {
+    border-color: $theme-primary;
+    background: rgba($theme-primary, 0.03);
+
+    &::before {
+        transform: scaleY(1);
+    }
+}

@@ -1,0 +1,35 @@
+// Mobile menu button styles
+.navbar-menu-button {
+    padding: 8px 16px !important;
+    background-color: transparent !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+
+    .navbar-toggler-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+            color: #ffffff !important;
+            font-size: 28px !important;
+            font-weight: 600;
+        }
+    }
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-color: #20c997 !important;
+
+        .navbar-toggler-icon i {
+            color: #20c997 !important;
+        }
+    }
+
+    &:focus,
+    &:active {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(32, 201, 151, 0.3);
+    }
+}

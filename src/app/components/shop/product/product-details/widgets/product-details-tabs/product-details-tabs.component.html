@@ -1,0 +1,45 @@
+<div class="product-tabs-panel">
+  <!-- Tabs header -->
+  <div class="product-tabs-panel__header">
+    <ul
+      ngbNav
+      #nav="ngbNav"
+      [(activeId)]="active"
+      class="nav product-tabs-nav"
+    >
+      <li ngbNavItem="description">
+        <a ngbNavLink class="product-tabs-nav__link">
+          {{ 'Description' | translate }}
+        </a>
+        <ng-template ngbNavContent>
+          <div
+            class="product-tabs-panel__body product-tabs-panel__body--description"
+            [class.more]="showMore"
+          >
+            <div
+              *ngIf="product?.description"
+              class="product-description ckeditor-content"
+              id="description"
+              #description
+              [innerHTML]="getTrustedHtml(product?.description)"
+            ></div>
+
+            <button
+              class="btn more-lest-btn product-tabs-panel__more-btn"    
+              (click)="seeMore()"
+              *ngIf="height > 500 || width < 768"
+            >
+              {{ (!showMore ? 'show_more' : 'show_less') | translate }}
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+          </div>
+        </ng-template>
+      </li>
+
+     
+    </ul>
+  </div>
+
+  <!-- Tabs content -->
+  <div [ngbNavOutlet]="nav" class="product-tabs-panel__content"></div>
+</div>

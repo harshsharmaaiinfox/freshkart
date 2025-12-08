@@ -1,0 +1,98 @@
+// Professional styling for product description / review / Q&A tabs
+
+.product-tabs-panel {
+  background-color: #ffffff;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 18px 18px 16px;
+  box-shadow: none;
+
+  &__header {
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+    margin-bottom: 12px;
+  }
+
+  &__content {
+    padding-top: 10px;
+  }
+
+  &__body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #374151;
+
+    &--description {
+      position: relative;
+    }
+  }
+
+  &__more-btn {
+    margin-top: 12px;
+    padding-inline: 16px;
+    font-size: 0.85rem;
+    border-radius: 999px;
+    border: 1px solid #1b4b45;
+    color: #1b4b45;
+    background-color: transparent;
+
+    i {
+      font-size: 1rem;
+      margin-left: 4px;
+    }
+  }
+}
+
+.product-tabs-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  border-bottom: none;
+  list-style: none;
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #4b5563;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.18s ease-in-out;
+  }
+
+  .nav-link.active,
+  .product-tabs-nav__link.active {
+    background-color: #1b4b45;
+    color: #ffffff;
+    border-color: #1b4b45;
+  }
+
+  .nav-link:not(.active):hover,
+  .product-tabs-nav__link:not(.active):hover {
+    background-color: rgba(27, 75, 69, 0.06);
+    color: #1b4b45;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .product-tabs-panel {
+    border-radius: 10px;
+    padding: 14px 12px;
+
+    &__header {
+      margin-bottom: 8px;
+    }
+  }
+
+  .product-tabs-nav {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}

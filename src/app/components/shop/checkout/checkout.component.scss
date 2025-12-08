@@ -1,0 +1,890 @@
+// ============================================
+// Theme Variables
+// ============================================
+$theme-primary: #1B4B45;
+$theme-primary-light: #2A6B63;
+$theme-primary-dark: #0F2E2A;
+$theme-accent: #F5F5F5;
+$theme-success: #4CAF50;
+$theme-error: #F44336;
+$theme-warning: #FF9800;
+$text-primary: #212121;
+$text-secondary: #757575;
+$border-color: #E0E0E0;
+$bg-light: #FAFAFA;
+
+// Spacing
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Border Radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+
+// Shadows
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+$shadow-theme: 0 4px 16px rgba(27, 75, 69, 0.15);
+
+// ============================================
+// Checkout Section Styling
+// ============================================
+.checkout-section-2 {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    padding: $spacing-xl 0;
+    min-height: 100vh;
+
+    .container-fluid-lg {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 $spacing-md;
+    }
+}
+
+// ============================================
+// Step Indicator (if added)
+// ============================================
+.checkout-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $spacing-xl;
+    padding: $spacing-lg;
+    background: white;
+    border-radius: $radius-md;
+    box-shadow: $shadow-sm;
+
+    .step {
+        flex: 1;
+        text-align: center;
+        position: relative;
+
+        &:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: $border-color;
+            z-index: 0;
+        }
+
+        &.active {
+            .step-number {
+                background: $theme-primary;
+                color: white;
+            }
+
+            .step-title {
+                color: $theme-primary;
+                font-weight: 600;
+            }
+        }
+
+        &.completed {
+            &::after {
+                background: $theme-primary;
+            }
+
+            .step-number {
+                background: $theme-success;
+                color: white;
+            }
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: $bg-light;
+            color: $text-secondary;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: $spacing-xs;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .step-title {
+            font-size: 14px;
+            color: $text-secondary;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+// ============================================
+// Left Sidebar - Form Sections
+// ============================================
+.left-sidebar-checkout {
+
+    .checkout-form-section,
+    .checkout-detail-box {
+        margin-bottom: $spacing-lg;
+    }
+
+    .checkbox-main-box {
+        background: white;
+        border-radius: $radius-md;
+        padding: $spacing-lg;
+        box-shadow: $shadow-sm;
+        margin-bottom: $spacing-lg;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+
+        &:hover {
+            box-shadow: $shadow-md;
+            border-color: rgba($theme-primary, 0.1);
+        }
+
+        .checkout-title1 {
+            margin-bottom: $spacing-lg;
+            padding-bottom: $spacing-md;
+            border-bottom: 2px solid $theme-primary;
+            position: relative;
+
+            h2 {
+                font-size: 20px;
+                font-weight: 700;
+                color: $theme-primary;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: $spacing-sm;
+
+                &::before {
+                    content: '';
+                    width: 4px;
+                    height: 24px;
+                    background: $theme-primary;
+                    border-radius: 2px;
+                }
+            }
+        }
+    }
+}
+
+// ============================================
+// Custom Form Styling
+// ============================================
+.checkout-form {
+    .form-box {
+        margin-bottom: $spacing-lg;
+
+        label {
+            font-weight: 600;
+            color: $text-primary;
+            margin-bottom: $spacing-xs;
+            font-size: 14px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .form-control,
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="password"] {
+            border: 2px solid $border-color;
+            border-radius: $radius-sm;
+            padding: 12px 16px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: white;
+
+            &:focus {
+                border-color: $theme-primary;
+                box-shadow: 0 0 0 4px rgba($theme-primary, 0.1);
+                outline: none;
+            }
+
+            &::placeholder {
+                color: lighten($text-secondary, 10%);
+            }
+
+            &.is-invalid {
+                border-color: $theme-error;
+
+                &:focus {
+                    box-shadow: 0 0 0 4px rgba($theme-error, 0.1);
+                }
+            }
+        }
+
+        .invalid-feedback {
+            display: block;
+            color: $theme-error;
+            font-size: 13px;
+            margin-top: $spacing-xs;
+            font-weight: 500;
+        }
+    }
+
+    // Custom Checkbox Styling
+    .form-checkbox {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+
+        .form-check-input {
+            width: 20px;
+            height: 20px;
+            border: 2px solid $border-color;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:checked {
+                background-color: $theme-primary;
+                border-color: $theme-primary;
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 4px rgba($theme-primary, 0.1);
+            }
+        }
+
+        .form-check-label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+            color: $text-primary;
+        }
+    }
+
+    // Phone Field Styling
+    .phone-field {
+        .intl-tel-input {
+            width: 120px;
+        }
+
+        .intl-input-padding {
+            padding-left: 130px;
+        }
+    }
+}
+
+// ============================================
+// Select2 Custom Styling
+// ============================================
+::ng-deep {
+    .custom-select {
+        .select2-container {
+            .select2-selection {
+                border: 2px solid $border-color;
+                border-radius: $radius-sm;
+                padding: 10px 16px;
+                min-height: 48px;
+                transition: all 0.3s ease;
+
+                &:focus,
+                &:focus-within {
+                    border-color: $theme-primary;
+                    box-shadow: 0 0 0 4px rgba($theme-primary, 0.1);
+                }
+            }
+        }
+    }
+}
+
+// ============================================
+// Checkout Detail Box (Logged In Users)
+// ============================================
+.checkout-detail-box {
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            background: white;
+            border-radius: $radius-md;
+            padding: $spacing-lg;
+            margin-bottom: $spacing-lg;
+            box-shadow: $shadow-sm;
+            transition: all 0.3s ease;
+
+            &:hover {
+                box-shadow: $shadow-md;
+            }
+
+            .checkout-icon {
+                width: 48px;
+                height: 48px;
+                background: linear-gradient(135deg, $theme-primary 0%, $theme-primary-light 100%);
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: $spacing-md;
+
+                i {
+                    font-size: 24px;
+                    color: white;
+                }
+            }
+
+            .checkout-box {
+                .checkout-title {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: $spacing-md;
+                    padding-bottom: $spacing-sm;
+                    border-bottom: 1px solid $border-color;
+
+                    h4 {
+                        font-size: 18px;
+                        font-weight: 700;
+                        color: $theme-primary;
+                        margin: 0;
+                    }
+
+                    a {
+                        color: $theme-primary;
+                        font-size: 14px;
+                        text-decoration: none;
+                        transition: all 0.3s ease;
+                        font-weight: 600;
+
+                        &:hover {
+                            color: $theme-primary-dark;
+                            gap: 8px;
+                        }
+
+                        i {
+                            transition: transform 0.3s ease;
+                        }
+
+                        &:hover i {
+                            transform: scale(1.2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ============================================
+// Order Summary Card (Right Sidebar)
+// ============================================
+.pos-detail-card {
+    position: sticky;
+    top: 100px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg;
+    border: 1px solid rgba($theme-primary, 0.1);
+    overflow: hidden;
+
+    .card-body {
+        padding: $spacing-lg;
+
+        .title-header {
+            margin-bottom: $spacing-lg;
+            padding-bottom: $spacing-md;
+            border-bottom: 2px solid $theme-primary;
+
+            h5 {
+                font-size: 22px;
+                font-weight: 700;
+                color: $theme-primary;
+                margin: 0;
+            }
+        }
+
+        // Product List
+        .cart-listing {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 $spacing-lg 0;
+            max-height: 400px;
+            overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: $bg-light;
+                border-radius: 3px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: $theme-primary;
+                border-radius: 3px;
+            }
+
+            li {
+                display: flex;
+                gap: $spacing-md;
+                padding: $spacing-md;
+                margin-bottom: $spacing-sm;
+                background: $bg-light;
+                border-radius: $radius-sm;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background: darken($bg-light, 3%);
+                    transform: translateX(0px);
+                }
+
+                img {
+                    width: 70px;
+                    height: 70px;
+                    object-fit: cover;
+                    border-radius: $radius-sm;
+                    border: 2px solid white;
+                }
+
+                .cart-content {
+                    flex: 1;
+
+                    h4 {
+                        font-size: 15px;
+                        font-weight: 600;
+                        color: $text-primary;
+                        margin: 0 0 $spacing-xs 0;
+                        line-height: 1.4;
+                    }
+
+                    h5.text-theme {
+                        font-size: 13px;
+                        color: $theme-primary;
+                        margin: 0 0 4px 0;
+                        font-weight: 500;
+                    }
+
+                    h5.price {
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: $theme-primary-dark;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        // Summary Total
+        .summary-total {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: $spacing-sm 0;
+                border-bottom: 1px solid $border-color;
+
+                &.border-cls {
+                    padding: $spacing-md 0;
+                    background: $bg-light;
+                    padding: $spacing-md;
+                    border-radius: $radius-sm;
+                    margin: $spacing-sm 0;
+                    border: none;
+                }
+
+                &.list-total {
+                    border-top: 2px solid $theme-primary;
+                    border-bottom: none;
+                    padding: $spacing-md 0 0 0;
+                    margin-top: $spacing-sm;
+
+                    h4 {
+                        font-size: 18px;
+                        font-weight: 700;
+                        color: $theme-primary;
+                    }
+
+                    .price {
+                        font-size: 22px;
+                        font-weight: 700;
+                        color: $theme-primary-dark;
+                    }
+                }
+
+                h4 {
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: $text-primary;
+                    margin: 0;
+                }
+
+                .price {
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: $text-primary;
+                }
+
+                .txt-primary {
+                    color: $theme-primary !important;
+                }
+
+                .text-muted {
+                    color: $text-secondary !important;
+                }
+            }
+
+            // Coupon Section
+            .coupon-sec {
+                flex-direction: column;
+                align-items: stretch;
+                padding: $spacing-md 0;
+
+                .promocode-title {
+                    color: $theme-primary;
+                    font-weight: 600;
+                    cursor: pointer;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        color: $theme-primary-dark;
+                    }
+
+                    h4 {
+                        color: inherit;
+                        margin: 0;
+                    }
+                }
+
+                .coupon-box {
+                    margin-top: $spacing-sm;
+
+                    .input-group {
+                        display: flex;
+                        gap: $spacing-sm;
+
+                        input {
+                            flex: 1;
+                            border: 2px solid $border-color;
+                            border-radius: $radius-sm;
+                            padding: 12px 16px;
+                            font-size: 14px;
+                            transition: all 0.3s ease;
+
+                            &:focus {
+                                border-color: $theme-primary;
+                                box-shadow: 0 0 0 4px rgba($theme-primary, 0.1);
+                                outline: none;
+                            }
+
+                            &.is-invalid {
+                                border-color: $theme-error;
+                            }
+                        }
+
+                        .btn-apply {
+                            background: $theme-primary;
+                            color: white;
+                            border: none;
+                            padding: 12px 24px;
+                            border-radius: $radius-sm;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+
+                            &:hover {
+                                background: $theme-primary-dark;
+                                transform: translateY(-2px);
+                                box-shadow: $shadow-theme;
+                            }
+                        }
+                    }
+                }
+
+                .apply-sec {
+                    background: linear-gradient(135deg, lighten($theme-success, 35%) 0%, lighten($theme-success, 40%) 100%);
+                    padding: $spacing-md;
+                    border-radius: $radius-sm;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border: 2px solid $theme-success;
+
+                    div {
+                        display: flex;
+                        align-items: center;
+                        gap: $spacing-sm;
+
+                        img {
+                            width: 40px;
+                            height: 40px;
+                        }
+
+                        h4 {
+                            font-size: 14px;
+                            margin: 0;
+                            color: darken($theme-success, 20%);
+
+                            span {
+                                font-weight: 700;
+                                color: $theme-success;
+                            }
+
+                            p {
+                                margin: 4px 0 0 0;
+                                font-size: 12px;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+
+                    a {
+                        color: $theme-error;
+                        font-weight: 600;
+                        text-decoration: none;
+                        font-size: 14px;
+                        transition: all 0.3s ease;
+
+                        &:hover {
+                            color: darken($theme-error, 10%);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Place Order Button
+        .btn.theme-bg-color {
+            background: linear-gradient(135deg, $theme-primary 0%, $theme-primary-light 100%);
+            border: none;
+            border-radius: $radius-sm;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: $shadow-theme;
+
+            &:hover:not(:disabled) {
+                background: linear-gradient(135deg, $theme-primary-dark 0%, $theme-primary 100%);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba($theme-primary, 0.3);
+            }
+
+            &:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+
+// ============================================
+// Empty States
+// ============================================
+.empty-box {
+    text-align: center;
+    padding: $spacing-xl;
+    background: $bg-light;
+    border-radius: $radius-md;
+    margin: $spacing-md 0;
+
+    h2 {
+        font-size: 16px;
+        color: $text-secondary;
+        font-weight: 500;
+    }
+}
+
+// ============================================
+// Loading States
+// ============================================
+.custom-box-loader {
+    position: relative;
+
+    .box-loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(4px);
+        border-radius: $radius-md;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+// ============================================
+// Payment Modal Styling
+// ============================================
+.upi_bar {
+    margin: 0;
+    padding: 0;
+    margin-top: -65px;
+
+    li {
+        a {
+            display: block;
+            border: 1px solid $border-color;
+            width: 50px;
+            height: 50px;
+            border-radius: $radius-sm;
+            transition: all 0.3s ease;
+
+            &:hover {
+                border-color: $theme-primary;
+                background: rgba($theme-primary, 0.05);
+            }
+        }
+    }
+}
+
+.payment-icons {
+    width: 260px;
+    border: 1px solid $border-color;
+    display: inline-block;
+    border-radius: $radius-sm;
+    padding: $spacing-sm;
+}
+
+::ng-deep .payByNeoKred {
+    app-loader {
+        width: 500px;
+        height: 500px;
+        display: inline-block;
+    }
+
+    .loader-wrapper,
+    .custom-loader-wrapper {
+        position: absolute;
+        height: 500px;
+    }
+}
+
+// ============================================
+// Responsive Design
+// ============================================
+@media (max-width: 1199px) {
+    .pos-detail-card {
+        position: relative;
+        top: 0;
+        margin-top: $spacing-lg;
+    }
+}
+
+@media (max-width: 767px) {
+    .checkout-section-2 {
+        padding: $spacing-lg 0;
+    }
+
+    .checkout-steps {
+        padding: $spacing-md;
+
+        .step {
+            .step-title {
+                font-size: 12px;
+            }
+
+            .step-number {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .left-sidebar-checkout {
+        .checkbox-main-box {
+            padding: $spacing-md;
+
+            .checkout-title1 {
+                h2 {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+
+    .checkout-form {
+        .form-box {
+            margin-bottom: $spacing-md;
+        }
+    }
+
+    .pos-detail-card {
+        .card-body {
+            padding: $spacing-md;
+
+            .cart-listing {
+                max-height: 300px;
+
+                li {
+                    img {
+                        width: 60px;
+                        height: 60px;
+                    }
+                }
+            }
+        }
+    }
+
+    .checkout-detail-box {
+        ul li {
+            padding: $spacing-md;
+
+            .checkout-icon {
+                width: 40px;
+                height: 40px;
+
+                i {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+// ============================================
+// Animations
+// ============================================
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.checkbox-main-box,
+.pos-detail-card {
+    animation: slideInUp 0.5s ease-out;
+}
+
+// Smooth transitions for all interactive elements
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,374 @@
+// Hero Banner Styles - Full Width
+.hero-banner-section {
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+
+  .hero-banner {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+
+    .hero-banner-image {
+      width: 100%;
+      height: auto;
+      min-height: 600px;
+      object-fit: cover;
+      display: block;
+
+      @media (max-width: 768px) {
+        min-height: 400px;
+      }
+
+      @media (max-width: 480px) {
+        min-height: 300px;
+      }
+    }
+  }
+}
+
+.title-top {
+  font-weight: 300;
+  font-size: 42px;
+}
+
+.explore-more-section {
+  .title-header-main {
+    margin-bottom: 30px;
+    text-align: center;
+
+    h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: #000;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .explore-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    .explore-image {
+      overflow: hidden;
+      height: 450px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        display: block;
+      }
+    }
+
+    .explore-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      text-align: center;
+      transition: opacity 0.3s ease;
+
+      h3 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: 'Cinzel', serif;
+      }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .shop-now-text {
+        h3 {
+          color: #fff;
+          font-size: 24px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          border: 2px solid #fff;
+          padding: 10px 20px;
+          margin: 0;
+        }
+      }
+    }
+
+    &:hover {
+      .explore-image {
+        img {
+          transform: scale(1.05);
+        }
+      }
+
+      .explore-content {
+        opacity: 0;
+      }
+
+      .overlay {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Hero Banner Styles - Full Width
+.hero-banner-section {
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+
+  .hero-banner {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+
+    .hero-banner-image {
+      width: 100%;
+      height: auto;
+      min-height: 600px;
+      object-fit: cover;
+      display: block;
+
+      @media (max-width: 768px) {
+        min-height: 400px;
+      }
+
+      @media (max-width: 480px) {
+        min-height: 300px;
+      }
+    }
+  }
+}
+
+.title-top {
+  font-weight: 400;
+  font-size: 42px;
+}
+
+.explore-more-section {
+  .title-header-main {
+    margin-bottom: 30px;
+    text-align: center;
+
+    h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: #000;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .explore-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    .explore-image {
+      overflow: hidden;
+      height: 450px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        display: block;
+      }
+    }
+
+    .explore-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      text-align: center;
+      transition: opacity 0.3s ease;
+
+      h3 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: 'Cinzel', serif;
+      }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .shop-now-text {
+        h3 {
+          color: #fff;
+          font-size: 24px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          border: 2px solid #fff;
+          padding: 10px 20px;
+          margin: 0;
+        }
+      }
+    }
+
+    &:hover {
+      .explore-image {
+        img {
+          transform: scale(1.05);
+        }
+      }
+
+      .explore-content {
+        opacity: 0;
+      }
+
+      .overlay {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.title-header-main .title {
+  align-items: center;
+  justify-content: center;
+}
+
+.men-banner-section {
+  margin: 40px 0;
+
+  .men-banner {
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+}
+
+.gowns-banner-section {
+  margin: 40px 0;
+
+  .gowns-banner-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    .gowns-banner-image {
+      width: 100%;
+      height: 500px;
+      display: block;
+      min-height: 400px;
+      object-fit: cover;
+    }
+
+    .gowns-banner-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 2;
+
+      h2 {
+        color: #fff;
+        font-size: 48px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+        @media (max-width: 768px) {
+          font-size: 32px;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 24px;
+        }
+      }
+
+      .shop-gowns-btn {
+        background-color: transparent;
+        color: #fff;
+        border: 2px solid #fff;
+        padding: 12px 30px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #fff;
+          color: #000;
+        }
+
+        @media (max-width: 480px) {
+          padding: 10px 20px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+<ng-template #profileModal let-modal>
+    <div class="edit-profile-modal">
+        <div class="modal-header">
+            <div class="header-content">
+                <div class="header-icon">
+                    <i class="ri-user-line"></i>
+                </div>
+                <h3 class="modal-title">{{ 'edit_profile' | translate }}</h3>
+            </div>
+            <button
+                type="button"
+                class="btn-close"
+                [id]="'profile_modal_close_btn'"
+                (click)="modal.dismiss('Cross click')"
+                aria-label="Close">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="!flicker">
+            <div class="modal-body">
+                <div class="form-fields">
+                    <div class="form-group">
+                        <label class="form-label" for="name">
+                            <i class="ri-user-3-line"></i>
+                            {{ 'full_name' | translate }}
+                        </label>
+                        <input 
+                            class="form-control" 
+                            id="name" 
+                            type="text" 
+                            placeholder="{{ 'enter_name' | translate }}" 
+                            formControlName="name" 
+                            [class.is-invalid]="form?.controls?.['name']?.touched && form.controls['name']?.invalid"
+                            (keydown)="allowOnlyLetters($event)" 
+                            (input)="sanitizeLettersInput($event)" 
+                            (paste)="sanitizeLettersPaste($event)" />
+                        <div class="invalid-feedback" *ngIf="form?.controls?.['name']?.touched && form.controls['name']?.errors?.['required']">
+                            {{ 'name_is_required' | translate }}
+                        </div>
+                        <div class="invalid-feedback" *ngIf="form?.controls?.['name']?.touched && form.controls['name']?.errors?.['pattern']">
+                            {{ 'Only letters and spaces are allowed' | translate }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">
+                            <i class="ri-mail-line"></i>
+                            {{ 'email_address' | translate }}
+                        </label>
+                        <input 
+                            class="form-control" 
+                            id="email" 
+                            type="email" 
+                            placeholder="{{ 'enter_email_address' | translate }}" 
+                            formControlName="email"
+                            [class.is-invalid]="form?.controls?.['email']?.touched && form.controls['email']?.invalid">
+                        <div class="invalid-feedback" *ngIf="form?.controls?.['email']?.touched && form.controls['email']?.errors?.['required']">
+                            {{ 'email_address_is_required' | translate }}
+                        </div>
+                        <div class="invalid-feedback" *ngIf="form.controls['email'].touched && form.controls['email'].errors?.['email']">
+                            {{ 'please_enter_valid_email' | translate }}
+                        </div>
+                    </div>
+
+                    <div class="form-group phone-field">
+                        <label class="form-label" for="phone">
+                            <i class="ri-phone-line"></i>
+                            {{ 'phone_number' | translate }}
+                        </label>
+                        <div class="phone-input-group">
+                            <select2
+                                class="custom-select intl-tel-input"
+                                [templates]="template"
+                                [data]="codes"
+                                formControlName="country_code">
+                                <ng-template #template let-data="data">
+                                    <div class="country">
+                                        <div class="flag-box">
+                                            <div class="iti-flag {{data?.class}}"></div>
+                                        </div>
+                                        <span class="dial-code">{{data.code}}</span>
+                                    </div>
+                                </ng-template>
+                            </select2>
+                            <input 
+                                type="tel" 
+                                class="form-control intl-input-padding" 
+                                formControlName="phone" 
+                                placeholder="{{ 'enter_phone' | translate }}" 
+                                name="phone"
+                                [class.is-invalid]="form?.controls?.['phone']?.touched && form.controls['phone']?.invalid"
+                                (keydown)="allowOnlyDigits($event)" 
+                                (input)="sanitizeDigitsInput($event)" 
+                                (paste)="sanitizeDigitsPaste($event)">
+                        </div>
+                        <div class="invalid-feedback" *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['required']">
+                            {{ 'phone_number_is_required' | translate }}
+                        </div>
+                        <div class="invalid-feedback" *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['pattern']">
+                            {{ 'phone_number_is_invalid' | translate }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button 
+                    type="button" 
+                    class="btn btn-cancel"
+                    [id]="'cancel_profile_btn'" 
+                    (click)="modal.dismiss('Cancel')">
+                    {{ 'cancel' | translate }}
+                </button>
+                <button 
+                    type="submit" 
+                    class="btn btn-submit"
+                    [id]="'submit_profile_btn'"
+                    [disabled]="form.invalid">
+                    {{ 'submit' | translate }}
+                </button>
+            </div>
+        </form>
+    </div>
+</ng-template>

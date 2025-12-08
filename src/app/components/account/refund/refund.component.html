@@ -1,0 +1,98 @@
+<div class="tab-pane fade show active">
+    <div class="dashboard-home">
+        <!-- Full Width Menu Bar -->
+        <div class="dashboard-menu-bar">
+            <div class="menu-container">
+                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/dashboard']">
+                    <i class="ri-home-fill"></i>
+                    <span>{{ 'Dashboard' | translate }}</span>
+                </a>
+                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/notifications']">
+                    <i class="ri-notification-fill"></i>
+                    <span>{{ 'Notifications' | translate }}</span>
+                    <span class="notification-badge" *ngIf="unreadNotificationCount">{{ unreadNotificationCount
+                        }}</span>
+                </a>
+                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/bank-details']">
+                    <i class="ri-bank-fill"></i>
+                    <span>{{ 'Bank Details' | translate }}</span>
+                </a>
+                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/order']">
+                    <i class="ri-file-text-fill"></i>
+                    <span>{{ 'My Orders' | translate }}</span>
+                </a>
+                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/refund']">
+                    <i class="ri-money-rupee-circle-fill"></i>
+                    <span>{{ 'Refund History' | translate }}</span>
+                </a>
+                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/addresses']">
+                    <i class="ri-map-pin-fill"></i>
+                    <span>{{ 'Saved Address' | translate }}</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h2 class="dashboard-title">{{ 'My Dashboard' | translate }}</h2>
+                    <p class="dashboard-subtitle">{{ 'Hello' | translate }}, <strong>{{ (user$ | async)?.name! |
+                            titleCase }}</strong> - {{ "Welcome" | translate}}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Refund History Content -->
+        <div class="dashboard-content">
+            <div class="refund-wrapper">
+                <!-- Refund Table -->
+                <div class="refund-table-card" *ngIf="(refund$ | async)?.data?.length">
+                    <div class="table-responsive">
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'Order' | translate }}</th>
+                                    <th>{{ 'Status' | translate }}</th>
+                                    <th>{{ 'Reason' | translate }}</th>
+                                    <th>{{ 'Created At' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let refund of (refund$ | async)?.data let i = index">
+                                    <td>
+                                        <span class="order-number">#{{ refund?.order?.order_number }}</span>
+                                    </td>
+                                    <td>
+                                        <div class="status-badge status-{{refund?.status?.toLowerCase()}}">
+                                            <span>{{ refund?.status | titleCase }}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="refund-reason">{{ refund?.reason }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="refund-date">{{ refund?.created_at | date: 'dd MMM yyyy' }}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav class="refund-pagination" *ngIf="(refund$ | async)?.data?.length">
+                        <app-pagination [total]="(refund$ | async)?.total || 0" [currentPage]="filter['page']"
+                            [pageSize]="filter['paginate']" (setPage)="setPaginate($event)">
+                        </app-pagination>
+                    </nav>
+                </div>
+
+                <!-- No Refunds State -->
+                <app-no-data [class]="'no-data-added'" [text]="'No Refunds Found'"
+                    [description]="'You Have No Refunds yet'" *ngIf="!(refund$ | async)?.data?.length">
+                </app-no-data>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,150 @@
+<!-- Home Section Start -->
+
+<!-- Hero Banner Start -->
+<section class="hero-banner-section">
+  <div class="hero-banner">
+    <img src="assets/images/Hero_image.jpg" alt="Hero Banner" class="hero-banner-image">
+  </div>
+</section>
+
+<!-- <section class="home-section-2 home-section-bg pt-md-0 pt-3 overflow-hidden" *ngIf="data?.content?.home_banner">
+  <app-theme-home-banner [theme]="'denver'" [data]="data?.content?.home_banner"></app-theme-home-banner>
+</section> -->
+<!-- Home Section End -->
+
+
+<!-- RaylomShop Banner End -->
+<!-- Category Section Start -->
+<section *ngIf="data?.content?.categories_icon_list?.status">
+  <div class="container-fluid-lg">
+    <app-theme-categories [style]="'horizontal'" [theme]="'paris'" [sliderOption]="categorySlider"
+      [categoryIds]="data?.content?.categories_icon_list?.category_ids || []"
+      [image]="data?.content?.categories_icon_list?.image_url">
+    </app-theme-categories>
+  </div>
+</section>
+<!-- Category Section End -->
+
+<!-- Deal Section Start -->
+<section class="product-section product-section-3" *ngIf="data?.content?.products_list_1?.status">
+  <div class="container-fluid-lg">
+    <div>
+      <div>
+        <h2 class="text-center mb-4 font-weight-light title-top">Fresh Drops</h2>
+      </div>
+
+      <app-theme-product [productIds]="data?.content?.products_list_1?.product_ids || []" [style]="'horizontal'"
+        [slider]="true" [sliderOption]="productSlider6ItemMargin" [productStyle]="'product-solid'"
+        [boxClass]="'product-box-bg'">
+      </app-theme-product>
+    </div>
+  </div>
+</section>
+<!-- Deal Section End -->
+
+<!-- Explore More Section Start -->
+<section class="explore-more-section section-b-space">
+  <div class="container-fluid-lg">
+    <div class="title-header-main">
+      <h2 class="text-center mb-2 font-weight-bold">WEDDING VIBES</h2>
+      <p class="text-center mb-4">Shop our occasion-ready curations</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6 col-12" *ngFor="let item of exploreMoreItems">
+        <div class="explore-card" [routerLink]="['/collections']" [queryParams]="{category: 'women', sortBy: 'asc'}">
+          <div class="explore-image">
+            <img [src]="item.image" [alt]="item.title" class="img-fluid">
+          </div>
+          <div class="explore-content">
+            <h3>{{ item.title }}</h3>
+          </div>
+          <div class="overlay">
+            <div class="shop-now-text">
+              <h3>SHOP NOW</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Explore More Section End -->
+
+<!-- Shop Now Banner Section Start -->
+<section class="men-banner-section-1 pt-0">
+  <div class="container-fluid-lg">
+    <div class="men-banner" [routerLink]="['/collections']" [queryParams]="{category: 'men', sortBy: 'asc'}">
+      <img src="assets/images/Shop now.png" alt="Shop Now Banner" class="img-fluid w-100">
+    </div>
+  </div>
+</section>
+<!-- Shop Now Banner Section End -->
+
+<!-- Top Selling Section Start -->
+<section class="product-section product-section-3" *ngIf="data?.content?.products_list_2?.status">
+  <div class="container-fluid-lg">
+    <div class="title-header-main product-small">
+      <!-- <app-title [title]="data?.content?.products_list_2?.title" [style]="'simple'">
+      </app-title>
+      <p class="p-text-main">Find your own signature styles with classic menswear from our premium collections. Whether
+        it is for work, the weekend, or just between the two, RaylomShop offers you stylish selections to ensure ultimate
+        comfort and confidence. Shirts, trousers, casual wear, and more-all just about keeping you sharp.Shop the Latest
+        in Men's Style from timeless classics to modern trends, we make online men's fashion shopping effortless. Browse
+        our wide range of categories and shop men's clothing online — from casual essentials to formalwear, outerwear,
+        and more.
+      </p> -->
+      <app-theme-product [productIds]="data?.content?.products_list_2?.product_ids || []" [style]="'horizontal'"
+        [slider]="true" [sliderOption]="productSlider6ItemMargin" [productStyle]="'product-solid'"
+        [boxClass]="'product-box-bg'">
+      </app-theme-product>
+    </div>
+  </div>
+</section>
+<!-- Top Selling Section End -->
+
+<!-- Gowns Banner Section Start -->
+<section class="gowns-banner-section">
+  <div class="container-fluid-lg">
+    <div class="gowns-banner-container">
+      <img src="assets/images/girl-dress.jpg" alt="Gowns That Dazzle" class="gowns-banner-image">
+      <div class="gowns-banner-overlay">
+        <h2>GOWNS THAT DAZZLE</h2>
+        <button class="shop-gowns-btn" [routerLink]="['/collections']" [queryParams]="{category: 'women'}">SHOP
+          Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Gowns Banner Section End -->
+
+<!-- Top Selling Section Start -->
+<section class="product-section product-section-3" *ngIf="data?.content?.products_list_3?.status">
+  <div class="container-fluid-lg">
+    <div>
+      <!-- <app-title [title]="data?.content?.products_list_3?.title" [style]="'simple'">
+      </app-title>
+      <p class="p-text-main">Our womenswear collection is Affordable, Stylish & On-Trend . From elegantly casual to
+        eye-catching styles, explore unique womenswear for those who are always styled-up. Go ahead and combine
+        fashion-forward with effortless chic for any occasion.</p> -->
+      <app-theme-product [productIds]="data?.content?.products_list_3?.product_ids || []" [style]="'horizontal'"
+        [slider]="true" [sliderOption]="productSlider6ItemMargin" [productStyle]="'product-solid'"
+        [boxClass]="'product-box-bg'">
+      </app-theme-product>
+    </div>
+  </div>
+</section>
+<!-- Top Selling Section End -->
+
+<!-- Brand Section start -->
+<section class="brand-effect border-brand" *ngIf="data?.content?.brands?.brand_ids && data?.content?.brands?.status">
+  <div class="container-fluid-lg">
+    <app-brand [brandIds]="data?.content?.brands?.brand_ids || []"></app-brand>
+  </div>
+</section>
+<!-- Brand Section end -->
+
+<!-- Newsletter Section Start -->
+<section class="newsletter-section section-b-space" *ngIf="data?.content?.news_letter?.status">
+  <app-newsletter [data]="data?.content?.news_letter!"></app-newsletter>
+</section>
+<!-- Newsletter Section End -->

@@ -1,0 +1,306 @@
+<div class="register-wrapper">
+  <app-breadcrumb [breadcrumb]="breadcrumb"></app-breadcrumb>
+  
+  <section class="register-section">
+    <div class="container-fluid-lg">
+      <div class="row justify-content-center">
+        <!-- Centered Register Form -->
+        <div class="col-lg-12">
+          <div class="register-form-container">
+            <div class="register-card">
+              <app-alert></app-alert>
+              
+              <div class="register-header">
+                <div class="logo-section">
+                  <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    </svg>
+                  </div>
+                  <h1>Welcome To RaylomShop</h1>
+                </div>
+                <p class="register-subtitle">{{ 'Create New Account' | translate }}</p>
+              </div>
+
+              <form [formGroup]="form" (ngSubmit)="submit()" class="register-form">
+                <div class="form-group">
+                  <label for="name">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    {{ 'Full Name' | translate }}
+                  </label>
+                  <div class="input-wrapper">
+                    <input 
+                      type="text" 
+                      id="name" 
+                      formControlName="name"
+                      placeholder="Enter your full name"
+                      (keydown)="allowOnlyLetters($event)"
+                      (input)="sanitizeNameInput($event)"
+                      (paste)="sanitizeNamePaste($event)"
+                      [class.invalid]="form.controls['name'].touched && form.controls['name'].invalid"
+                      [class.valid]="form.controls['name'].touched && form.controls['name'].valid">
+                    <div class="input-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                    </div>
+                  </div>
+                  <div *ngIf="form.controls['name'].touched && form.controls['name'].errors?.['required']" class="error-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    {{ 'name_is_required' | translate }}
+                  </div>
+                  <div *ngIf="form.controls['name'].touched && form.controls['name'].errors?.['pattern']" class="error-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    {{ 'Only letters and spaces are allowed' | translate }}
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    {{ 'Email Address' | translate }}
+                  </label>
+                  <div class="input-wrapper">
+                    <input 
+                      type="email" 
+                      id="email" 
+                      formControlName="email"
+                      placeholder="Enter your email address"
+                      [class.invalid]="form.controls['email'].touched && form.controls['email'].invalid"
+                      [class.valid]="form.controls['email'].touched && form.controls['email'].valid">
+                    <div class="input-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div *ngIf="form.controls['email'].touched && form.controls['email'].errors?.['required']" class="error-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    {{ 'Email Is Required' | translate }}
+                  </div>
+                  <div *ngIf="form.controls['email'].touched && form.controls['email'].errors?.['email']" class="error-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    {{ 'Invalid Email' | translate }}
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    {{ 'Phone Number' | translate }}
+                  </label>
+                  <div class="phone-input-wrapper">
+                    <select2 class="country-code-select" [data]="codes" [templates]="template" formControlName="country_code">
+                      <ng-template #template let-data="data">
+                        <div class="country">
+                          <div class="flag-box">
+                            <div class="iti-flag {{data?.class}}"></div>
+                          </div>
+                          <span class="dial-code">{{data.code}}</span>
+                        </div>
+                      </ng-template>
+                    </select2>
+                    <div class="input-wrapper phone-input">
+                      <input 
+                        type="tel" 
+                        id="phone" 
+                        formControlName="phone"
+                        placeholder="Enter your phone number"
+                        maxlength="10"
+                        (keydown)="allowOnlyDigits($event)"
+                        (input)="sanitizePhoneInput($event)"
+                        (paste)="sanitizePhonePaste($event)"
+                        [class.invalid]="form.controls['phone'].touched && form.controls['phone'].invalid"
+                        [class.valid]="form.controls['phone'].touched && form.controls['phone'].valid">
+                      <div class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['required']" class="error-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    {{ 'Phone Number Is Required' | translate }}
+                  </div>
+                  <div *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['invalid']" class="error-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    Phone Number must be 10 digits.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="password">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    {{ 'Password' | translate }}
+                  </label>
+                  <div class="input-wrapper">
+                    <input 
+                      type="password" 
+                      id="password" 
+                      formControlName="password"
+                      placeholder="Enter your password"
+                      [class.invalid]="form.controls['password'].touched && form.controls['password'].invalid"
+                      [class.valid]="form.controls['password'].touched && form.controls['password'].valid">
+                    <div class="input-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div *ngIf="form.controls['password'].touched && form.controls['password'].errors?.['required']" class="error-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    {{ 'password_is_required' | translate }}
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="password_confirmation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    {{ 'Password Confirmation' | translate }}
+                  </label>
+                  <div class="input-wrapper">
+                    <input 
+                      type="password" 
+                      id="password_confirmation" 
+                      formControlName="password_confirmation"
+                      placeholder="Confirm your password"
+                      [class.invalid]="form.controls['password_confirmation'].touched && (form.controls['password_confirmation'].invalid || passwordMatchError)"
+                      [class.valid]="form.controls['password_confirmation'].touched && form.controls['password_confirmation'].valid && !passwordMatchError">
+                    <div class="input-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div *ngIf="form.controls['password_confirmation'].touched && form.controls['password_confirmation'].errors?.['required']" class="error-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    {{ 'confirm_password_is_required' | translate }}
+                  </div>
+                  <div *ngIf="passwordMatchError && form.controls['password_confirmation'].touched" class="error-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    {{ 'confirm Password Does Not Matched' | translate }}
+                  </div>
+                </div>
+
+                <div class="form-group" *ngIf="reCaptcha">
+                  <re-captcha formControlName="recaptcha"></re-captcha>
+                  <div *ngIf="form.controls['recaptcha']?.touched && form.controls['recaptcha']?.errors?.['required']" class="error-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    {{ 'ReCaptcha is Required' | translate }}
+                  </div>
+                </div>
+
+                <div class="form-options">
+                  <label class="terms-checkbox" [class.invalid]="tnc.touched && tnc.invalid">
+                    <input type="checkbox" id="flexCheckDefault" class="custom-checkbox" [formControl]="tnc">
+                    <span class="checkmark"></span>
+                    <span class="label-text">
+                      {{ 'I Agree With' | translate }}
+                      <span class="link-text">{{ 'Terms' | translate }}</span>
+                      {{ 'And' | translate }}
+                      <span class="link-text">{{ 'Privacy' | translate }}</span>
+                    </span>
+                  </label>
+                </div>
+
+                <button type="submit" class="register-btn" [disabled]="tnc.invalid || form.invalid || isLoading">
+                  <span *ngIf="!isLoading">{{ 'Sign Up' | translate }}</span>
+                  <span *ngIf="isLoading" class="loading-text">Creating account...</span>
+                  <svg *ngIf="!isLoading" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                  <svg *ngIf="isLoading" class="spinner" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 2v4"></path>
+                    <path d="M12 18v4"></path>
+                    <path d="M4.93 4.93l2.83 2.83"></path>
+                    <path d="M16.24 16.24l2.83 2.83"></path>
+                    <path d="M2 12h4"></path>
+                    <path d="M18 12h4"></path>
+                    <path d="M4.93 19.07l2.83-2.83"></path>
+                    <path d="M16.24 7.76l2.83-2.83"></path>
+                  </svg>
+                </button>
+              </form>
+
+              <div class="divider">
+                <span>{{ 'OR' | translate }}</span>
+              </div>
+
+              <div class="login-section">
+                <p>{{ 'Already Have An Account' | translate }}?</p>
+                <a [routerLink]="['/auth/login']" class="login-link">
+                  {{ 'Login' | translate }}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

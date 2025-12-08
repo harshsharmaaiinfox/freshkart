@@ -1,0 +1,94 @@
+<div class="container-fluid-lg py-4 product-images-layout">
+  <div class="row justify-content-center g-4">
+    <!-- Details LEFT (card style) -->
+    <div class="col-12 col-lg-5 order-lg-1">
+      <div class="product-details-card shadow-sm">
+        <div class="product-details-card__header">
+          <div>
+            <h2 class="product-details-card__title">{{ product?.name }}</h2>
+            <p class="product-details-card__subtitle" *ngIf="product?.short_description">
+              {{ product.short_description }}
+            </p>
+          </div>
+          <div class="product-details-card__price" *ngIf="product">
+            <span class="current">
+              ₹{{ product.sale_price || product.price }}
+            </span>
+            <span class="old" *ngIf="product.sale_price && product.price">
+              ₹{{ product.price }}
+            </span>
+          </div>
+        </div>
+
+        <div class="product-details-card__body">
+          <app-product-contain [product]="product" [option]="option"></app-product-contain>
+          <app-product-action [product]="product"></app-product-action>
+
+          <div class="product-details-card__info">
+            <app-product-information [product]="product"></app-product-information>
+            <app-product-delivery-information [product]="product"></app-product-delivery-information>
+          </div>
+
+          <div class="product-details-card__meta">
+            <app-payment-option [product]="product" [option]="option"></app-payment-option>
+            <app-product-social-share [product]="product" [option]="option"></app-product-social-share>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image gallery RIGHT (modern grid) -->
+    <div class="col-12 col-lg-7 order-lg-2">
+      <div class="product-gallery-card">
+        <div class="product-gallery-card__label-group" *ngIf="product">
+          <div class="product-label-tag" *ngIf="product?.is_sale_enable else featured">
+            <span>{{ 'sale' | translate }}</span>
+          </div>
+          <ng-template #featured>
+            <div class="product-label-tag warning-label-tag" *ngIf="product?.is_featured">
+              <span>{{ 'featured' | translate }}</span>
+            </div>
+          </ng-template>
+        </div>
+
+        <div class="product-gallery-grid">
+          <div class="product-gallery-grid__item product-gallery-grid__item--single">
+            <div class="media-wrapper">
+              <ng-template #audioThumb>
+                <ng-container *ngIf="audioType.includes(product?.product_thumbnail?.mime_type!); else imgThumb">
+                  <div class="audio-wrapper">
+                    <audio controls>
+                      <source [src]="product.product_thumbnail ? product.product_thumbnail.original_url : ''"
+                        [type]="product.product_thumbnail?.mime_type" />
+                    </audio>
+                  </div>
+                </ng-container>
+              </ng-template>
+
+              <ng-template #imgThumb>
+                <img
+                  [src]="product.product_thumbnail ? product.product_thumbnail.original_url : 'assets/images/product.png'"
+                  class="img-fluid" [alt]="product?.name" />
+              </ng-template>
+
+              <ng-container *ngIf="videType.includes(product?.product_thumbnail?.mime_type!); else audioThumb">
+                <div class="video-badge">
+                  <i class="ri-play-fill"></i>
+                </div>
+                <video class="w-100" controls>
+                  <source [src]="product.product_thumbnail ? product.product_thumbnail.original_url : ''"
+                    [type]="product.product_thumbnail?.mime_type" />
+                </video>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related products row -->
+    <div class="col-12 related-product-2" *ngIf="product?.cross_sell_products && product?.cross_sell_products?.length">
+      <app-product-bundle [product]="product"></app-product-bundle>
+    </div>
+  </div>
+</div>

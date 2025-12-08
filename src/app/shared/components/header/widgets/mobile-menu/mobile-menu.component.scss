@@ -1,0 +1,33 @@
+.mobile-menu {
+    background: linear-gradient(to right, #1B4B45, #000000);
+
+    ul {
+        li {
+            a {
+                color: #fff;
+
+                i {
+                    color: #fff;
+                }
+
+                span {
+                    color: #fff;
+                }
+
+                &:hover {
+                    color: #fff;
+                }
+            }
+
+            &.active {
+                span {
+                    color: #fff;
+                }
+
+                &::before {
+                    background-color: #fff;
+                }
+            }
+        }
+    }
+}

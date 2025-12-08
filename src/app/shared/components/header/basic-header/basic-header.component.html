@@ -1,0 +1,71 @@
+<header [class.active]="stick && sticky" [class.transparent-header]="isHomePage && (!stick || !sticky)">
+    <div class="top-nav top-header sticky-header">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="navbar-top">
+                        <!-- Mobile Menu Button -->
+                        <div class="d-xl-none d-inline">
+                            <app-navbar-menu-button (activeMenu)="toggle($event)"
+                                [show]="active"></app-navbar-menu-button>
+                        </div>
+
+                        <!-- Logo -->
+                        <a [routerLink]="['/']" class="web-logo nav-logo">
+                            <img src="assets/images/raylomshop.png" class="img-fluid" alt="logo">
+                        </a>
+
+                        <!-- Menu (Desktop) -->
+                        <div class="header-menu d-none d-xl-block">
+                            <div class="main-nav navbar navbar-expand-xl navbar-light">
+                                <app-menu></app-menu>
+                            </div>
+                        </div>
+
+                        <!-- Search -->
+                        <div class="middle-box">
+                            <div class="search-box d-none d-xl-block">
+                                <app-box-search></app-box-search>
+                            </div>
+                            <!-- Mobile Search -->
+                            <div class="mobile-search d-xl-none d-inline-block">
+                                <app-box-search [style]="'berlin'"></app-box-search>
+                            </div>
+                        </div>
+
+                        <!-- Cart and My Account -->
+                        <div class="rightside-box">
+                            <ul class="right-side-menu">
+                                <li class="right-side p-md-custom d-inline-block">
+                                    <div class="onhover-dropdown header-badge">
+                                        <app-header-cart></app-header-cart>
+                                    </div>
+                                </li>
+                                <li class="right-side onhover-dropdown">
+                                    <app-my-account></app-my-account>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Offcanvas -->
+    <div class="d-xl-none">
+        <div class="offcanvas offcanvas-collapse" [class.show]="active">
+            <div class="offcanvas-header navbar-shadow">
+                <h5>{{ 'Menu' | translate }}</h5>
+                <app-button [type]="'button'" [class]="'btn-close lead'" [id]="'toggle_menu_btn'" [spinner]="false"
+                    (click)="toggle(false)">
+                    <i class="ri-close-fill"></i>
+                </app-button>
+            </div>
+            <div class="offcanvas-body">
+                <app-menu></app-menu>
+            </div>
+        </div>
+        <div class="offcanvas-backdrop fade" *ngIf="active" [class.show]="active" (click)="toggle(false)"></div>
+    </div>
+</header>
