@@ -26,9 +26,51 @@ export class DenverComponent implements OnInit {
   public categorySlider = data.categorySlider9;
   public productSlider6ItemMargin = data.productSlider6ItemMargin;
 
+  // Wedding Slider Configuration
+  public weddingSlider = {
+    loop: true,
+    nav: false,
+    dots: true,
+    items: 1,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    navSpeed: 600,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 1,
+      },
+      1000: {
+        items: 1,
+      },
+    },
+  };
+
   constructor(private store: Store,
     private route: ActivatedRoute,
     private themeOptionService: ThemeOptionService) { }
+
+  // Wedding Slider Images
+  public weddingSlides = [
+    {
+      image: 'assets/images/slide-1.jpg',
+      title: 'WEDDING LAUNCHES',
+      buttonText: 'SHOP NOW'
+    },
+    {
+      image: 'assets/images/slide-2.jpg',
+      title: 'WEDDING LAUNCHES',
+      buttonText: 'SHOP NOW'
+    },
+    {
+      image: 'assets/images/slide-3.jpg',
+      title: 'WEDDING LAUNCHES',
+      buttonText: 'SHOP NOW'
+    }
+  ];
 
   public exploreMoreItems = [
     {

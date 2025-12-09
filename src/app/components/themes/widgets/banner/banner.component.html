@@ -1,5 +1,5 @@
 <!-- Banner Horizontal Style-->
-<div class="container-fluid-lg" *ngIf="banners?.length && style == 'horizontal'">
+<div class="container" *ngIf="banners?.length && style == 'horizontal'">
     <div class="banner-slider">
         <owl-carousel-o [options]="bannerSlider">
             <ng-container carouselSlide *ngFor="let banner of banners">

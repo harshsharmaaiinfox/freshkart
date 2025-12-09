@@ -1,16 +1,14 @@
 <!-- Cart Style Basic -->
-<app-button [type]="'button'" [class]="'btn p-0 position-relative d-md-inline-block d-none header-wishlist'"
-    [spinner]="false" [id]="'cart_sidebar_btn'" (click)="cartStyle == 'cart_sidebar' && cartToggle(true)"
+<a [routerLink]="['/cart']" class="btn p-0 position-relative d-md-inline-block d-none header-wishlist"
     *ngIf="style == 'basic'">
     <i class="cil-cart"></i>
     <span class="position-absolute top-0 start-100 translate-middle badge" *ngIf="(cartItem$ | async)?.length">
         {{ (cartItem$ | async)?.length }} <span class="visually-hidden">{{ 'unread_messages' | translate }}</span>
     </span>
-</app-button>
+</a>
 
 <!-- Cart Style Classic -->
-<a href="javascript:void(0)" class="header-icon swap-icon" (click)="cartStyle == 'cart_sidebar' && cartToggle(true)"
-    *ngIf="style == 'classic'">
+<a [routerLink]="['/cart']" class="header-icon swap-icon" *ngIf="style == 'classic'">
     <small class="badge-number badge-light" *ngIf="(cartItem$ | async)?.length">
         {{ (cartItem$ | async)?.length }}
     </small>

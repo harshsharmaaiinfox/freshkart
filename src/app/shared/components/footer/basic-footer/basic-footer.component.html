@@ -1,100 +1,123 @@
 <footer class="footer-section">
-    <div class="container-fluid-lg">
-        <div class="row g-4">
+    <div class="container">
+        <div class="row g-4 footer-main">
             <!-- Column 1: Brand & About -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="footer-content">
-                    <div class="footer-logo">
-                        <!-- <app-footer-logo [data]="data" [footer]="footer"></app-footer-logo> -->
-                        <img src="assets/images/raylomshop.png" class="img-fluid footer-logo" alt="logo">
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="footer-card">
+                    <div class="footer-logo-wrapper">
+                        <h2 class="text-white">ORDINOME</h2>
                     </div>
-                    <p class="footer-desc">
-                        Elevate your style with our premium collection. Quality, comfort, and elegance in every stitch.
+                    <p class="footer-tagline">
+                        Quality, comfort, and elegance in every stitch.
                     </p>
-
+                    <div class="footer-badge">
+                        <i class="ri-verified-badge-fill"></i>
+                        <span>Trusted Since 2020</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Column 2: Useful Links -->
-            <div class="col-xl-3 col-lg-2 col-md-6">
-                <div class="footer-title">
-                    <h4>Useful Links</h4>
+            <!-- Column 2: Quick Links -->
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="footer-card">
+                    <div class="footer-heading">
+                        <i class="ri-links-line"></i>
+                        <h4>Quick Links</h4>
+                    </div>
+                    <ul class="footer-nav">
+                        <li><a routerLink="/about-us"><i class="ri-arrow-right-s-line"></i>About Us</a></li>
+                        <li><a routerLink="/term-condition"><i class="ri-arrow-right-s-line"></i>Terms & Conditions</a>
+                        </li>
+                        <li><a routerLink="/privacy-policy"><i class="ri-arrow-right-s-line"></i>Privacy Policy</a></li>
+                        <li><a routerLink="/return-policy"><i class="ri-arrow-right-s-line"></i>Return Policy</a></li>
+                        <li><a routerLink="/shipping-policy"><i class="ri-arrow-right-s-line"></i>Shipping Policy</a>
+                        </li>
+                        <li><a routerLink="/Contact-Us"><i class="ri-arrow-right-s-line"></i>Contact Us</a></li>
+                    </ul>
                 </div>
-                <ul class="footer-links">
-                    <li><a routerLink="/about-us">About Us</a></li>
-                    <li><a routerLink="/term-condition">Terms & Conditions</a></li>
-                    <li><a routerLink="/privacy-policy">Privacy Policy</a></li>
-                    <li><a routerLink="/return-policy">Return Policy</a></li>
-                    <li><a routerLink="/shipping-policy">Shipping Policy</a></li>
-                    <li><a routerLink="/Contact-Us">Contact Us</a></li>
-                </ul>
             </div>
 
             <!-- Column 3: Contact Info -->
             <div class="col-xl-3 col-lg-3 col-md-6">
-                <div class="footer-title">
-                    <h4>Contact Us</h4>
-                </div>
-                <ul class="contact-list">
-                    <li>
-                        <i class="ri-map-pin-line"></i>
-                        <span>No. 3266, TF Gali Raja Wali, Peepal Mahadev, Hauz Qazi, New Delhi, Central Delhi, Delhi,
-                            110006</span>
-                    </li>
-                    <li>
-                        <i class="ri-mail-line"></i>
-                        <span>sarveshwarent1435&#64;gmail.com</span>
-                    </li>
-                    <li>
-                        <i class="ri-time-line"></i>
-                        <span>Mon - Sat: 9:00 AM - 8:00 PM</span>
-                    </li>
-                    <li>
-                        <i class="ri-file-list-3-line"></i>
-                        <span>GST : 07AAOCR3607F1ZC</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Column 4: Follow Us -->
-            <div class="col-xl-3 col-lg-3 col-md-6">
-                <div class="footer-title">
-                    <h4>Follow Us</h4>
-                </div>
-                <div class="social-content">
-                    <p>Stay connected with us on social media for the latest updates and offers.</p>
-                    <ul class="social-links">
-                        <li>
-                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                                aria-label="Facebook">
-                                <i class="ri-facebook-fill"></i>
-                                <span>Facebook</span>
-                            </a>
+                <div class="footer-card">
+                    <div class="footer-heading">
+                        <i class="ri-customer-service-2-line"></i>
+                        <h4>Get In Touch</h4>
+                    </div>
+                    <ul class="footer-contact">
+                        <li class="contact-item">
+                            <div class="contact-icon">
+                                <i class="ri-map-pin-fill"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span>E-36, Sector 3, Noida, Gautam Budda Nagar, Noida, Uttar Pradesh, India,
+                                    201301</span>
+                            </div>
                         </li>
-                        <li>
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-                                aria-label="Instagram">
-                                <i class="ri-instagram-line"></i>
-                                <span>Instagram</span>
-                            </a>
+                        <li class="contact-item">
+                            <div class="contact-icon">
+                                <i class="ri-mail-fill"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span>p52121837&#64;gmail.com</span>
+                            </div>
                         </li>
-
+                        <li class="contact-item">
+                            <div class="contact-icon">
+                                <i class="ri-phone-fill"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span>+919953636205</span>
+                            </div>
+                        </li>
+                        <li class="contact-item">
+                            <div class="contact-icon">
+                                <i class="ri-file-list-3-fill"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span>GST:09AAEC07353HIZ6</span>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <div class="sub-footer">
-            <div class="row">
-                <div class="col">
-                    <div class="footer-bottom">
-                        <p>© 2025 Raylom Traders Private Limited. All Rights Reserved.</p>
+            <!-- Column 4: Social Connect -->
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="footer-card">
+                    <div class="footer-heading">
+                        <i class="ri-share-line"></i>
+                        <h4>Connect With Us</h4>
+                    </div>
+                    <p class="social-description">Join our community for exclusive updates, offers, and style
+                        inspiration.</p>
+                    <div class="social-buttons">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+                            class="social-btn facebook" aria-label="Facebook">
+                            <i class="ri-facebook-fill"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                            class="social-btn instagram" aria-label="Instagram">
+                            <i class="ri-instagram-line"></i>
+                            <span>Instagram</span>
+                        </a>
                     </div>
                 </div>
-
             </div>
         </div>
 
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-divider"></div>
+            <div class="copyright-section">
+                <p>© 2025 ORDINOME SERVICES PRIVATE LIMITED. All Rights Reserved.</p>
+                <div class="payment-methods">
+                    <i class="ri-bank-card-line"></i>
+                    <span>Secure Payments</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Back to Top Button -->

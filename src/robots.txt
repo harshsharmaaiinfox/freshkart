@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://raylomshop.com/sitemap.xml
+Sitemap: https://ORDINOME.com/sitemap.xml
 
 # Disallow admin and private areas
 Disallow: /admin/

@@ -1,0 +1,38 @@
+// Pagination styles handled in global _pagination.scss
+.pagination {
+    .page-item {
+        &.active {
+            .page-link {
+                background-color: #E08E1B;
+                border-color: #E08E1B;
+                color: white;
+                font-weight: 600;
+            }
+        }
+
+        .page-link {
+            color: #333;
+            font-weight: 500;
+            min-width: 32px;
+            text-align: center;
+
+            &:hover {
+                color: #E08E1B;
+            }
+        }
+
+        &.page-next {
+            .page-link {
+                font-weight: 600;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        &.disabled {
+            .page-link {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+        }
+    }
+}

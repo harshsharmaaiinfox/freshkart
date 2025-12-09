@@ -1,5 +1,5 @@
 // Primary Color
-$primary-color: #1B4B45;
+$primary-color: #092C42;
 $primary-dark: #0f2e2a;
 $primary-light: #2a6b63;
 $primary-lighter: #e8f4f2;
@@ -38,6 +38,7 @@ $primary-lighter: #e8f4f2;
       opacity: 0;
       transform: translateY(-20px) scale(0.95);
     }
+
     to {
       opacity: 1;
       transform: translateY(0) scale(1);
@@ -130,6 +131,7 @@ $primary-lighter: #e8f4f2;
             opacity: 0;
             transform: translateY(10px);
           }
+
           to {
             opacity: 1;
             transform: translateY(0);
@@ -198,9 +200,19 @@ $primary-lighter: #e8f4f2;
             animation: shake 0.4s ease;
 
             @keyframes shake {
-              0%, 100% { transform: translateX(0); }
-              25% { transform: translateX(-5px); }
-              75% { transform: translateX(5px); }
+
+              0%,
+              100% {
+                transform: translateX(0);
+              }
+
+              25% {
+                transform: translateX(-5px);
+              }
+
+              75% {
+                transform: translateX(5px);
+              }
             }
 
             &:focus {
@@ -229,6 +241,7 @@ $primary-lighter: #e8f4f2;
               opacity: 0;
               transform: translateY(-5px);
             }
+
             to {
               opacity: 1;
               transform: translateY(0);
@@ -301,6 +314,7 @@ $primary-lighter: #e8f4f2;
                     opacity: 0;
                     transform: translateY(-10px);
                   }
+
                   to {
                     opacity: 1;
                     transform: translateY(0);
@@ -530,4 +544,3 @@ $primary-lighter: #e8f4f2;
     }
   }
 }
-

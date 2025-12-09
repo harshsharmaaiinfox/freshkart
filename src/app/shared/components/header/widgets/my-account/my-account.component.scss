@@ -1,24 +1,23 @@
-// My Account Component - Modern Professional Design
+// My Account Component - Simple Clean Design
 
 // User Icon/Profile
 .delivery-login-box {
   .delivery-icon {
     .user-box {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.2s ease;
       cursor: pointer;
 
       &:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
       }
 
       img {
@@ -29,45 +28,43 @@
 
       h3 {
         margin: 0;
-        font-size: 18px;
-        font-weight: 700;
-        color: #1b4b45;
+        font-size: 16px;
+        font-weight: 600;
+        color: #092C42;
         text-transform: uppercase;
         letter-spacing: 0.5px;
       }
     }
 
     i {
-      font-size: 24px;
-      color: #ffffff;
+      font-size: 22px;
+      color: #000000;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: color 0.2s ease;
 
       &:hover {
-        color: #20c997;
-        transform: scale(1.1);
+        color: #092C42;
       }
     }
   }
 }
 
-// Dropdown Menu - Modern Professional Design
+// Dropdown Menu - Simple Clean Design
 .onhover-div-login {
   position: absolute;
-  top: calc(100% + 16px);
+  top: calc(100% + 12px);
   right: 0;
   background: #ffffff;
-  border-radius: 12px;
-  padding: 8px;
-  min-width: 240px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 6px;
+  min-width: 220px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: 999999 !important;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-8px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(20px);
+  transform: translateY(-4px);
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   overflow: hidden;
 
   // Ensure visibility on laptop screens
@@ -78,7 +75,7 @@
   html.dark & {
     background: #1e1e1e;
     border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .user-box-name {
@@ -87,7 +84,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 
     li {
       display: block;
@@ -98,15 +95,15 @@
       a {
         display: flex;
         align-items: center;
-        padding: 14px 16px;
-        color: #1a1a1a;
+        padding: 10px 12px;
+        color: #333;
         text-decoration: none;
-        font-size: 15px;
-        font-weight: 600;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease;
         position: relative;
-        border-radius: 8px;
-        gap: 14px;
+        border-radius: 6px;
+        gap: 10px;
         background: transparent;
 
         html.dark & {
@@ -120,51 +117,38 @@
         }
 
         i {
-          font-size: 20px;
-          width: 28px;
-          height: 28px;
+          font-size: 18px;
+          width: 24px;
+          height: 24px;
           display: flex;
           align-items: center;
           justify-content: center;
           color: #666;
-          transition: all 0.25s ease;
-          border-radius: 6px;
-          background: #f5f5f5;
+          transition: color 0.2s ease;
 
           html.dark & {
             color: #999;
-            background: #2a2a2a;
           }
         }
 
         &:hover {
-          color: #ffffff;
-          background: linear-gradient(135deg, #0a1a1a 0%, #1a3a3a 50%, #20c997 100%);
-          box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
+          color: #092C42;
+          background: #f8f9fa;
 
           html.dark & {
-            background: linear-gradient(135deg, #0a1a1a 0%, #1a3a3a 50%, #20c997 100%);
+            background: #2a2a2a;
+            color: #092C42;
           }
 
           i {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-
-            html.dark & {
-              background: rgba(255, 255, 255, 0.2);
-            }
+            color: #092C42;
           }
-        }
-
-        &:active {
-          transform: scale(0.98);
         }
       }
 
       // Logout specific styling
       &:last-child a {
-        color: #1a1a1a;
+        color: #333;
 
         html.dark & {
           color: #e0e0e0;
@@ -172,25 +156,19 @@
 
         i {
           color: #dc3545;
-          background: rgba(220, 53, 69, 0.1);
-
-          html.dark & {
-            background: rgba(220, 53, 69, 0.2);
-          }
         }
 
         &:hover {
-          color: #ffffff;
-          background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-          box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+          color: #dc3545;
+          background: #f8f9fa;
 
           html.dark & {
-            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            background: #2a2a2a;
+            color: #dc3545;
           }
 
           i {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.2);
+            color: #dc3545;
           }
         }
       }

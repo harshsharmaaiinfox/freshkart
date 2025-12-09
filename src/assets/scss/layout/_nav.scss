@@ -6,6 +6,7 @@ header {
     padding: 20px 0;
     display: flex;
     align-items: center;
+    justify-content: center;
 
     @include mq-max(md) {
       padding: 0;
@@ -2045,7 +2046,7 @@ header {
   }
 }
 
-// Global override for header menu - always white
+// Global override for header menu - set to black
 header {
   .header-menu {
     .main-nav {
@@ -2057,13 +2058,13 @@ header {
           .dropdown-toggle,
           a.nav-link,
           a.dropdown-toggle {
-            color: #ffffff !important;
+            color: #000000 !important;
 
             &:hover,
             &:focus,
             &.active,
             &.show {
-              color: #20c997 !important;
+              color: var(--theme-color) !important;
             }
           }
         }
@@ -2083,13 +2084,13 @@ header {
             .dropdown-toggle,
             a.nav-link,
             a.dropdown-toggle {
-              color: #ffffff !important;
+              color: #000000 !important;
 
               &:hover,
               &:focus,
               &.active,
               &.show {
-                color: #20c997 !important;
+                color: var(--theme-color) !important;
               }
             }
           }
@@ -2097,4 +2098,8 @@ header {
       }
     }
   }
+}
+
+ul.navbar-nav {
+  justify-content: center;
 }

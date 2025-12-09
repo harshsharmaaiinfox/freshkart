@@ -1,0 +1,48 @@
+.category-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+        margin-bottom: 12px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.category-list-box {
+    display: flex;
+    align-items: center;
+    min-height: auto;
+    padding: 0;
+    margin: 0;
+
+    .checkbox_animated {
+        cursor: pointer;
+        margin-right: 12px;
+        width: 18px;
+        height: 18px;
+        /* Removed appearance: none and custom styling to restore native/default look */
+        /* This ensures it matches the Category filter (which is empty/default) */
+    }
+
+    .form-check-label {
+        cursor: pointer;
+
+        .name {
+            color: #374151;
+            /* Dark grey */
+            font-size: 15px;
+            font-weight: 400;
+            text-transform: capitalize;
+        }
+    }
+
+    &:hover {
+        .name {
+            color: #111827;
+        }
+    }
+}

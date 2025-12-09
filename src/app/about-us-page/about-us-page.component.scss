@@ -94,7 +94,7 @@
         .hero-divider {
             width: 80px;
             height: 3px;
-            background: var(--theme-color, #20c997);
+            background: var(--theme-color, #092C42);
             margin: 20px auto;
             border-radius: 2px;
         }
@@ -149,7 +149,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+            background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 0;
@@ -158,7 +158,7 @@
         &:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 15px 40px rgba(32, 201, 151, 0.2);
-            border-color: var(--theme-color, #20c997);
+            border-color: var(--theme-color, #092C42);
 
             &::before {
                 opacity: 0.05;
@@ -166,15 +166,15 @@
 
             .stat-icon {
                 transform: scale(1.15) rotate(5deg);
-                background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
-                
+                background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+
                 i {
                     color: #ffffff;
                 }
             }
 
             .stat-number {
-                color: var(--theme-color, #20c997);
+                color: var(--theme-color, #092C42);
                 transform: scale(1.05);
             }
         }
@@ -194,7 +194,7 @@
 
             i {
                 font-size: 36px;
-                color: var(--theme-color, #20c997);
+                color: var(--theme-color, #092C42);
                 transition: all 0.3s ease;
                 font-family: 'remixicon' !important;
                 font-style: normal;
@@ -222,7 +222,7 @@
             line-height: 1;
             transition: all 0.3s ease;
             display: inline-block;
-            background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+            background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -239,7 +239,7 @@
         .stat-suffix {
             font-size: calc(1.5rem + 1vw);
             font-weight: 600;
-            color: var(--theme-color, #20c997);
+            color: var(--theme-color, #092C42);
             line-height: 1;
 
             @media (max-width: 768px) {
@@ -318,7 +318,7 @@
         .section-label {
             display: inline-block;
             padding: 6px 16px;
-            background: var(--theme-color, #20c997);
+            background: var(--theme-color, #092C42);
             color: #ffffff;
             font-size: 12px;
             font-weight: 600;
@@ -348,7 +348,7 @@
                 margin-bottom: 20px;
 
                 strong {
-                    color: var(--theme-color, #20c997);
+                    color: var(--theme-color, #092C42);
                     font-weight: 600;
                 }
             }
@@ -410,7 +410,7 @@
             left: 0;
             width: 5px;
             height: 100%;
-            background: var(--theme-color, #20c997);
+            background: var(--theme-color, #092C42);
             transition: width 0.3s ease;
         }
 
@@ -427,7 +427,7 @@
         .card-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+            background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
             border-radius: 15px;
             display: flex;
             align-items: center;
@@ -475,7 +475,7 @@
         .section-label {
             display: inline-block;
             padding: 6px 16px;
-            background: var(--theme-color, #20c997);
+            background: var(--theme-color, #092C42);
             color: #ffffff;
             font-size: 12px;
             font-weight: 600;
@@ -522,7 +522,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+            background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 0;
@@ -531,7 +531,7 @@
         &:hover {
             transform: translateY(-15px);
             box-shadow: 0 20px 50px rgba(32, 201, 151, 0.2);
-            border-color: var(--theme-color, #20c997);
+            border-color: var(--theme-color, #092C42);
 
             &::before {
                 opacity: 0.05;
@@ -539,11 +539,12 @@
 
             .icon-box {
                 transform: scale(1.1) rotate(5deg);
-                // background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+                // background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
                 color: #ffffff;
             }
 
-            h3, p {
+            h3,
+            p {
                 color: #222;
                 position: relative;
                 z-index: 1;
@@ -565,7 +566,7 @@
 
             i {
                 font-size: 42px;
-                color: var(--theme-color, #20c997);
+                color: var(--theme-color, #092C42);
                 transition: all 0.3s ease;
                 font-family: 'remixicon' !important;
                 font-style: normal;
@@ -729,7 +730,7 @@
                         padding: 18px 40px;
                         border-radius: 50px;
                         font-weight: 600;
-                        background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+                        background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
                         color: #fff;
                         border: none;
                         cursor: pointer;

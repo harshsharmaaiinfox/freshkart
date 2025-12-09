@@ -17,7 +17,7 @@
     .hero-icon {
       width: 80px;
       height: 80px;
-      background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+      background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
       border-radius: 20px;
       display: flex;
       align-items: center;
@@ -51,7 +51,7 @@
       margin-bottom: 20px;
 
       span {
-        color: var(--theme-color, #20c997);
+        color: var(--theme-color, #092C42);
         font-weight: 600;
       }
     }
@@ -59,7 +59,7 @@
     .hero-divider {
       width: 80px;
       height: 3px;
-      background: var(--theme-color, #20c997);
+      background: var(--theme-color, #092C42);
       margin: 0 auto;
       border-radius: 2px;
     }
@@ -129,12 +129,12 @@
       margin-bottom: 20px;
 
       strong {
-        color: var(--theme-color, #20c997);
+        color: var(--theme-color, #092C42);
         font-weight: 600;
       }
 
       a {
-        color: var(--theme-color, #20c997);
+        color: var(--theme-color, #092C42);
         text-decoration: none;
         font-weight: 500;
         transition: all 0.3s ease;
@@ -157,7 +157,7 @@
   background: #f8f9fa;
   padding: 25px;
   border-radius: 12px;
-  border-left: 4px solid var(--theme-color, #20c997);
+  border-left: 4px solid var(--theme-color, #092C42);
   margin: 25px 0;
 
   p {
@@ -226,7 +226,7 @@
     }
 
     svg {
-      color: var(--theme-color, #20c997);
+      color: var(--theme-color, #092C42);
       flex-shrink: 0;
       margin-top: 3px;
     }
@@ -269,7 +269,7 @@
         }
 
         svg {
-          color: var(--theme-color, #20c997);
+          color: var(--theme-color, #092C42);
           flex-shrink: 0;
           margin-top: 3px;
         }

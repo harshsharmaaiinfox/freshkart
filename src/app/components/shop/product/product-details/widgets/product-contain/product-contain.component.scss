@@ -1,0 +1,163 @@
+// Product Contain Component Styles for New Design
+.product-images-layout {
+    .product-contain {
+        h1.name {
+            display: none; // Title is shown in parent component
+        }
+
+        .brand-box-suggection,
+        .product-count {
+            display: none;
+        }
+
+        .price-rating {
+            display: none; // Price shown in parent component
+        }
+
+        .product-contain {
+            display: none; // Hide short description
+        }
+
+        // Size Selector Styling
+        .product-package {
+            margin-bottom: 24px;
+
+            .variant-attributes {
+                .attribute-section {
+                    margin-bottom: 20px;
+
+                    h5 {
+                        font-size: 14px;
+                        font-weight: 600;
+                        color: #333;
+                        margin-bottom: 12px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+
+                    .size-chart-link {
+                        float: right;
+                        color: #E08E1B;
+                        font-size: 14px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+
+                    .attribute-values {
+                        display: flex;
+                        gap: 10px;
+                        flex-wrap: wrap;
+
+                        .attribute-value {
+                            width: 48px;
+                            height: 48px;
+                            border-radius: 50%;
+                            border: 1px solid #ddd;
+                            background: #fff;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            font-size: 13px;
+                            font-weight: 500;
+                            color: #333;
+                            transition: all 0.2s ease;
+
+                            &:hover {
+                                border-color: #333;
+                            }
+
+                            &.active {
+                                border-color: #333;
+                                background-color: #333;
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Hide quantity selector
+        .note-box.product-package {
+            .cart_qty {
+                display: none;
+            }
+
+            .wishlist-btn-group {
+                display: none; // Will be shown separately
+            }
+        }
+
+        // Buttons Styling
+        .dynamic-checkout {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 30px;
+
+            .btn {
+                flex: 1;
+                padding: 16px 24px;
+                font-size: 14px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                border-radius: 4px;
+                transition: all 0.3s ease;
+
+                &.bg-theme {
+                    background-color: #0F2136 !important;
+                    border-color: #0F2136 !important;
+                    color: #fff !important;
+
+                    &:hover {
+                        background-color: #081525 !important;
+                        border-color: #081525 !important;
+                    }
+                }
+
+                &.border-theme-color {
+                    display: none; // Hide BUY NOW button
+                }
+            }
+        }
+
+        // Wishlist Button (separate)
+        .wishlist-button-wrapper {
+            margin-bottom: 30px;
+
+            .btn-wishlist {
+                width: 100%;
+                padding: 16px 24px;
+                background: #fff;
+                border: 1px solid #ccc;
+                color: #333;
+                font-size: 14px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                i {
+                    font-size: 18px;
+                }
+
+                &:hover {
+                    border-color: #0F2136;
+                    color: #0F2136;
+                }
+            }
+        }
+    }
+}

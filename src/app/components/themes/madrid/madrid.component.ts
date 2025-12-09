@@ -11,7 +11,6 @@ import { GetStores } from '../../../shared/action/store.action';
 import { ThemeOptionState } from '../../../shared/state/theme-option.state';
 import { Option } from '../../../shared/interface/theme-option.interface';
 import { ActivatedRoute } from '@angular/router';
-
 @Component({
   selector: 'app-madrid',
   templateUrl: './madrid.component.html',
@@ -97,4 +96,69 @@ export class MadridComponent {
     this.enableDeal = Boolean(value);  
   }
 
+
+   // Wedding Slider Configuration
+  public weddingSlider = {
+    loop: true,
+    nav: false,
+    dots: true,
+    items: 1,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    navSpeed: 600,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 1,
+      },
+      1000: {
+        items: 1,
+      },
+    },
+  };
+
+ 
+  // Wedding Slider Images
+  public weddingSlides = [
+    {
+      image: 'assets/images/slide-1.jpg',
+      title: 'WEDDING LAUNCHES',
+      buttonText: 'SHOP NOW'
+    },
+    {
+      image: 'assets/images/slide-2.jpg',
+      title: 'WEDDING LAUNCHES',
+      buttonText: 'SHOP NOW'
+    },
+    {
+      image: 'assets/images/slide-3.jpg',
+      title: 'WEDDING LAUNCHES',
+      buttonText: 'SHOP NOW'
+    }
+  ];
+
+  public exploreMoreItems = [
+    {
+      image: 'assets/images/women1.jpg',
+      title: 'BRIDAL LEHENGA'
+    },
+    {
+      image: 'assets/images/women2.jpg',
+      title: 'WEDDING SAREE'
+    },
+    {
+      image: 'assets/images/women3.jpg',
+      title: 'RECEPTION GOWN'
+    },
+    {
+      image: 'assets/images/women4.jpg',
+      title: 'HALDI OUTFIT'
+    }
+  ];
+
+
+  public featuredProduct: any;
 }

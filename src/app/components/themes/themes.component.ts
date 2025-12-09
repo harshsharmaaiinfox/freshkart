@@ -44,9 +44,9 @@ export class ThemesComponent implements OnInit {
 
     // Set additional homepage-specific SEO data
     this.seoService.setSEOData({
-      canonicalUrl: 'https://raylomshop.com/',
-      url: 'https://raylomshop.com/',
-      image: 'https://raylomshop.com/assets/images/hero-banner.jpg'
+      canonicalUrl: 'https://ORDINOME.com/',
+      url: 'https://ORDINOME.com/',
+      image: 'https://ORDINOME.com/assets/images/hero-banner.jpg'
     });
   }
 

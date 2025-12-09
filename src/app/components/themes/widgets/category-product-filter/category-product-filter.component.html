@@ -1,6 +1,6 @@
 <app-title
     [title]="data?.categories_products?.title"
-    [class]="'container-fluid-lg'"
+    [class]="'container'"
     [style]="'simple'">
     <app-theme-categories
     *ngIf="data?.categories_products?.category_ids?.length"
@@ -11,7 +11,7 @@
     </app-theme-categories>
 </app-title>
 
-<div class="container-fluid-lg">
+<div class="container">
     <div [ngClass]="[
     (themeOption$ | async)?.product?.full_border ? 'full_border' : '',
     (themeOption$ | async)?.product?.image_bg ? 'product_img_bg' : '',

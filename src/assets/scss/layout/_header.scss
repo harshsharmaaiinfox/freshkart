@@ -1,6 +1,58 @@
 /**=====================
      Header scss
 ==========================**/
+
+// Running Text Top Bar
+.running-text-bar {
+  background: #092C42;
+  color: white;
+  padding: 8px 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 1002;
+  font-size: 14px;
+  font-weight: 500;
+
+  .running-text-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+
+    span {
+      padding-right: 100px;
+      display: inline-block;
+
+      body.rtl & {
+        padding-right: unset;
+        padding-left: 100px;
+      }
+    }
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+// RTL support for marquee
+body.rtl {
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(50%);
+    }
+  }
+}
+
 .onhover-category-box {
   position: absolute;
   top: 0;
@@ -128,14 +180,6 @@ header {
     font-size: 24px;
 
     .delivery-icon {
-      .user-box {
-        @include pseudowh($width: 40px, $height: 40px);
-        border-radius: 100%;
-        background-color: #f8f8f8;
-        @include flex_common;
-        overflow: hidden;
-      }
-
       i {
         color: $title-color;
         font-size: 24px;
@@ -905,6 +949,7 @@ header {
         .right-side-menu {
           display: flex;
           align-items: center;
+          gap: 15px;
 
           .mobile-search {
             i {
@@ -1010,13 +1055,16 @@ header {
             }
 
             .header-wishlist {
+              display: flex;
+              align-items: center;
+
               i {
                 line-height: 1;
                 font-size: 24px;
-                color: #ffffff !important;
+                color: #000000 !important;
 
                 @include mq-max(4xl) {
-                  color: #ffffff !important;
+                  color: #000000 !important;
                 }
               }
 
@@ -2638,7 +2686,7 @@ body.home {
 
                 .header-wishlist {
                   i {
-                    color: #ffffff !important;
+                    color: #000000 !important;
                   }
                 }
 
@@ -5996,7 +6044,7 @@ header {
         .header-icon i,
         .swap-icon,
         .swap-icon i {
-          color: #ffffff !important;
+          color: #000000 !important;
         }
       }
     }
@@ -6016,7 +6064,7 @@ header {
         .header-icon i,
         .swap-icon,
         .swap-icon i {
-          color: #ffffff !important;
+          color: #000000 !important;
         }
       }
     }

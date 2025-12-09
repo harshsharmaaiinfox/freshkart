@@ -14,4 +14,10 @@ export class ProductImagesComponent {
 
   public videType = ['video/mp4', 'video/webm', 'video/ogg'];
   public audioType = ['audio/mpeg', 'audio/wav', 'audio/ogg'];
+
+  public isDescriptionOpen = false;
+
+  toggleDescription() {
+    this.isDescriptionOpen = !this.isDescriptionOpen;
+  }
 }

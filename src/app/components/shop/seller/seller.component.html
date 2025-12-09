@@ -2,7 +2,7 @@
 
 <!-- About Section Start -->
 <section class="saller-poster-section" *ngIf="data?.seller?.about?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
     <div class="row">
       <div class="col-12" *ngIf="data?.seller?.about?.image_url">
         <div class="poster-box">
@@ -26,7 +26,7 @@
 
 <!-- Service Section Start -->
 <section class="become-service section-b-space" *ngIf="data?.seller?.services?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
       <div class="row g-md-4 g-3">
           <div class="col-xxl-3 col-lg-4 col-sm-6">
               <div class="service-box">
@@ -79,7 +79,7 @@
 
 <!-- Business Section Start -->
 <section class="business-section section-b-space" *ngIf="data?.seller?.steps?.status">
-    <div class="container-fluid-lg">
+    <div class="container">
         <div class="vendor-title mb-5">
             <h5>{{ data?.seller?.steps?.title }}</h5>
         </div>
@@ -134,7 +134,7 @@
 
 <!-- Selling Section Start -->
 <section class="selling-section section-b-space" *ngIf="data?.seller?.start_selling?.status">
-    <div class="container-fluid-lg">
+    <div class="container">
         <div class="vendor-title">
             <h5>{{ data?.seller?.start_selling?.title }}</h5>
             <p>{{ data?.seller?.start_selling?.description }}</p>

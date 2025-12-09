@@ -1,12 +1,12 @@
 <!-- Main Page Title - H1 for SEO -->
 <section class="homepage-title-section">
-  <div class="container-fluid-lg">
+  <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="page-title-section text-center">
-          <h1 class="main-page-title">Premium Fashion & Lifestyle Shopping at RaylomShop</h1>
+          <h1 class="main-page-title">Premium Fashion & Lifestyle Shopping at ORDINOME</h1>
           <p class="page-description">Discover the latest trends in fashion, electronics, and lifestyle products.
-            Quality shopping experience with RaylomShop.</p>
+            Quality shopping experience with ORDINOME.</p>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
 
 <!-- Product Section Start -->
 <section class="product-section" *ngIf="data?.content?.main_content?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
     <div class="row g-sm-4 g-3">
       <div class="col-xxl-9 col-xl-8"
         [class]="data?.content?.main_content?.sidebar?.status ? 'col-xxl-9 col-xl-8' : 'col-xxl-12 col-xl-12'">
@@ -129,7 +129,7 @@
 
 <!-- Banner Section Start -->
 <section class="banner-section" *ngIf="data?.content?.full_width_banner">
-  <div class="container-fluid-lg">
+  <div class="container">
     <div class="row">
       <div class="col-12">
         <app-image-link [image]="data?.content?.full_width_banner" [class]="'home-contain hover-effect'"
@@ -143,7 +143,7 @@
 
 <!-- Our Best Seller Section Start -->
 <section *ngIf="data?.content?.main_content?.section4_products?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
     <app-title [title]="data?.content?.product_list_1?.title"
       [description]="data?.content?.product_list_1?.description">
     </app-title>
@@ -155,7 +155,7 @@
 
 <!-- Brand Section start -->
 <section class="brand-effect" *ngIf="data?.content?.brands?.brand_ids && data?.content?.brands?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
     <app-brand [brandIds]="data?.content?.brands?.brand_ids || []"></app-brand>
   </div>
 </section>
@@ -163,7 +163,7 @@
 
 <!-- Internal Links Section Start -->
 <section class="internal-links-section section-b-space">
-  <div class="container-fluid-lg">
+  <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="internal-links-container text-center">

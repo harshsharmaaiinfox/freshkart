@@ -57,10 +57,10 @@ export class SettingState {
                 // icon: './assets/images/payment/pay_by_qr.png',
               },
               {
-                name: 'RaylomShop_nabu',
+                name: 'ORDINOME_nabu',
                 status: false,
                 title: 'Pay By UPI INTENT 3',
-                // icon: './assets/images/payment/RaylomShop_nabu.png',
+                // icon: './assets/images/payment/ORDINOME_nabu.png',
               },
               {
                 name: 'cash_free',

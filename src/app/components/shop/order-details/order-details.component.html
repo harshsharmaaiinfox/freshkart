@@ -1,6 +1,6 @@
 <app-breadcrumb [breadcrumb]="breadcrumb"></app-breadcrumb>
 <section class="user-dashboard-section section-b-space">
-    <div class="container-fluid-lg">
+    <div class="container">
         <div class="row">
             <div class="col-xxl-12 col-lg-12">
                 <div class="dashboard-right-sidebar" *ngIf="order">
@@ -126,9 +126,9 @@
                                                 <li class="col-sm-3" *ngIf="order?.payment_method">
                                                     <label>{{ 'payment_mode' | translate }}:</label>
                                                     <div class="d-flex align-items-center gap-2">
-                                                        <h4 *ngIf="order?.payment_method === 'RaylomShop_nabu'">Pay By
+                                                        <h4 *ngIf="order?.payment_method === 'ORDINOME_nabu'">Pay By
                                                             UPI INTENT 3</h4>
-                                                        <h4 *ngIf="order?.payment_method !== 'RaylomShop_nabu'">{{
+                                                        <h4 *ngIf="order?.payment_method !== 'ORDINOME_nabu'">{{
                                                             order.payment_method | uppercase }}</h4>
                                                     </div>
                                                 </li>

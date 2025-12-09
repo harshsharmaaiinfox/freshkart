@@ -6,7 +6,7 @@
 
 <!-- Category Section Start -->
 <section *ngIf="data?.content?.categories_icon_list?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
     <app-theme-categories [style]="'horizontal'" [theme]="'paris'" [sliderOption]="categorySlider"
       [image]="storageURL+data?.content?.categories_icon_list?.image_url"
       [categoryIds]="data?.content?.categories_icon_list?.category_ids || []">
@@ -17,7 +17,7 @@
 
 <!-- Discount Section Start -->
 <section *ngIf="data?.content?.coupons?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
     <div class="row">
       <div class="col-12 sale-banner">
         <app-theme-banner [banners]="data?.content?.coupons" [class]="'banner-contain hover-effect'"
@@ -37,7 +37,7 @@
 
 <!-- Product Section Start -->
 <section>
-  <div class="container-fluid-lg">
+  <div class="container">
     <div class="row g-3">
       <div [class]="data?.content?.main_content?.sidebar?.status ? 'col-xxl-9 col-xl-8' : 'col-xxl-12 col-xl-12'">
         <!-- Product Box Horizontal Style-->
@@ -123,7 +123,7 @@
 <!-- Banner Section Start -->
 <ng-container *ngIf="data?.content?.full_width_banner?.status">
   <section>
-    <div class="container-fluid-lg">
+    <div class="container">
       <div class="row">
         <div class="col-12">
           <app-image-link [class]="'home-contain hover-effect'" [image]="data?.content?.full_width_banner"
@@ -139,7 +139,7 @@
 <!-- Four-column Start -->
 <ng-container *ngIf="data?.content?.slider_products?.status">
   <section class="top-selling-section">
-    <div class="container-fluid-lg">
+    <div class="container">
       <app-four-column-product [data]="data?.content?.slider_products"></app-four-column-product>
     </div>
   </section>
@@ -148,7 +148,7 @@
 
 <!-- Brand Section -->
 <section class="brand-effect" *ngIf="data?.content?.brands?.brand_ids && data?.content?.brands?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
     <app-brand [brandIds]="data?.content?.brands?.brand_ids || []"></app-brand>
   </div>
 </section>

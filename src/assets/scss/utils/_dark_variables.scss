@@ -1,5 +1,5 @@
 :root {
-  --theme-color: #0da487;
+  --theme-color: #092C42;
 }
 
 $white: #2a2d2d;
@@ -14,30 +14,32 @@ $border-color: rgba(119, 119, 119, 0.44);
 
 // font family
 $public-sans: 'Public Sans',
-sans-serif;
-$exo-sarif:'Exo 2',
-sans-serif;
+  sans-serif;
+$exo-sarif: 'Exo 2',
+  sans-serif;
 $russo-sarif: 'Russo One',
-sans-serif;
+  sans-serif;
 $pacifico: 'Pacifico',
-cursive;
+  cursive;
 $kaushan: 'Kaushan Script',
-cursive;
+  cursive;
 $indie: 'Indie Flower',
-cursive;
+  cursive;
 $great: 'Great Vibes',
-cursive;
+  cursive;
 $qwitcher: 'Qwitcher Grypen',
-cursive;
+  cursive;
 $fontawesome: 'Font Awesome 6 Free';
 
 // Breakpoints
-$min-breakpoints: (lg: 992px,
+$min-breakpoints: (
+  lg: 992px,
   xl: 1200px,
   2xl: 1366px,
 );
 
-$max-breakpoints: (2xs: 360px,
+$max-breakpoints: (
+  2xs: 360px,
   xs: 480px,
   sm: 575px,
   md: 767px,

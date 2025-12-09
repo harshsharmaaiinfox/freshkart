@@ -42,15 +42,15 @@
   position: relative;
   overflow: hidden;
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #0a1a1a 0%, #1a3a3a 50%, #20c997 100%);
-    }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0a1a1a 0%, #1a3a3a 50%, #092C42 100%);
+  }
 
   html.dark & {
     background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 50%, #1e1e1e 100%);
@@ -279,7 +279,7 @@
       }
 
       &.success {
-        background: linear-gradient(90deg, #51cf66 0%, #20c997 100%);
+        background: linear-gradient(90deg, #51cf66 0%, #092C42 100%);
       }
 
       .progress-text {
@@ -501,7 +501,7 @@
           }
 
           &:hover {
-            background: linear-gradient(90deg, #0a1a1a 0%, #1a3a3a 50%, #20c997 100%);
+            background: linear-gradient(90deg, #0a1a1a 0%, #1a3a3a 50%, #092C42 100%);
             transform: scale(1.1);
             box-shadow: 0 4px 8px rgba(13, 164, 135, 0.3);
 
@@ -681,7 +681,7 @@
   }
 
   .btn-primary {
-    background: linear-gradient(90deg, #0a1a1a 0%, #1a3a3a 50%, #20c997 100%);
+    background: linear-gradient(90deg, #0a1a1a 0%, #1a3a3a 50%, #092C42 100%);
     color: #ffffff;
     border: none;
     padding: 16px 32px;
@@ -709,7 +709,7 @@
     }
 
     &:hover {
-      background: linear-gradient(90deg, #1a3a3a 0%, #20c997 50%, #2dd4a8 100%);
+      background: linear-gradient(90deg, #1a3a3a 0%, #092C42 50%, #2dd4a8 100%);
       transform: translateY(-3px);
       box-shadow: 0 8px 24px rgba(32, 201, 151, 0.4);
 
@@ -733,6 +733,7 @@
   0% {
     transform: translateX(-100%) translateY(-100%) rotate(45deg);
   }
+
   100% {
     transform: translateX(100%) translateY(100%) rotate(45deg);
   }
@@ -856,7 +857,7 @@
       }
 
       &.btn-checkout {
-        background: linear-gradient(90deg, #0a1a1a 0%, #1a3a3a 50%, #20c997 100%);
+        background: linear-gradient(90deg, #0a1a1a 0%, #1a3a3a 50%, #092C42 100%);
         color: #ffffff;
         box-shadow: 0 4px 16px rgba(32, 201, 151, 0.3);
 
@@ -872,7 +873,7 @@
         }
 
         &:hover {
-          background: linear-gradient(90deg, #1a3a3a 0%, #20c997 50%, #2dd4a8 100%);
+          background: linear-gradient(90deg, #1a3a3a 0%, #092C42 50%, #2dd4a8 100%);
           transform: translateY(-3px);
           box-shadow: 0 8px 24px rgba(32, 201, 151, 0.4);
 

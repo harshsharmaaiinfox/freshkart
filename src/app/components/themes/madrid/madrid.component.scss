@@ -1,0 +1,326 @@
+.wedding-slider-section {
+    position: relative;
+
+    /* Force container to handle positioning context */
+    ::ng-deep .wedding-carousel {
+        position: relative;
+        display: block;
+
+        .wedding-slide {
+            .wedding-slide-image {
+                width: 100%;
+                height: 600px;
+                object-fit: cover;
+                display: block;
+            }
+        }
+    }
+
+    /* 
+    Ensure dots are visible with high specificity and !important.
+    Targeting .owl-dots which is the standard container output by owl-carousel-o 
+  */
+    ::ng-deep .owl-dots {
+        position: absolute !important;
+        bottom: 25px !important;
+        left: 0 !important;
+        width: 100% !important;
+        text-align: center !important;
+        z-index: 999 !important;
+        /* Extremely high Z-index */
+        display: block !important;
+        height: auto !important;
+
+        .owl-dot {
+            display: inline-block !important;
+            margin: 0 5px !important;
+            vertical-align: middle !important;
+
+            span {
+                width: 12px !important;
+                height: 12px !important;
+                margin: 5px !important;
+                background: rgba(255, 255, 255, 0.7) !important;
+                /* Higher contrast */
+                display: block !important;
+                border-radius: 50% !important;
+                transition: all 0.3s ease !important;
+                border: 2px solid transparent !important;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+                /* text shadow for visibility on light bg */
+            }
+
+            &.active {
+                span {
+                    background: #ffffff !important;
+                    transform: scale(1.2);
+                    border: 2px solid white !important;
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) !important;
+                }
+            }
+
+            &:hover {
+                span {
+                    background: #ffffff !important;
+                }
+            }
+        }
+    }
+}
+
+/* Loom Luxe Section Styles - Refined based on screenshot */
+.loom-luxe-section {
+    background-color: #f9f9f9;
+    /* Very light subtle grey background for the text side */
+    padding: 0;
+    /* Remove padding to be flush */
+    width: 100%;
+
+    .loom-luxe-container {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 100%;
+        /* Full width */
+        padding: 0;
+
+        .loom-luxe-content {
+            display: flex;
+            align-items: stretch;
+            /* Stretch to equal height */
+            flex-wrap: wrap;
+            min-height: 500px;
+            /* Ensure substantial height */
+
+            .loom-luxe-text {
+                flex: 1;
+                min-width: 300px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                /* Center horizontally */
+                padding: 60px;
+                text-align: center;
+                background-color: #f9f9f9;
+
+                h2 {
+                    font-size: 2.5rem;
+                    font-weight: 500;
+                    /* Slightly lighter weight than bold */
+                    color: #1a2b49;
+                    /* Dark Navy Blue */
+                    margin-bottom: 20px;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    line-height: 1.2;
+                }
+
+                p {
+                    font-size: 1.1rem;
+                    color: #6c757d;
+                    /* Muted grey */
+                    margin-bottom: 35px;
+                    font-weight: 400;
+                }
+
+                .shop-now-btn {
+                    background-color: transparent;
+                    color: #1a2b49;
+                    /* Match header color */
+                    padding: 10px 30px;
+                    border: 1px solid #1a2b49;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    letter-spacing: 1px;
+                    border-radius: 0;
+                    /* Sharp corners as per screenshot */
+
+                    &:hover {
+                        background-color: #1a2b49;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .loom-luxe-image {
+                flex: 1;
+                min-width: 300px;
+                position: relative;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    /* Cover the area completely */
+                    object-position: top center;
+                    display: block;
+                    border-radius: 0;
+                    /* No radius */
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 991px) {
+        .loom-luxe-content {
+            flex-direction: column-reverse;
+            /* Image on top/text bottom on mobile usage */
+            min-height: auto;
+
+            .loom-luxe-text {
+                padding: 40px 20px;
+            }
+
+            .loom-luxe-image {
+                height: 400px;
+                /* Fixed height on mobile */
+            }
+        }
+    }
+}
+
+/* Featured Collections Section */
+.featured-collections-section {
+    padding: 80px 0;
+    background-color: #fff;
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 50px;
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #777;
+            font-style: italic;
+        }
+    }
+
+    .collections-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 30px;
+
+        /* Make the first card span 2 rows if needed or just be larger */
+        .large-card {
+            /* Optional: layout variation logic can go here */
+        }
+
+        .collection-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+            .collection-image-wrapper {
+                position: relative;
+                overflow: hidden;
+                padding-top: 130%;
+                /* Aspect ratio 3:4 roughly */
+
+                .collection-image {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+                }
+
+                .collection-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.2);
+                    /* Slight dark overlay initially */
+                    transition: background 0.3s ease;
+                    display: flex;
+                    align-items: flex-end;
+                    /* Align content to bottom */
+                    padding: 30px;
+
+                    .collection-content {
+                        width: 100%;
+                        color: #fff;
+                        transform: translateY(20px);
+                        transition: transform 0.4s ease;
+
+                        .collection-title {
+                            font-size: 1.5rem;
+                            font-weight: 700;
+                            margin-bottom: 10px;
+                            color: #fff;
+                            letter-spacing: 1px;
+                            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                        }
+
+                        .collection-description {
+                            font-size: 1rem;
+                            margin-bottom: 15px;
+                            opacity: 0.9;
+                            display: none;
+                            /* Hide description by default on mobile/small screens or design choice */
+                        }
+
+                        .shop-link {
+                            font-size: 0.9rem;
+                            font-weight: 600;
+                            text-transform: uppercase;
+                            letter-spacing: 2px;
+                            border-bottom: 2px solid #fff;
+                            padding-bottom: 5px;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                .collection-image-wrapper {
+                    .collection-image {
+                        transform: scale(1.05);
+                        /* Zoom effect */
+                    }
+
+                    .collection-overlay {
+                        background: rgba(0, 0, 0, 0.4);
+                        /* Darker overlay on hover */
+
+                        .collection-content {
+                            transform: translateY(0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 991px) {
+        .collections-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 576px) {
+        .collections-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}

@@ -17,7 +17,7 @@
     .hero-icon {
       width: 80px;
       height: 80px;
-      background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+      background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
       border-radius: 20px;
       display: flex;
       align-items: center;
@@ -55,7 +55,7 @@
     .hero-divider {
       width: 80px;
       height: 3px;
-      background: var(--theme-color, #20c997);
+      background: var(--theme-color, #092C42);
       margin: 0 auto;
       border-radius: 2px;
     }
@@ -118,7 +118,7 @@
       margin-bottom: 20px;
 
       strong {
-        color: var(--theme-color, #20c997);
+        color: var(--theme-color, #092C42);
         font-weight: 600;
       }
 
@@ -141,7 +141,7 @@
   margin: 25px 0;
 
   svg {
-    color: var(--theme-color, #20c997);
+    color: var(--theme-color, #092C42);
     flex-shrink: 0;
     margin-top: 3px;
   }
@@ -169,7 +169,7 @@
   background: #f8f9fa;
   padding: 25px;
   border-radius: 12px;
-  border-left: 4px solid var(--theme-color, #20c997);
+  border-left: 4px solid var(--theme-color, #092C42);
   margin: 25px 0;
 
   .info-item {
@@ -186,7 +186,7 @@
     }
 
     svg {
-      color: var(--theme-color, #20c997);
+      color: var(--theme-color, #092C42);
       flex-shrink: 0;
     }
 
@@ -217,7 +217,7 @@
     margin-bottom: 12px;
     background: #f8f9fa;
     border-radius: 10px;
-    border-left: 4px solid var(--theme-color, #20c997);
+    border-left: 4px solid var(--theme-color, #092C42);
     transition: all 0.3s ease;
 
     &:hover {
@@ -227,7 +227,7 @@
     }
 
     svg {
-      color: var(--theme-color, #20c997);
+      color: var(--theme-color, #092C42);
       flex-shrink: 0;
       margin-top: 3px;
     }
@@ -306,7 +306,7 @@
     margin-bottom: 20px;
     background: #f8f9fa;
     border-radius: 12px;
-    border-left: 4px solid var(--theme-color, #20c997);
+    border-left: 4px solid var(--theme-color, #092C42);
     transition: all 0.3s ease;
 
     &:hover {
@@ -322,7 +322,7 @@
     .step-number {
       width: 45px;
       height: 45px;
-      background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+      background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
       color: #ffffff;
       border-radius: 12px;
       display: flex;
@@ -380,7 +380,7 @@
       }
 
       svg {
-        color: var(--theme-color, #20c997);
+        color: var(--theme-color, #092C42);
         flex-shrink: 0;
       }
 

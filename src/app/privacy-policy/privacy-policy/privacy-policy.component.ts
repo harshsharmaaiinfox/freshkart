@@ -15,11 +15,11 @@ export class PrivacyPolicyComponent implements OnInit {
   ngOnInit() {
     // Set unique SEO data for Privacy Policy page
     this.seoService.setSEOData({
-      title: 'Privacy Policy – How We Use Your Data | RaylomShop',
-      description: 'Learn how RaylomShop protects and uses your personal information. Read our comprehensive privacy policy to understand your rights and our data practices.',
-      keywords: 'privacy policy, data protection, personal information, RaylomShop privacy, data usage',
-      canonicalUrl: 'https://raylomshop.com/privacy-policy', // ✅ Canonical URL for SEO
-      url: 'https://raylomshop.com/privacy-policy',
+      title: 'Privacy Policy – How We Use Your Data | ORDINOME',
+      description: 'Learn how ORDINOME protects and uses your personal information. Read our comprehensive privacy policy to understand your rights and our data practices.',
+      keywords: 'privacy policy, data protection, personal information, ORDINOME privacy, data usage',
+      canonicalUrl: 'https://ORDINOME.com/privacy-policy', // ✅ Canonical URL for SEO
+      url: 'https://ORDINOME.com/privacy-policy',
       type: 'website'
     });
 

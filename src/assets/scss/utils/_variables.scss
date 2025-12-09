@@ -1,15 +1,15 @@
 :root {
-  --theme-color: #20c997;
-  --theme-color-dark: #0a1a1a;
-  --theme-color-gradient: linear-gradient(135deg, #0a1a1a 0%, #1a3a3a 50%, #20c997 100%);
-  --theme-color-gradient-horizontal: linear-gradient(90deg, #0a1a1a 0%, #20c997 100%);
+  --theme-color: #092C42;
+  --theme-color-dark: #092C42;
+  --theme-color-gradient: linear-gradient(135deg, #092C42 0%, #0a4a6a 50%, #092C42 100%);
+  --theme-color-gradient-horizontal: linear-gradient(90deg, #092C42 0%, #0a4a6a 100%);
 }
 
 $white: #ffffff;
 $black: #000000;
-$title-color: #222222;
+$title-color: #092C42;
 $content-color: #4a5568;
-$light-gray: #f8f8f8;
+$light-gray: #FFF1E3;
 $danger-color: #ff4f4f;
 $rating-color: #ffb321;
 $border-color: #ececec;
@@ -49,12 +49,14 @@ $public-sans: "Rubik", "Titillium Web", sans-serif;
 $fontawesome: "Font Awesome 6 Free";
 
 // Breakpoints
-$min-breakpoints: (lg: 992px,
+$min-breakpoints: (
+  lg: 992px,
   xl: 1200px,
   2xl: 1366px,
 );
 
-$max-breakpoints: (2xs: 360px,
+$max-breakpoints: (
+  2xs: 360px,
   xs: 480px,
   sm: 575px,
   md: 767px,

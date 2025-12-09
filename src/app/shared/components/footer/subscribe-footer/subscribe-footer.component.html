@@ -1,7 +1,7 @@
  <!-- Footer Section Start -->
  <div class="section-t-space footer-section-2 footer-section-4">
     <img [src]="data?.footer ?  (storageURL +  data?.footer?.bg_image) : 'assets/images/footer-bg.jpg'" class="footer-image img-fluid" alt="">
-    <div class="container-fluid-lg">
+    <div class="container">
         <div class="footer-newsletter section-b-space">
             <div class="newsletter-detail">
                 <div *ngIf="data?.footer" [innerHTML]="getText(data?.footer?.title || '')"></div>

@@ -1,15 +1,119 @@
-div#ngb-accordion-item-0 {
-    padding: 10px;
-    background: #f5f7fa;
-    border-radius: 5px;
+// Sidebar Styles - Clean Accordion
+
+// Clean up default accordion items
+div#ngb-accordion-item-0,
+div#ngb-accordion-item-1,
+div#ngb-accordion-item-2,
+div#ngb-accordion-item-3,
+div.accordion-item {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 24px;
+    border: none;
+    background-color: transparent !important;
 }
 
-div#ngb-accordion-item-1 {
-    padding: 10px;
-    background: #f5f7fa;
-    border-radius: 5px;
+// Accordion Header
+.accordion-header {
+    margin-bottom: 16px;
+}
+
+.accordion-button {
+    background-color: transparent !important;
+    padding: 0;
+    color: #111827;
+    font-size: 18px;
+    font-weight: 700;
+    box-shadow: none !important;
+    display: flex;
+    align-items: center;
+    border: none !important;
+    outline: none;
+
+    span {
+        position: relative;
+        padding-bottom: 2px;
+        border-bottom: 2px solid #111827;
+        display: inline-block;
+        line-height: 1.2;
+    }
+
+    &:not(.collapsed) {
+        color: #111827;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    &::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23111827'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        margin-left: auto;
+        width: 14px;
+        height: 14px;
+        background-size: 14px;
+        opacity: 1;
+        background-color: #f3f4f6;
+        border-radius: 50%;
+        padding: 8px;
+        box-sizing: content-box;
+    }
+}
+
+.accordion-body {
+    padding: 4px 0 0 0;
 }
 
 .grid-option {
     display: none;
+}
+
+// Sidebar Sort specific styles (List View)
+.sidebar-sort {
+    .category-list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+            margin-bottom: 12px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .category-list-box {
+        display: flex;
+        align-items: center;
+        min-height: auto;
+        padding: 0;
+        margin: 0;
+
+        .checkbox_animated {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            /* Native radio style but properly sized */
+            accent-color: #111827; // Use dark accent color for modern browsers
+        }
+
+        .form-check-label {
+            cursor: pointer;
+
+            .name {
+                color: #374151;
+                /* Dark grey */
+                font-size: 15px;
+                font-weight: 400;
+                text-transform: capitalize;
+            }
+        }
+
+        &:hover {
+            .name {
+                color: #111827;
+            }
+        }
+    }
 }

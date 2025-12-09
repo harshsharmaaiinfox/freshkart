@@ -31,8 +31,8 @@
     padding-inline: 16px;
     font-size: 0.85rem;
     border-radius: 999px;
-    border: 1px solid #1b4b45;
-    color: #1b4b45;
+    border: 1px solid #092C42;
+    color: #092C42;
     background-color: transparent;
 
     i {
@@ -69,15 +69,15 @@
 
   .nav-link.active,
   .product-tabs-nav__link.active {
-    background-color: #1b4b45;
+    background-color: #092C42;
     color: #ffffff;
-    border-color: #1b4b45;
+    border-color: #092C42;
   }
 
   .nav-link:not(.active):hover,
   .product-tabs-nav__link:not(.active):hover {
     background-color: rgba(27, 75, 69, 0.06);
-    color: #1b4b45;
+    color: #092C42;
   }
 }
 

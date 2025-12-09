@@ -122,9 +122,9 @@
       }
 
       &:hover {
-        background: linear-gradient(90deg, #0a1a1a 0%, #20c997 100%);
+        background: linear-gradient(90deg, #0a1a1a 0%, #092C42 100%);
         color: #ffffff;
-        border-color: #20c997;
+        border-color: #092C42;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 
@@ -259,7 +259,7 @@ ul {
         }
       }
 
-      > div {
+      >div {
         display: flex;
         flex-wrap: wrap;
         gap: 6px;
@@ -374,6 +374,7 @@ ul {
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }

@@ -320,7 +320,7 @@ export class CheckoutComponent {
       case 'neoKred2':
         this.checkout(value);
         break;
-      case 'RaylomShop_nabu':
+      case 'ORDINOME_nabu':
         this.checkout(value);
         break;
       default:
@@ -613,8 +613,8 @@ export class CheckoutComponent {
     });
   }
 
-  // RaylomShop Nabu Payment Integration
-  initiateRaylomShopNabuPaymentIntent(payment_method: string, uuid: any, order_result: any) {
+  // ORDINOME Nabu Payment Integration
+  initiateORDINOMENabuPaymentIntent(payment_method: string, uuid: any, order_result: any) {
     const userData = localStorage.getItem('account');
     const parsedUserData = JSON.parse(userData || '{}')?.user || {};
 
@@ -624,7 +624,7 @@ export class CheckoutComponent {
       checkout: this.checkoutTotal
     };
 
-    this.cartService.initiateRaylomShopNabuIntent({
+    this.cartService.initiateORDINOMENabuIntent({
       uuid: payload.uuid,
       email: payload.email,
       total: this.checkoutTotal?.total?.total,
@@ -674,7 +674,7 @@ export class CheckoutComponent {
     });
   }
 
-  // Transaction Status Check for RaylomShop Nabu (and other payment gateways)
+  // Transaction Status Check for ORDINOME Nabu (and other payment gateways)
   checkTransactionStatusSleekSynergy(uuid: any, paymentWindow: Window | null, payment_method: string) {
     this.pollingSubscription = interval(this.pollingInterval).pipe(
       switchMap(() => this.cartService.checkTransectionStatusNeoKred(uuid, payment_method)),
@@ -891,8 +891,8 @@ export class CheckoutComponent {
           if (this.payment_method === 'neoKred2') {
             this.initiateNeoKred2PaymentIntent(this.payment_method, uuid, result);
           }
-          if (this.payment_method === 'RaylomShop_nabu') {
-            this.initiateRaylomShopNabuPaymentIntent(this.payment_method, uuid, result);
+          if (this.payment_method === 'ORDINOME_nabu') {
+            this.initiateORDINOMENabuPaymentIntent(this.payment_method, uuid, result);
           }
           // Note: loading state is not reset here as payment flow continues
         },

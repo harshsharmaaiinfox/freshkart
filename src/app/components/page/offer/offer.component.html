@@ -1,7 +1,7 @@
 <app-breadcrumb [breadcrumb]="breadcrumb"></app-breadcrumb>
 <ng-container *ngIf="couponService?.skeletonLoader else offerContent">
   <div class="section-b-space section-t-space offer-section skeleton-offer">
-    <div class="container-fluid-lg">
+    <div class="container">
       <div class="row g-md-4 g-3">
         <div class="col-xxl-3 col-lg-4 col-sm-6" *ngFor="let item of skeletonItems">
           <div class="coupon-box">
@@ -25,7 +25,7 @@
 </ng-container>
 <ng-template #offerContent>
   <div class="section-b-space section-t-space offer-section">
-    <div class="container-fluid-lg">
+    <div class="container">
       <div class="row g-md-4 g-3">
         <div class="col-xxl-3 col-lg-4 col-sm-6" *ngFor="let coupon of (coupon$ |async)?.data">
           <div class="coupon-box">

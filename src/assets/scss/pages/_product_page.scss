@@ -1206,14 +1206,14 @@
 
       button {
         // Primary buy-now button in product page should follow
-        // the new #1B4B45 theme color.
-        background-color: #1b4b45;
-        border-color: #1b4b45;
+        // the new #092C42 theme color.
+        background-color: #092C42;
+        border-color: #092C42;
         color: #ffffff;
 
         &:hover {
-          background-color: darken(#1b4b45, 5%);
-          border-color: darken(#1b4b45, 5%);
+          background-color: darken(#092C42, 5%);
+          border-color: darken(#092C42, 5%);
         }
       }
     }

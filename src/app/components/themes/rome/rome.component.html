@@ -9,7 +9,7 @@
 
   <!-- Category Section Start -->
   <section class="category-section-2" *ngIf="data?.content?.categories_image_list?.status">
-    <div class="container-fluid-lg">
+    <div class="container">
       <app-title
         [title]="data?.content?.categories_image_list?.title"
         [style]="'simple'">
@@ -32,7 +32,7 @@
   <section class="overflow-hidden" *ngIf="data?.content?.value_banners?.status">
     <app-title
       [title]="data?.content?.value_banners?.title"
-      [class]="'container-fluid-lg'"
+      [class]="'container'"
       [style]="'simple'">
     </app-title>
     <div class="row">
@@ -52,7 +52,7 @@
    <!-- Top Seller start -->
    <ng-container *ngIf="data?.content?.seller?.status">
      <section>
-       <div class="container-fluid-lg">
+       <div class="container">
         <app-title 
         [title]="data?.content?.seller?.title" 
         [style]="'simple'">
@@ -65,7 +65,7 @@
 
   <!-- Banner Section Start -->
   <section class="banner-section" *ngIf="data?.content?.two_column_banners?.status">
-    <div class="container-fluid-lg">
+    <div class="container">
       <div class="row gy-xl-0 gy-3">
         <div class="col-lg-6">
           <app-image-link
@@ -87,13 +87,13 @@
   <!-- Banner Section End -->
 
   <section class="top-selling-section border-box section-b-space" *ngIf="data?.content?.slider_products?.status">
-    <div class="container-fluid-lg">
+    <div class="container">
       <app-four-column-product [data]="data?.content?.slider_products"></app-four-column-product>
     </div>
   </section>
 
   <!-- Banner Section Start -->
-  <div class="container-fluid-lg" *ngIf="data?.content?.full_width_banner?.status">
+  <div class="container" *ngIf="data?.content?.full_width_banner?.status">
     <div class="ratio_12" *ngIf="data?.content?.full_width_banner?.status">
       <app-theme-banner [banners]="data?.content?.full_width_banner" [style]="'full_width'"></app-theme-banner>
     </div>
@@ -103,7 +103,7 @@
   <!-- Product Section Start -->
   <section class="product-section"
     *ngIf="data?.content?.products_list_1?.status">
-    <div class="container-fluid-lg">
+    <div class="container">
       <app-title
         [title]="data?.content?.products_list_1?.title"
         [style]="'simple'">
@@ -123,7 +123,7 @@
   <!-- Blog Section Start -->
   <section
     *ngIf="data?.content?.featured_blogs?.status">
-    <div class="container-fluid-lg">
+    <div class="container">
       <app-title
         [title]="data?.content?.featured_blogs?.title"
         [style]="'simple'">
@@ -138,7 +138,7 @@
 
   <!-- Brand Section start -->
   <section class="brand-effect" *ngIf="data?.content?.brands?.brand_ids && data?.content?.brands?.status">
-    <div class="container-fluid-lg">
+    <div class="container">
       <app-brand [brandIds]="data?.content?.brands?.brand_ids || []"></app-brand>
     </div>
   </section>

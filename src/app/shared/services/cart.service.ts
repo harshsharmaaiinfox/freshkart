@@ -175,9 +175,9 @@ export class CartService {
     });
   }
 
-  initiateRaylomShopNabuIntent(data: any): Observable<any> {
+  initiateORDINOMENabuIntent(data: any): Observable<any> {
     return new Observable(observer => {
-      fetch(`${environment.URL}/RaylomShop-nabu-initiate-payment`, {
+      fetch(`${environment.URL}/ORDINOME-nabu-initiate-payment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

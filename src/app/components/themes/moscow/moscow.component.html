@@ -6,7 +6,7 @@
 
 <!-- Category Section Start -->
 <section *ngIf="data?.content?.categories_icon_list?.status" class="book-category">
-    <div class="container-fluid-lg">
+    <div class="container">
         <app-theme-categories [style]="'horizontal'" [theme]="'moscow'" [sliderOption]="categorySlider"
             [categoryIds]="data?.content?.categories_icon_list?.category_ids || []"
             [title]="data?.content?.categories_icon_list?.title">
@@ -17,7 +17,7 @@
 
 <!-- Product Section Start -->
 <section class="product-section">
-    <div class="container-fluid-lg">
+    <div class="container">
         <app-title [title]="data?.content?.products_list_1?.title" [style]="'simple'">
         </app-title>
         <app-theme-product
@@ -32,7 +32,7 @@
 
 <!-- Discount Section Start -->
 <section *ngIf="data?.content?.coupons?.status">
-    <div class="container-fluid-lg">
+    <div class="container">
         <div class="row">
             <div class="col-12 sale-banner">
                 <app-theme-banner [banners]="data?.content?.coupons" [class]="'banner-contain hover-effect'"
@@ -46,7 +46,7 @@
 
 <!-- Top Selling Section Start -->
 <section class="top-selling-section no-bg-category">
-    <div class="container-fluid-lg">
+    <div class="container">
         <div class="row">
             <div [ngClass]="data?.content?.slider_product_with_banner?.left_side_banners?.status ? 'col-xl-9 col-lg-8' : 'col-xxl-12 col-lg-12'">
                 <app-four-column-product [data]="data?.content?.slider_product_with_banner?.slider_products"
@@ -67,7 +67,7 @@
 
 <!-- Product Section Start -->
 <section class="product-section">
-    <div class="container-fluid-lg">
+    <div class="container">
         <app-title [title]="data?.content?.products_list_2?.title" [style]="'simple'">
         </app-title>
         <app-theme-product 
@@ -82,7 +82,7 @@
 
 <!-- Brand Section start -->
 <section class="brand-effect" *ngIf="data?.content?.brands?.brand_ids && data?.content?.brands?.status">
-    <div class="container-fluid-lg">
+    <div class="container">
         <app-brand [brandIds]="data?.content?.brands?.brand_ids || []"></app-brand>
     </div>
 </section>

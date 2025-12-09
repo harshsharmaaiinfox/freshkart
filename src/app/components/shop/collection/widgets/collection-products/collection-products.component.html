@@ -1,4 +1,9 @@
-<app-collection-sort [filter]="filter" [gridCol]="gridCol" (setGridClass)="setGridClass($event)"></app-collection-sort>
+<div class="sort-pagination-wrapper">
+  <app-collection-sort [filter]="filter" [gridCol]="gridCol"
+    (setGridClass)="setGridClass($event)"></app-collection-sort>
+  <app-collection-paginate [filter]="filter" *ngIf="(product$ | async)?.data?.length && !productService.skeletonLoader">
+  </app-collection-paginate>
+</div>
 <div [ngClass]="{ 
   'full_border': (themeOption$ | async)?.product?.full_border,
   'product_img_bg': (themeOption$ | async)?.product?.image_bg,
@@ -19,5 +24,3 @@
     *ngIf="!(product$ | async)?.data?.length && !productService.skeletonLoader">
   </app-no-data>
 </div>
-<app-collection-paginate [filter]="filter" *ngIf="(product$ | async)?.data?.length && !productService.skeletonLoader">
-</app-collection-paginate>

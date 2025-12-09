@@ -1,7 +1,7 @@
 export const menuOptions: any[] = [
     {
         "id": 45,
-        "title": "MoveMode",
+        "title": "UrbanAthlete",
         "sort": null,
         "link_type": "link",
         "mega_menu": 1,
@@ -24,10 +24,10 @@ export const menuOptions: any[] = [
         "banner_image": null,
         "child": []
     },
-   
+
     {
         "id": 162,
-        "title": "The Men’s Rack",
+        "title": "Bold For Him",
         "sort": null,
         "link_type": "link",
         "mega_menu": 0,
@@ -53,7 +53,7 @@ export const menuOptions: any[] = [
 
     {
         "id": 163,
-        "title": "Style for Her",
+        "title": "The Women’s Closet",
         "sort": null,
         "link_type": "link",
         "mega_menu": 0,

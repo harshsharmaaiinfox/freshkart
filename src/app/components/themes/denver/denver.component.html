@@ -3,20 +3,30 @@
 <!-- Hero Banner Start -->
 <section class="hero-banner-section">
   <div class="hero-banner">
-    <img src="assets/images/Hero_image.jpg" alt="Hero Banner" class="hero-banner-image">
+    <img src="assets/images/web-banner.png" alt="Hero Banner" class="hero-banner-image">
   </div>
 </section>
+<!-- ORDINOME Banner End -->
 
-<!-- <section class="home-section-2 home-section-bg pt-md-0 pt-3 overflow-hidden" *ngIf="data?.content?.home_banner">
-  <app-theme-home-banner [theme]="'denver'" [data]="data?.content?.home_banner"></app-theme-home-banner>
-</section> -->
-<!-- Home Section End -->
+<!-- Wedding Slider Start -->
+<section class="wedding-slider-section">
+  <div class="container">
+    <owl-carousel-o [options]="weddingSlider" class="wedding-carousel">
+      <ng-container *ngFor="let slide of weddingSlides">
+        <ng-template carouselSlide>
+          <div class="wedding-slide">
+            <img [src]="slide.image" alt="Wedding Collection" class="wedding-slide-image">
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</section>
+<!-- Wedding Slider End -->
 
-
-<!-- RaylomShop Banner End -->
 <!-- Category Section Start -->
 <section *ngIf="data?.content?.categories_icon_list?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
     <app-theme-categories [style]="'horizontal'" [theme]="'paris'" [sliderOption]="categorySlider"
       [categoryIds]="data?.content?.categories_icon_list?.category_ids || []"
       [image]="data?.content?.categories_icon_list?.image_url">
@@ -27,7 +37,7 @@
 
 <!-- Deal Section Start -->
 <section class="product-section product-section-3" *ngIf="data?.content?.products_list_1?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
     <div>
       <div>
         <h2 class="text-center mb-4 font-weight-light title-top">Fresh Drops</h2>
@@ -42,52 +52,35 @@
 </section>
 <!-- Deal Section End -->
 
-<!-- Explore More Section Start -->
-<section class="explore-more-section section-b-space">
-  <div class="container-fluid-lg">
-    <div class="title-header-main">
-      <h2 class="text-center mb-2 font-weight-bold">WEDDING VIBES</h2>
-      <p class="text-center mb-4">Shop our occasion-ready curations</p>
-    </div>
-    <div class="row g-4">
-      <div class="col-lg-3 col-md-6 col-12" *ngFor="let item of exploreMoreItems">
-        <div class="explore-card" [routerLink]="['/collections']" [queryParams]="{category: 'women', sortBy: 'asc'}">
-          <div class="explore-image">
-            <img [src]="item.image" [alt]="item.title" class="img-fluid">
-          </div>
-          <div class="explore-content">
-            <h3>{{ item.title }}</h3>
-          </div>
-          <div class="overlay">
-            <div class="shop-now-text">
-              <h3>SHOP NOW</h3>
-            </div>
-          </div>
-        </div>
+
+
+<!-- Loom Luxe Banner Section Start -->
+<section class="loom-luxe-section mt-5 mb-5">
+  <div class="loom-luxe-container">
+    <div class="loom-luxe-content">
+      <div class="loom-luxe-text">
+        <h2>THE LOOM LUXE</h2>
+        <p>Elegance Personified, Luxury Redefined</p>
+        <button class="shop-now-btn" [routerLink]="['/collections']"
+          [queryParams]="{category: 'women', sortBy: 'asc'}">SHOP NOW</button>
+      </div>
+      <div class="loom-luxe-image">
+        <img src="assets/images/women-main.jpg" alt="The Loom Luxe Collection" class="img-fluid">
       </div>
     </div>
   </div>
 </section>
-<!-- Explore More Section End -->
+<!-- Loom Luxe Banner Section End -->
 
-<!-- Shop Now Banner Section Start -->
-<section class="men-banner-section-1 pt-0">
-  <div class="container-fluid-lg">
-    <div class="men-banner" [routerLink]="['/collections']" [queryParams]="{category: 'men', sortBy: 'asc'}">
-      <img src="assets/images/Shop now.png" alt="Shop Now Banner" class="img-fluid w-100">
-    </div>
-  </div>
-</section>
-<!-- Shop Now Banner Section End -->
 
 <!-- Top Selling Section Start -->
 <section class="product-section product-section-3" *ngIf="data?.content?.products_list_2?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
     <div class="title-header-main product-small">
       <!-- <app-title [title]="data?.content?.products_list_2?.title" [style]="'simple'">
       </app-title>
       <p class="p-text-main">Find your own signature styles with classic menswear from our premium collections. Whether
-        it is for work, the weekend, or just between the two, RaylomShop offers you stylish selections to ensure ultimate
+        it is for work, the weekend, or just between the two, ORDINOME offers you stylish selections to ensure ultimate
         comfort and confidence. Shirts, trousers, casual wear, and more-all just about keeping you sharp.Shop the Latest
         in Men's Style from timeless classics to modern trends, we make online men's fashion shopping effortless. Browse
         our wide range of categories and shop men's clothing online — from casual essentials to formalwear, outerwear,
@@ -102,24 +95,9 @@
 </section>
 <!-- Top Selling Section End -->
 
-<!-- Gowns Banner Section Start -->
-<section class="gowns-banner-section">
-  <div class="container-fluid-lg">
-    <div class="gowns-banner-container">
-      <img src="assets/images/girl-dress.jpg" alt="Gowns That Dazzle" class="gowns-banner-image">
-      <div class="gowns-banner-overlay">
-        <h2>GOWNS THAT DAZZLE</h2>
-        <button class="shop-gowns-btn" [routerLink]="['/collections']" [queryParams]="{category: 'women'}">SHOP
-          Now</button>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Gowns Banner Section End -->
-
 <!-- Top Selling Section Start -->
 <section class="product-section product-section-3" *ngIf="data?.content?.products_list_3?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
     <div>
       <!-- <app-title [title]="data?.content?.products_list_3?.title" [style]="'simple'">
       </app-title>
@@ -135,9 +113,68 @@
 </section>
 <!-- Top Selling Section End -->
 
+<!-- Featured Collections Section Start -->
+<section class="featured-collections-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">CURATED COLLECTIONS</h2>
+      <p class="section-subtitle">Discover Your Perfect Style</p>
+    </div>
+
+    <div class="collections-grid">
+      <!-- Collection 1: Evening Elegance -->
+      <div class="collection-card large-card" [routerLink]="['/collections']"
+        [queryParams]="{category: 'women', sortBy: 'asc'}">
+        <div class="collection-image-wrapper">
+          <img src="assets/images/w-1.jpg" alt="Evening Elegance" class="collection-image">
+          <div class="collection-overlay">
+            <div class="collection-content">
+              <h3 class="collection-title">EVENING ELEGANCE</h3>
+              <p class="collection-description">Sophisticated styles for special occasions</p>
+              <span class="shop-link">EXPLORE COLLECTION →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Collection 2: Casual Chic -->
+      <div class="collection-card" [routerLink]="['/collections']" [queryParams]="{category: 'women', sortBy: 'asc'}">
+        <div class="collection-image-wrapper">
+          <img src="assets/images/w-2.jpg" alt="Casual Chic" class="collection-image">
+          <div class="collection-overlay">
+            <div class="collection-content">
+              <h3 class="collection-title">CASUAL CHIC</h3>
+              <p class="collection-description">Effortless everyday style</p>
+              <span class="shop-link">SHOP NOW →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Collection 3: Modern Minimalist -->
+      <div class="collection-card" [routerLink]="['/collections']" [queryParams]="{category: 'women', sortBy: 'asc'}">
+        <div class="collection-image-wrapper">
+          <img src="assets/images/w-3.jpg" alt="Modern Minimalist" class="collection-image">
+          <div class="collection-overlay">
+            <div class="collection-content">
+              <h3 class="collection-title">MODERN MINIMALIST</h3>
+              <p class="collection-description">Clean lines, timeless appeal</p>
+              <span class="shop-link">SHOP NOW →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Featured Collections Section End -->
+
+
+
+
 <!-- Brand Section start -->
 <section class="brand-effect border-brand" *ngIf="data?.content?.brands?.brand_ids && data?.content?.brands?.status">
-  <div class="container-fluid-lg">
+  <div class="container">
     <app-brand [brandIds]="data?.content?.brands?.brand_ids || []"></app-brand>
   </div>
 </section>

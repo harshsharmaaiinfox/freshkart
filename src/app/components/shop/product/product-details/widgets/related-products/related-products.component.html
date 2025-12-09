@@ -1,4 +1,4 @@
-<div class="container-fluid-lg" *ngIf="relatedProducts?.length">
+<div class="container" *ngIf="relatedProducts?.length">
     <app-title [title]="'You May Also Like'"></app-title>
     <div [ngClass]="{ 'full_border': (themeOption$ | async)?.product?.full_border,
         'product_img_bg': (themeOption$ | async)?.product?.image_bg,

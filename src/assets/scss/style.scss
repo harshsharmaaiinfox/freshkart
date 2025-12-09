@@ -1,47 +1,47 @@
 .theme-color-1 {
-  --theme-color: #20c997;
-  --theme-color-dark: #0a1a1a;
-  --theme-color-gradient: linear-gradient(135deg, #0a1a1a 0%, #1a3a3a 50%, #20c997 100%);
-  --theme-color-gradient-horizontal: linear-gradient(90deg, #0a1a1a 0%, #20c997 100%);
+  --theme-color: #092C42;
+  --theme-color-dark: #092C42;
+  --theme-color-gradient: linear-gradient(135deg, #092C42 0%, #0a4a6a 50%, #092C42 100%);
+  --theme-color-gradient-horizontal: linear-gradient(90deg, #092C42 0%, #0a4a6a 100%);
 }
 
 .theme-color-2 {
-  --theme-color: #0baf9a;
-  --theme-color-dark: #0a1a1a;
-  --theme-color-gradient: linear-gradient(135deg, #0a1a1a 0%, #1a3a3a 50%, #0baf9a 100%);
-  --theme-color-gradient-horizontal: linear-gradient(90deg, #0a1a1a 0%, #0baf9a 100%);
+  --theme-color: #092C42;
+  --theme-color-dark: #092C42;
+  --theme-color-gradient: linear-gradient(135deg, #092C42 0%, #0a4a6a 50%, #092C42 100%);
+  --theme-color-gradient-horizontal: linear-gradient(90deg, #092C42 0%, #0a4a6a 100%);
 }
 
 .theme-color-3 {
-  --theme-color: #239698;
-  --theme-color-dark: #0a1a1a;
-  --theme-color-gradient: linear-gradient(135deg, #0a1a1a 0%, #1a3a3a 50%, #239698 100%);
-  --theme-color-gradient-horizontal: linear-gradient(90deg, #0a1a1a 0%, #239698 100%);
+  --theme-color: #092C42;
+  --theme-color-dark: #092C42;
+  --theme-color-gradient: linear-gradient(135deg, #092C42 0%, #0a4a6a 50%, #092C42 100%);
+  --theme-color-gradient-horizontal: linear-gradient(90deg, #092C42 0%, #0a4a6a 100%);
 }
 
 .theme-color-4 {
-  --theme-color: #6262a6;
-  --theme-color-dark: #0a1a1a;
-  --theme-color-gradient: linear-gradient(135deg, #0a1a1a 0%, #1a3a3a 50%, #6262a6 100%);
-  --theme-color-gradient-horizontal: linear-gradient(90deg, #0a1a1a 0%, #6262a6 100%);
+  --theme-color: #092C42;
+  --theme-color-dark: #092C42;
+  --theme-color-gradient: linear-gradient(135deg, #092C42 0%, #0a4a6a 50%, #092C42 100%);
+  --theme-color-gradient-horizontal: linear-gradient(90deg, #092C42 0%, #0a4a6a 100%);
 }
 
 .theme-color-5 {
-  --theme-color: #417394;
-  --theme-color-dark: #0a1a1a;
-  --theme-color-gradient: linear-gradient(135deg, #0a1a1a 0%, #1a3a3a 50%, #417394 100%);
-  --theme-color-gradient-horizontal: linear-gradient(90deg, #0a1a1a 0%, #417394 100%);
+  --theme-color: #092C42;
+  --theme-color-dark: #092C42;
+  --theme-color-gradient: linear-gradient(135deg, #092C42 0%, #0a4a6a 50%, #092C42 100%);
+  --theme-color-gradient-horizontal: linear-gradient(90deg, #092C42 0%, #0a4a6a 100%);
 }
 
-// Product page specific theme override using #1B4B45
+// Product page specific theme override using #092C42
 // This keeps the rest of the site on existing themes but forces
 // product detail sections to use the new green brand color.
 .product-section,
 .theme-product-section {
-  --theme-color: #1b4b45;
+  --theme-color: #092C42;
   --theme-color-dark: #0f2e2a;
-  --theme-color-gradient: linear-gradient(135deg, #0f2e2a 0%, #1b4b45 50%, #2f6f66 100%);
-  --theme-color-gradient-horizontal: linear-gradient(90deg, #0f2e2a 0%, #1b4b45 100%);
+  --theme-color-gradient: linear-gradient(135deg, #0f2e2a 0%, #092C42 50%, #2f6f66 100%);
+  --theme-color-gradient-horizontal: linear-gradient(90deg, #0f2e2a 0%, #092C42 100%);
 }
 
 // utils
@@ -189,9 +189,6 @@ header .top-nav .navbar-top .middle-box .search-box .input-group button {
   border-bottom-left-radius: 0;
 }
 
-footer.section-t-space {
-  margin-top: 30px;
-}
 
 footer .sub-footer {
   display: flex;
@@ -331,17 +328,8 @@ app-root {
   min-height: 100vh;
 }
 
-// Override Bootstrap container max-widths for full screen
-.container,
-.container-fluid,
-.container-sm,
-.container-md,
-.container-lg,
-.container-xl,
-.container-xxl {
-  max-width: 100% !important;
-  width: 100% !important;
-}
+// Container widths are now controlled by Bootstrap defaults
+// This allows proper containment in the header and other sections
 
 // Global gradient theme utility classes
 .theme-gradient {
@@ -375,7 +363,7 @@ h6.byers {
 }
 
 .custom-select .select2-container .select2-container-dropdown .select2-dropdown {
-  background-color: #1b4a44 !important;
+  background-color: #11263a !important;
   color: #ffffff !important;
 }
 
@@ -384,7 +372,7 @@ ul.pagination {
 }
 
 a.page-link {
-  background: #1b4b45 !important;
+  background: #092C42 !important;
   color: #fff !important;
   border: 0px solid #fff !important;
   border-top-left-radius: 10px;
@@ -435,7 +423,7 @@ ul.pagination {
 }
 
 .user-dashboard-section .dashboard-right-sidebar .dashboard-address .address-box .button-group button:hover {
-  background-color: #1b4b45 !important;
+  background-color: #092C42 !important;
   color: #ffffff;
 }
 
@@ -455,7 +443,7 @@ ul.pagination {
 }
 
 .modal-header {
-  background: linear-gradient(135deg, #1B4B45 0%, #0f2e2a 100%);
+  background: linear-gradient(135deg, #092C42 0%, #0f2e2a 100%);
   padding-top: 15px !important;
   padding-bottom: 15px !important;
   color: #fff !important;
@@ -522,7 +510,7 @@ button#submit_address_btn {
 }
 
 .btn-theme-outline:hover {
-  background-color: #1B4B45 !important;
+  background-color: #092C42 !important;
   color: white !important;
 }
 
@@ -543,7 +531,7 @@ button#submit_address_btn {
 }
 
 .delivery-option .delivery-category .shipment-detail .form-check:has(.form-check-input:checked) {
-  border-color: #1B4B45;
+  border-color: #092C42;
   background: rgba(27, 75, 69, 0.03);
   padding: 10px !important;
 }
@@ -590,7 +578,7 @@ li.coupon-sec {
 
 // Enhanced styles for vertical layout payment and delivery boxes
 .delivery-option .delivery-category .shipment-detail .form-check:has(.form-check-input:checked) {
-  border-color: #1B4B45 !important;
+  border-color: #092C42 !important;
   box-shadow: 0 6px 16px rgba(27, 75, 69, 0.3) !important;
   transform: translateY(-2px) !important;
 
@@ -603,22 +591,22 @@ li.coupon-sec {
 
 
 .delivery-option .delivery-category .shipment-detail .form-check:has(.form-check-input:checked) {
-  border-color: #1B4B45 !important;
+  border-color: #092C42 !important;
   background: transparent !important;
   box-shadow: none !important;
   transform: translateY(-2px) !important;
   border: 1px solid;
   border-radius: 5px;
-  color: #1b4b45 !important;
+  color: #092C42 !important;
 }
 
 .form-check.custom-form-check.hide-check-box.w-100 {
-  border: 1px solid #1b4b45;
+  border: 1px solid #092C42;
   border-radius: 5px;
 }
 
 button#place_order {
-  background: #1b4b45 !important;
+  background: #092C42 !important;
 }
 
 .wishlist-btn-group {
@@ -635,7 +623,7 @@ ul.product-info-list.product-info-list-2 {
 }
 
 section.product-tabs-bottom.section-b-space {
-  padding-top: 0;
+  display: none; // Description shown in collapsible section on product page
 }
 
 .product-gallery-grid img.img-fluid.ng-star-inserted {
@@ -645,13 +633,10 @@ section.product-tabs-bottom.section-b-space {
 // Mobile Responsive Overrides
 @import "mobile-responsive";
 
-header .navbar-toggler-icon {
-  font-size: 25px;
-  color: #ffffff;
-}
+
 
 .shop-section .show-button .filter-button a {
-  background-color: #1b4b45 !important;
+  background-color: #092C42 !important;
 }
 
 app-product-action {
@@ -676,6 +661,9 @@ app-product-action {
 
 @media(max-width:768px) {
 
+  header .top-nav .navbar-top .rightside-box .right-side-menu .right-side::before {
+    display: none !important;
+  }
 
   .product-box .product-detail .sold .price {
     font-size: 16px !important;
@@ -727,7 +715,7 @@ app-product-action {
 
 // Mobile Menu Sidebar Redesign
 .offcanvas.offcanvas-collapse {
-  background: linear-gradient(180deg, #1B4B45 0%, #0f2e2a 100%) !important;
+  background: linear-gradient(180deg, #092C42 0%, #0f2e2a 100%) !important;
   color: #ffffff !important;
 
   .offcanvas-header {
@@ -767,7 +755,7 @@ app-product-action {
           &:hover,
           &.active,
           &.show {
-            color: #20c997 !important;
+            color: #092C42 !important;
             background-color: rgba(255, 255, 255, 0.05);
           }
         }
@@ -878,7 +866,7 @@ ol.breadcrumb {
 }
 
 button#search-btn {
-  background: #1b4b45 !important;
+  background: #092C42 !important;
 }
 
 .search-bg-overlay.show {
@@ -898,4 +886,86 @@ button#search-btn {
   app-box-search {
     display: none;
   }
+}
+
+header .top-nav .navbar-top .rightside-box .right-side-menu .right-side .header-wishlist {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+  display: none !important;
+}
+
+.breadcrumb-contain {
+  padding: 20px !important;
+}
+
+.product-box .product-image {
+  padding: 0px !important;
+}
+
+.product-section-3 .product-title {
+  padding: 0px !important;
+  text-align: left !important;
+}
+
+.owl-stage {
+  padding-top: 15px !important;
+}
+
+.active-filter-bar {
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.active-filter-chip {
+  border-radius: 0 !important;
+  border: 1px solid #de8c17 !important;
+
+}
+
+button.active-filter-bar__clear {
+  color: #e3911a !important;
+}
+
+.pagination a.page-link {
+  background: transparent !important;
+  color: #e49317 !important;
+  padding: 0 !important;
+  font-size: 18px !important;
+}
+
+.pagination .page-item.active a.page-link {
+  color: #092C42 !important;
+  font-weight: 600 !important;
+}
+
+.product-gallery {
+  padding-top: 0 !important;
+}
+
+h3.theme-color.price {
+  margin-bottom: 16px !important;
+  margin-top: 16px !important;
+  color: #0F2136 !important;
+}
+
+#addcartbtnVariation1 {
+  background: #112339 !important;
+}
+
+#buynowbtn1 {
+  border: 1px solid #0e2137 !important;
+  color: #0e2137 !important;
+}
+
+.collapsible-section__content p {
+  line-height: 33px;
+  font-size: 18px;
+}
+
+header .navbar-toggler-icon {
+  color: #092c42 !important;
 }

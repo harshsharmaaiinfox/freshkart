@@ -19,7 +19,7 @@ export class ThemesStateModel {
 @Injectable()
 export class ThemeState {
 
-  constructor(private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService) { }
 
   @Selector()
   static homePage(state: ThemesStateModel) {
@@ -38,7 +38,7 @@ export class ThemeState {
         next: (result) => {
           var activeTheme: string = '';
           result.data.map(theme => {
-            if(theme.status === 1) { activeTheme = theme.slug}
+            if (theme.id === 5) { activeTheme = theme.slug }
           })
           ctx.patchState({
             homePage: result,

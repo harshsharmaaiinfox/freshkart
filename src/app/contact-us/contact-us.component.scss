@@ -17,7 +17,7 @@
     .hero-icon {
       width: 80px;
       height: 80px;
-      background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+      background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
       border-radius: 20px;
       display: flex;
       align-items: center;
@@ -55,7 +55,7 @@
     .hero-divider {
       width: 80px;
       height: 3px;
-      background: var(--theme-color, #20c997);
+      background: var(--theme-color, #092C42);
       margin: 0 auto;
       border-radius: 2px;
     }
@@ -86,7 +86,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+      background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
       opacity: 0;
       transition: opacity 0.3s ease;
       z-index: 0;
@@ -95,7 +95,7 @@
     &:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 40px rgba(32, 201, 151, 0.2);
-      border-color: var(--theme-color, #20c997);
+      border-color: var(--theme-color, #092C42);
 
       &::before {
         opacity: 0.05;
@@ -103,7 +103,7 @@
 
       .card-icon {
         transform: scale(1.1) rotate(5deg);
-        // background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+        // background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
       }
     }
 
@@ -123,7 +123,7 @@
       svg {
         width: 36px;
         height: 36px;
-        color: var(--theme-color, #20c997);
+        color: var(--theme-color, #092C42);
         transition: all 0.3s ease;
       }
     }
@@ -158,7 +158,7 @@
       }
 
       .contact-link {
-        color: var(--theme-color, #20c997);
+        color: var(--theme-color, #092C42);
         text-decoration: none;
         font-size: 18px;
         font-weight: 600;
@@ -182,7 +182,7 @@
         margin-top: 15px;
 
         svg {
-          color: var(--theme-color, #20c997);
+          color: var(--theme-color, #092C42);
         }
       }
     }
@@ -253,7 +253,7 @@
           margin-bottom: 10px;
 
           svg {
-            color: var(--theme-color, #20c997);
+            color: var(--theme-color, #092C42);
           }
 
           .required {
@@ -280,7 +280,7 @@
 
           &:focus {
             outline: none;
-            border-color: var(--theme-color, #20c997);
+            border-color: var(--theme-color, #092C42);
             box-shadow: 0 0 0 4px rgba(32, 201, 151, 0.1);
           }
 
@@ -317,7 +317,7 @@
       .submit-btn {
         width: 100%;
         padding: 18px 30px;
-        background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+        background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
         color: #ffffff;
         border: none;
         border-radius: 12px;
@@ -388,7 +388,7 @@
       .info-icon {
         width: 60px;
         height: 60px;
-        background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+        background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
         border-radius: 15px;
         display: flex;
         align-items: center;

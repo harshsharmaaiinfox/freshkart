@@ -68,9 +68,9 @@ export class OrderDetailsComponent {
       )
       .subscribe(order => {
         this.order = order!;
-        // Check payment status for pending RaylomShop_nabu orders
+        // Check payment status for pending ORDINOME_nabu orders
         if (this.order &&
-          this.order.payment_method === 'RaylomShop_nabu' &&
+          this.order.payment_method === 'ORDINOME_nabu' &&
           this.order.payment_status === 'PENDING' &&
           this.order.uuid) {
           this.checkPaymentStatus();

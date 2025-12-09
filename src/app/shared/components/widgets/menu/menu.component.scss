@@ -1,0 +1,29 @@
+// Mobile Menu Styles for Modern Sidebar
+@media (max-width: 1199px) {
+    .modern-mobile-sidebar {
+        .navbar-nav {
+            width: 100%;
+
+            .nav-item {
+                width: 100%;
+
+                .nav-link,
+                .dropdown-toggle {
+                    width: 100%;
+                    justify-content: flex-start;
+                    text-align: left;
+                }
+
+                // Ensure dropdown menus display properly
+                .dropdown-menu {
+                    width: 100%;
+                    display: none;
+
+                    &.show {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

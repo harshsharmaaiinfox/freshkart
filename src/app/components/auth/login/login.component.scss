@@ -53,7 +53,7 @@
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+    background: linear-gradient(90deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
   }
 
   // Custom Alert Styles
@@ -136,7 +136,7 @@
     .logo-icon {
       width: 70px;
       height: 70px;
-      background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+      background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
       border-radius: 20px;
       display: flex;
       align-items: center;
@@ -186,7 +186,7 @@
       margin-bottom: 10px;
 
       svg {
-        color: var(--theme-color, #20c997);
+        color: var(--theme-color, #092C42);
       }
     }
 
@@ -210,7 +210,7 @@
 
         &:focus {
           outline: none;
-          border-color: var(--theme-color, #20c997);
+          border-color: var(--theme-color, #092C42);
           box-shadow: 0 0 0 4px rgba(32, 201, 151, 0.1);
         }
 
@@ -220,7 +220,7 @@
         }
 
         &.valid {
-          border-color: #20c997;
+          border-color: #092C42;
           background: #f0fff4;
         }
       }
@@ -241,7 +241,7 @@
       }
 
       input:focus~.input-icon {
-        color: var(--theme-color, #20c997);
+        color: var(--theme-color, #092C42);
       }
     }
 
@@ -286,8 +286,8 @@
         cursor: pointer;
 
         &:checked~.checkmark {
-          background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
-          border-color: var(--theme-color, #20c997);
+          background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+          border-color: var(--theme-color, #092C42);
 
           &::after {
             display: block;
@@ -323,12 +323,12 @@
       }
 
       &:hover .checkmark {
-        border-color: var(--theme-color, #20c997);
+        border-color: var(--theme-color, #092C42);
       }
     }
 
     .forgot-password {
-      color: var(--theme-color, #20c997);
+      color: var(--theme-color, #092C42);
       text-decoration: none;
       font-size: 14px;
       font-weight: 600;
@@ -344,7 +344,7 @@
   .login-btn {
     width: 100%;
     padding: 16px 30px;
-    background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
+    background: linear-gradient(135deg, var(--theme-color, #092C42) 0%, var(--theme-color-dark, #0a1a1a) 100%);
     color: #ffffff;
     border: none;
     border-radius: 12px;
@@ -438,7 +438,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--theme-color, #20c997);
+    color: var(--theme-color, #092C42);
     text-decoration: none;
     font-size: 16px;
     font-weight: 700;

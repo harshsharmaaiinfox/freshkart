@@ -1,5 +1,5 @@
 // Primary Color
-$primary-color: #1B4B45;
+$primary-color: #092C42;
 $primary-dark: #0f2e2a;
 $primary-light: #2a6b63;
 $primary-lighter: #e8f4f2;
@@ -214,15 +214,15 @@ $primary-lighter: #e8f4f2;
         }
 
         &.balance-card .stat-icon {
-            background: linear-gradient(135deg, #1B4B45 0%, #2a6b63 100%);
+            background: linear-gradient(135deg, #092C42 0%, #2a6b63 100%);
         }
 
         &.points-card .stat-icon {
-            background: linear-gradient(135deg, #1B4B45 0%, #0f2e2a 100%);
+            background: linear-gradient(135deg, #092C42 0%, #0f2e2a 100%);
         }
 
         &.orders-card .stat-icon {
-            background: linear-gradient(135deg, #2a6b63 0%, #1B4B45 100%);
+            background: linear-gradient(135deg, #2a6b63 0%, #092C42 100%);
         }
 
         .stat-content {
@@ -597,35 +597,36 @@ $primary-lighter: #e8f4f2;
         }
     }
 }
-    .notifications-wrapper {
-        .title-header {
-            h5 {
-                font-size: 1.25rem;
 
-                &::before {
-                    height: 24px;
-                }
-            }
-        }
+.notifications-wrapper {
+    .title-header {
+        h5 {
+            font-size: 1.25rem;
 
-        .notification-list {
-            li {
-                padding: 1rem 1.25rem;
-
-                h4 {
-                    font-size: 0.9375rem;
-                }
-
-                h5 {
-                    font-size: 0.8125rem;
-                }
-
-                &.unread::after {
-                    top: 1rem;
-                    right: 1.25rem;
-                    width: 8px;
-                    height: 8px;
-                }
+            &::before {
+                height: 24px;
             }
         }
     }
+
+    .notification-list {
+        li {
+            padding: 1rem 1.25rem;
+
+            h4 {
+                font-size: 0.9375rem;
+            }
+
+            h5 {
+                font-size: 0.8125rem;
+            }
+
+            &.unread::after {
+                top: 1rem;
+                right: 1.25rem;
+                width: 8px;
+                height: 8px;
+            }
+        }
+    }
+}
