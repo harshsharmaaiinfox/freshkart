@@ -6,7 +6,7 @@ export const content: Routes = [
   {
     path: "",
     loadChildren: () => import("../../components/themes/themes.module").then((m) => m.ThemesModule),
-    title: 'ORDINOME Premium Mens and Womens Fashion Online'
+    title: 'Premium Party Organizers & Theme Decoration Supplies'
   },
   {
     path: 'privacy-policy',

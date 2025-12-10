@@ -433,8 +433,8 @@ export class SeoService {
 
     console.log('✅ Setting default SEO for non-product page:', currentUrl);
     this.setSEOData({
-      title: 'ORDINOME Premium Mens and Womens Fashion Online',
-      description: 'Discover new season shirts jackets suits denim and more at ORDINOME. Premium quality fast shipping across India COD and easy returns.',
+      title: 'Premium Party Organizers & Theme Decoration Supplies',
+      description: 'Discover premium party decorations, themed supplies, and event essentials at ORDINOME. Shop birthday, Christmas, New Year décor and more with fast delivery across India and easy returns.',
       keywords: 'activewear, gym wear, joggers, men\'s clothes, women\'s clothes, stylish outfits, comfort fit, performance clothing, ORDINOME',
       type: 'website',
       url: 'https://ORDINOME.com/'
