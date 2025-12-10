@@ -1,165 +1,201 @@
 <div class="tab-pane fade show active">
     <div class="dashboard-home">
-        <!-- Full Width Menu Bar -->
-        <div class="dashboard-menu-bar">
-            <div class="menu-container">
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/dashboard']">
-                    <i class="ri-home-fill"></i>
-                    <span>{{ 'Dashboard' | translate }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/notifications']">
-                    <i class="ri-notification-fill"></i>
-                    <span>{{ 'Notifications' | translate }}</span>
-                    <span class="notification-badge" *ngIf="unreadNotificationCount">{{ unreadNotificationCount
-                        }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/bank-details']">
-                    <i class="ri-bank-fill"></i>
-                    <span>{{ 'Bank Details' | translate }}</span>
-                </a>
-
-
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/order']">
-                    <i class="ri-file-text-fill"></i>
-                    <span>{{ 'My Orders' | translate }}</span>
-                </a>
-
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/refund']">
-                    <i class="ri-money-rupee-circle-fill"></i>
-                    <span>{{ 'Refund History' | translate }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/addresses']">
-                    <i class="ri-map-pin-fill"></i>
-                    <span>{{ 'Saved Address' | translate }}</span>
-                </a>
-
+        <!-- Hero Section with Gradient -->
+        <div class="dashboard-hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">{{ 'Welcome Back' | translate }}</h1>
+                    <p class="hero-subtitle">{{ 'Hello' | translate }}, <strong>{{ (user$ | async)?.name! | titleCase
+                            }}</strong></p>
+                </div>
+                <div class="hero-actions">
+                    <button class="hero-btn" [routerLink]="['/account/order']">
+                        <i class="ri-shopping-bag-line"></i>
+                        {{ 'My Orders' | translate }}
+                    </button>
+                </div>
+            </div>
+            <div class="hero-decoration">
+                <div class="decoration-circle circle-1"></div>
+                <div class="decoration-circle circle-2"></div>
+                <div class="decoration-circle circle-3"></div>
             </div>
         </div>
 
-        <!-- Dashboard Header -->
-        <div class="dashboard-header">
-            <div class="header-content">
-                <div class="header-text">
-                    <h2 class="dashboard-title">{{ 'My Dashboard' | translate }}</h2>
-                    <p class="dashboard-subtitle">{{ 'Hello' | translate }}, <strong>{{ (user$ | async)?.name! |
-                            titleCase }}</strong> - {{ "Welcome" | translate}}</p>
+        <!-- Quick Navigation Cards -->
+        <div class="quick-nav-section">
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/notifications']">
+                        <div class="quick-nav-icon notifications-icon">
+                            <i class="ri-notification-fill"></i>
+                            <span class="notification-badge" *ngIf="unreadNotificationCount">{{ unreadNotificationCount
+                                }}</span>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Notifications' | translate }}</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/bank-details']">
+                        <div class="quick-nav-icon bank-icon">
+                            <i class="ri-bank-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Bank Details' | translate }}</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/refund']">
+                        <div class="quick-nav-icon refund-icon">
+                            <i class="ri-money-rupee-circle-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Refund History' | translate }}</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/addresses']">
+                        <div class="quick-nav-icon address-icon">
+                            <i class="ri-map-pin-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Saved Address' | translate }}</span>
+                    </a>
                 </div>
             </div>
         </div>
-        <!-- Stats Cards -->
+
+        <!-- Stats Cards Grid -->
         <div class="dashboard-stats">
             <div class="row g-4">
-                <div class="col-md-4">
+                <div class="col-sm-6 col-lg-4">
                     <div class="stat-card balance-card">
-                        <div class="stat-icon">
-                            <i class="ri-wallet-line"></i>
+                        <div class="stat-icon-wrapper">
+                            <div class="stat-icon">
+                                <i class="ri-wallet-3-fill"></i>
+                            </div>
                         </div>
                         <div class="stat-content">
-                            <h6 class="stat-label">{{ 'Balance'| translate}}</h6>
+                            <p class="stat-label">{{ 'Wallet Balance' | translate }}</p>
                             <h3 class="stat-value">{{ ((user$ | async)?.wallet ? (user$ | async)?.wallet?.balance : 0) |
                                 currencySymbol }}</h3>
                         </div>
+                        <div class="stat-decoration"></div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-sm-6 col-lg-4">
                     <div class="stat-card points-card">
-                        <div class="stat-icon">
-                            <i class="ri-coin-line"></i>
+                        <div class="stat-icon-wrapper">
+                            <div class="stat-icon">
+                                <i class="ri-coin-fill"></i>
+                            </div>
                         </div>
                         <div class="stat-content">
-                            <h6 class="stat-label">{{ 'Total Points'| translate}}</h6>
+                            <p class="stat-label">{{ 'Reward Points' | translate }}</p>
                             <h3 class="stat-value">{{ (user$ | async)?.point ? (user$ | async)?.point?.balance : 0 }}
                             </h3>
                         </div>
+                        <div class="stat-decoration"></div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-sm-6 col-lg-4">
                     <div class="stat-card orders-card">
-                        <div class="stat-icon">
-                            <i class="ri-shopping-bag-line"></i>
+                        <div class="stat-icon-wrapper">
+                            <div class="stat-icon">
+                                <i class="ri-shopping-cart-fill"></i>
+                            </div>
                         </div>
                         <div class="stat-content">
-                            <h6 class="stat-label">{{ 'Total Orders'| translate}}</h6>
+                            <p class="stat-label">{{ 'Total Orders' | translate }}</p>
                             <h3 class="stat-value">{{ (user$ | async)?.orders_count ? (user$ | async)?.orders_count : 0
                                 }}</h3>
                         </div>
+                        <div class="stat-decoration"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Profile Information Section -->
-        <div class="dashboard-content">
+
+        <!-- Account Information Section -->
+        <div class="account-info-section">
             <div class="row g-4">
+                <!-- Profile Information -->
                 <div class="col-lg-6">
-                    <div class="info-card">
+                    <div class="info-card profile-card">
                         <div class="card-header">
-                            <h4 class="card-title">
-                                <i class="ri-user-line"></i>
-                                {{ 'Profile Information'| translate}}
-                            </h4>
+                            <div class="card-header-content">
+                                <div class="card-icon">
+                                    <i class="ri-user-3-fill"></i>
+                                </div>
+                                <h4 class="card-title">{{ 'Profile Information' | translate }}</h4>
+                            </div>
                         </div>
                         <div class="card-body">
-                            <div class="info-row">
-                                <div class="info-label">
-                                    <i class="ri-user-3-line"></i>
-                                    <span>{{ 'Name'| translate}}</span>
+                            <div class="info-item">
+                                <div class="info-item-icon">
+                                    <i class="ri-user-line"></i>
                                 </div>
-                                <div class="info-value">{{ (user$ | async)?.name | titleCase }}</div>
+                                <div class="info-item-content">
+                                    <span class="info-item-label">{{ 'Name' | translate }}</span>
+                                    <span class="info-item-value">{{ (user$ | async)?.name | titleCase }}</span>
+                                </div>
                             </div>
-                            <div class="info-row">
-                                <div class="info-label">
+                            <div class="info-item">
+                                <div class="info-item-icon">
                                     <i class="ri-phone-line"></i>
-                                    <span>{{ 'Phone'| translate}}</span>
                                 </div>
-                                <div class="info-value">
-                                    {{ (user$ | async)?.country_code }} {{ (user$ | async)?.phone }}
+                                <div class="info-item-content">
+                                    <span class="info-item-label">{{ 'Phone' | translate }}</span>
+                                    <span class="info-item-value">{{ (user$ | async)?.country_code }} {{ (user$ |
+                                        async)?.phone }}</span>
                                 </div>
                             </div>
-                            <div class="info-row" *ngIf="address">
-                                <div class="info-label">
+                            <div class="info-item" *ngIf="address">
+                                <div class="info-item-icon">
                                     <i class="ri-map-pin-line"></i>
-                                    <span>{{ 'Address'| translate}}</span>
                                 </div>
-                                <div class="info-value">
-                                    {{ address.street }}, {{ address.city }}, {{ address.area }}, {{ address.country_id
-                                    }} {{ address.pincode }}
+                                <div class="info-item-content">
+                                    <span class="info-item-label">{{ 'Address' | translate }}</span>
+                                    <span class="info-item-value">{{ address.street }}, {{ address.city }}, {{
+                                        address.area }}, {{ address.country_id }} {{ address.pincode }}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Login Details -->
                 <div class="col-lg-6">
-                    <div class="info-card">
+                    <div class="info-card login-card">
                         <div class="card-header">
-                            <h4 class="card-title">
-                                <i class="ri-lock-line"></i>
-                                {{ 'Login Details'| translate}}
-                            </h4>
+                            <div class="card-header-content">
+                                <div class="card-icon">
+                                    <i class="ri-lock-password-fill"></i>
+                                </div>
+                                <h4 class="card-title">{{ 'Login Details' | translate }}</h4>
+                            </div>
                         </div>
                         <div class="card-body">
-                            <div class="info-row">
-                                <div class="info-label">
+                            <div class="info-item">
+                                <div class="info-item-icon">
                                     <i class="ri-mail-line"></i>
-                                    <span>{{ 'Email'| translate}}</span>
                                 </div>
-                                <div class="info-value">
-                                    {{ (user$ | async)?.email }}
-                                    <a href="javascript:void(0)" class="edit-link" (click)="ProfileModal.openModal()">
-                                        <i class="ri-edit-line"></i> {{ 'Edit' | translate }}
-                                    </a>
+                                <div class="info-item-content">
+                                    <span class="info-item-label">{{ 'Email' | translate }}</span>
+                                    <span class="info-item-value">{{ (user$ | async)?.email }}</span>
                                 </div>
+                                <button class="edit-btn" (click)="ProfileModal.openModal()">
+                                    <i class="ri-edit-line"></i>
+                                </button>
                             </div>
-                            <div class="info-row">
-                                <div class="info-label">
+                            <div class="info-item">
+                                <div class="info-item-icon">
                                     <i class="ri-lock-password-line"></i>
-                                    <span>{{ 'Password'| translate}}</span>
                                 </div>
-                                <div class="info-value">
-                                    ●●●●●●
-                                    <a href="javascript:void(0)" class="edit-link" (click)="PasswordModal.openModal()">
-                                        <i class="ri-edit-line"></i> {{ 'Edit' | translate }}
-                                    </a>
+                                <div class="info-item-content">
+                                    <span class="info-item-label">{{ 'Password' | translate }}</span>
+                                    <span class="info-item-value">●●●●●●●●</span>
                                 </div>
+                                <button class="edit-btn" (click)="PasswordModal.openModal()">
+                                    <i class="ri-edit-line"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -168,6 +204,7 @@
         </div>
     </div>
 </div>
+
 <app-edit-profile-modal #profileModal></app-edit-profile-modal>
 <app-change-password-modal #passwordModal></app-change-password-modal>
 <app-confirmation-modal #confirmationModal (confirmed)="onLogoutConfirmed()"></app-confirmation-modal>

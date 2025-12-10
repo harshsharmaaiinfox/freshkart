@@ -1,68 +1,90 @@
 <div class="tab-pane fade show active">
     <div class="dashboard-home">
-        <!-- Full Width Menu Bar -->
-        <div class="dashboard-menu-bar">
-            <div class="menu-container">
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/dashboard']">
-                    <i class="ri-home-fill"></i>
-                    <span>{{ 'Dashboard' | translate }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/notifications']">
-                    <i class="ri-notification-fill"></i>
-                    <span>{{ 'Notifications' | translate }}</span>
-                    <span class="notification-badge" *ngIf="unreadNotificationCount">{{ unreadNotificationCount
-                        }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/bank-details']">
-                    <i class="ri-bank-fill"></i>
-                    <span>{{ 'Bank Details' | translate }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/order']">
-
-                    <i class="ri-file-text-fill"></i>
-                    <span>{{ 'My Orders' | translate }}</span>
-                </a>
-
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/refund']">
-                    <i class="ri-money-rupee-circle-fill"></i>
-                    <span>{{ 'Refund History' | translate }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/addresses']">
-                    <i class="ri-map-pin-fill"></i>
-                    <span>{{ 'Saved Address' | translate }}</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Dashboard Header -->
-        <div class="dashboard-header">
-            <div class="header-content">
-                <div class="header-text">
-                    <h2 class="dashboard-title">{{ 'My Dashboard' | translate }}</h2>
-                    <p class="dashboard-subtitle">{{ 'Hello' | translate }}, <strong>{{ (user$ | async)?.name! |
-                            titleCase }}</strong> - {{ "Welcome" | translate}}</p>
+        <!-- Hero Section with Gradient -->
+        <div class="dashboard-hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">{{ 'Notifications' | translate }}</h1>
+                    <p class="hero-subtitle">{{ 'Stay updated with your latest notifications' | translate }}</p>
                 </div>
-            </div>
-        </div>
-
-        <!-- Notifications Section -->
-        <div class="dashboard-content">
-            <div class="notifications-wrapper">
-                <div class="title-header">
-                    <div class="d-flex align-items-center">
-                        <h5>{{ 'Notifications' | translate }}</h5>
+                <div class="hero-badge" *ngIf="unreadNotificationCount">
+                    <div class="unread-count">
+                        <i class="ri-notification-fill"></i>
+                        <span>{{ unreadNotificationCount }} {{ 'Unread' | translate }}</span>
                     </div>
                 </div>
-                <ul class="notification-list" *ngIf="(notification$ | async)?.length">
-                    <li [class.unread]="!notification.read_at" *ngFor="let notification of (notification$ | async)">
-                        <h4>{{ notification?.data?.message }}</h4>
-                        <h5><i class="ri-time-line"></i> {{ notification?.created_at | date: 'dd MMM yyyy hh:mm:a' }}
-                        </h5>
-                    </li>
-                </ul>
-                <app-no-data [class]="'no-data-added'" [text]="'No Notifications Found'"
-                    [description]="'You Have Not Notification yet'" *ngIf="!(notification$ | async)?.length">
-                </app-no-data>
+            </div>
+            <div class="hero-decoration">
+                <div class="decoration-circle circle-1"></div>
+                <div class="decoration-circle circle-2"></div>
+                <div class="decoration-circle circle-3"></div>
+            </div>
+        </div>
+
+        <!-- Quick Navigation Cards -->
+        <div class="quick-nav-section">
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/dashboard']">
+                        <div class="quick-nav-icon dashboard-icon">
+                            <i class="ri-home-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Dashboard' | translate }}</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/bank-details']">
+                        <div class="quick-nav-icon bank-icon">
+                            <i class="ri-bank-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Bank Details' | translate }}</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/order']">
+                        <div class="quick-nav-icon orders-icon">
+                            <i class="ri-shopping-bag-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'My Orders' | translate }}</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/addresses']">
+                        <div class="quick-nav-icon address-icon">
+                            <i class="ri-map-pin-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Saved Address' | translate }}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications List Section -->
+        <div class="notifications-section">
+            <div class="notifications-container" *ngIf="(notification$ | async)?.length">
+                <div class="notification-card" *ngFor="let notification of (notification$ | async)"
+                    [class.unread]="!notification.read_at">
+                    <div class="notification-icon">
+                        <i class="ri-notification-3-fill"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4 class="notification-message">{{ notification?.data?.message }}</h4>
+                        <div class="notification-meta">
+                            <i class="ri-time-line"></i>
+                            <span>{{ notification?.created_at | date: 'dd MMM yyyy, hh:mm a' }}</span>
+                        </div>
+                    </div>
+                    <div class="notification-indicator" *ngIf="!notification.read_at"></div>
+                </div>
+            </div>
+
+            <!-- No Data State -->
+            <div class="no-notifications" *ngIf="!(notification$ | async)?.length">
+                <div class="no-notifications-icon">
+                    <i class="ri-notification-off-line"></i>
+                </div>
+                <h3>{{ 'No Notifications Found' | translate }}</h3>
+                <p>{{ 'You have not received any notifications yet' | translate }}</p>
             </div>
         </div>
     </div>

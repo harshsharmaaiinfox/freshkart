@@ -388,9 +388,6 @@ a.page-link {
   padding-top: 0px !important;
 }
 
-.web-logo img {
-  width: 60% !important;
-}
 
 .footer-logo {
   width: 90% !important;
@@ -969,4 +966,13 @@ h3.theme-color.price {
 
 header .navbar-toggler-icon {
   color: #092c42 !important;
+}
+
+.user-dashboard-section .dashboard-right-sidebar {
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+.dropdown-column {
+  margin-bottom: 0 !important;
 }

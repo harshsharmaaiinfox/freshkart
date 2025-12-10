@@ -139,6 +139,34 @@
       background-color: transparent !important;
     }
 
+    // Category Section
+    .product-category {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 6px;
+      margin-bottom: 4px;
+      background-color: transparent !important;
+
+      .category-badge {
+        display: inline-block;
+        background-color: #102539;
+        color: #ffffff;
+        padding: 5px 12px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-family: 'Inter', 'Rubik', sans-serif;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: #E08E1B;
+          color: #ffffff;
+        }
+      }
+    }
+
     // Pricing Section
     .product-pricing {
       display: flex;
@@ -186,6 +214,13 @@
       .product-title {
         font-size: 13px;
         min-height: 36px;
+      }
+
+      .product-category {
+        .category-badge {
+          font-size: 10px;
+          padding: 3px 8px;
+        }
       }
 
       .product-pricing {

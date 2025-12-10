@@ -27,3 +27,133 @@
         }
     }
 }
+
+// Improved Dropdown Menu Styles
+.navbar-nav {
+    .dropdown-menu {
+
+        // Make dropdown more compact and professional
+        &-2 {
+            width: auto !important;
+            max-width: 600px !important;
+            min-width: 400px !important;
+            padding: 16px !important;
+            border-radius: 12px !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+
+            @media (max-width: 1680px) {
+                max-width: 500px !important;
+                min-width: 350px !important;
+            }
+
+            @media (max-width: 1400px) {
+                max-width: 450px !important;
+                min-width: 300px !important;
+            }
+
+            @media (max-width: 1199px) {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: auto !important;
+            }
+
+            // Improve column layout
+            .row {
+                margin: 0 !important;
+            }
+
+            .dropdown-column {
+                padding: 8px !important;
+
+                @media (max-width: 1199px) {
+                    padding: 4px !important;
+                }
+            }
+        }
+
+        // Style dropdown headers
+        .dropdown-header {
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            color: var(--theme-color) !important;
+            padding: 12px 16px 8px !important;
+            margin-bottom: 4px !important;
+            border-bottom: 2px solid var(--theme-color);
+            cursor: pointer !important;
+            transition: all 0.3s ease;
+
+            @media (max-width: 1199px) {
+                padding: 10px 12px 6px !important;
+                font-size: 14px !important;
+            }
+
+            &:hover {
+                background-color: rgba(240, 126, 36, 0.05);
+                border-radius: 6px;
+            }
+        }
+
+        // Style dropdown items
+        .dropdown-item {
+            font-size: 14px !important;
+            padding: 10px 16px !important;
+            color: #222 !important;
+            border-radius: 6px !important;
+            transition: all 0.2s ease !important;
+            cursor: pointer !important;
+            margin: 2px 0 !important;
+
+            @media (max-width: 1199px) {
+                padding: 8px 12px !important;
+                font-size: 13px !important;
+            }
+
+            &:hover {
+                background-color: rgba(240, 126, 36, 0.08) !important;
+                color: var(--theme-color) !important;
+                transform: translateX(4px);
+
+                body.rtl & {
+                    transform: translateX(-4px);
+                }
+            }
+
+            &:active {
+                background-color: rgba(240, 126, 36, 0.12) !important;
+            }
+        }
+
+        // Improve list styling
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                margin: 0;
+            }
+        }
+    }
+
+    // Hover effect for nav items with dropdowns
+    .nav-item {
+        &.dropdown {
+            &:hover {
+                >.dropdown-menu {
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                    transform: translateY(0) !important;
+
+                    &-2 {
+                        transform: translateX(-50%) translateY(0) !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Add smooth animation
+.dropdown-menu {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}

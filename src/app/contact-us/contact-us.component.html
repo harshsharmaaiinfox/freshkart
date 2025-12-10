@@ -1,175 +1,172 @@
-<div class="contact-wrapper">
-  <!-- Hero Section -->
-  <section class="contact-hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-        </div>
-        <h1>Get in Touch</h1>
-        <p class="hero-subtitle">We're here to help! Reach out to us anytime</p>
-        <div class="hero-divider"></div>
-      </div>
-    </div>
-  </section>
+<div class="contact-page">
+  <!-- Split Screen Layout -->
+  <div class="contact-container">
 
-  <!-- Contact Cards Section -->
-  <section class="contact-cards-section">
-    <div class="container">
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-4">
-          <div class="contact-card">
-            <div class="card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+    <!-- Left Sidebar - Contact Information -->
+    <aside class="contact-sidebar">
+      <div class="sidebar-content">
+        <!-- Brand Section -->
+        <div class="sidebar-brand">
+          <div class="brand-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <h2>Let's Connect</h2>
+          <p>We'd love to hear from you. Choose your preferred way to get in touch.</p>
+        </div>
+
+        <!-- Contact Methods -->
+        <div class="contact-methods">
+          <!-- Address -->
+          <div class="contact-method">
+            <div class="method-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
             </div>
-            <h3>Visit Us</h3>
-            <div class="card-content">
-              <p>
-                <strong>ORDINOME SERVICES PRIVATE LIMITED</strong><br>
-                No. 3266, TF Gali Raja Wali, Peepal Mahadev, Hauz Qazi, New Delhi, Central Delhi, Delhi, 110006
-              </p>
+            <div class="method-content">
+              <h4>Visit Our Office</h4>
+              <p>No. 3266, TF Gali Raja Wali<br>Peepal Mahadev, Hauz Qazi<br>New Delhi, Delhi - 110006</p>
             </div>
           </div>
-        </div>
 
-        <div class="col-md-4">
-          <div class="contact-card">
-            <div class="card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+          <!-- Email -->
+          <div class="contact-method">
+            <div class="method-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
             </div>
-            <h3>Email Us</h3>
-            <div class="card-content">
-              <p>
-                <a href="mailto:support@ORDINOME.com" class="contact-link">
-                  <strong>sarveshwarent1435&#64;gmail.com</strong>
-                </a>
-              </p>
-              <p class="contact-note">
-                We typically respond within 24 hours
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Form Section -->
-  <section class="contact-form-section">
-    <div class="container">
-      <div class="form-container">
-        <div class="form-header">
-          <h2>Send Us a Message</h2>
-          <p>Fill out the form below and we'll get back to you as soon as possible</p>
-        </div>
-
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-                Full Name <span class="required">*</span>
-              </label>
-              <input type="text" id="name" formControlName="name" placeholder="Enter your full name"
-                [class.invalid]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
-              <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="error-message">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="8" x2="12" y2="12"></line>
-                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                </svg>
-                Name should contain only letters and spaces
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="email">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                Email Address <span class="required">*</span>
-              </label>
-              <input type="email" id="email" formControlName="email" placeholder="your.email@example.com"
-                [class.invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-              <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error-message">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="8" x2="12" y2="12"></line>
-                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                </svg>
-                Enter a valid email address
-              </div>
+            <div class="method-content">
+              <h4>Email Us</h4>
+              <a href="mailto:sarveshwarent1435@gmail.com" class="contact-link">
+                sarveshwarent1435&#64;gmail.com
+              </a>
+              <span class="response-time">Response within 24 hours</span>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="phone">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          <!-- Phone -->
+          <div class="contact-method">
+            <div class="method-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path
                   d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
                 </path>
               </svg>
-              Phone Number <span class="required">*</span>
-            </label>
-            <input type="tel" id="phone" formControlName="phone" placeholder="10-digit mobile number"
-              [class.invalid]="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched">
-            <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="error-message">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="8" x2="12" y2="12"></line>
-                <line x1="12" y1="16" x2="12.01" y2="16"></line>
-              </svg>
-              Phone number should be exactly 10 digits
+            </div>
+            <div class="method-content">
+              <h4>Call Us</h4>
+              <a href="tel:+919953636205" class="contact-link">+91 99536 36205</a>
+              <span class="response-time">Available 24/7</span>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Decorative Element -->
+        <div class="sidebar-decoration">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor"
+              d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,73.1,42.2C64.8,55.2,53.8,66.6,40.3,73.8C26.8,81,10.8,83.9,-4.3,81.9C-19.4,79.9,-33.7,72.9,-46.2,64.2C-58.7,55.5,-69.4,45,-76.8,32.2C-84.2,19.4,-88.3,4.3,-86.7,-10.1C-85.1,-24.5,-77.8,-38.2,-67.8,-49.2C-57.8,-60.2,-45.1,-68.5,-31.5,-76.1C-17.9,-83.7,-3.4,-90.6,9.8,-87.8C23,-85,35.6,-72.5,44.7,-76.4Z"
+              transform="translate(100 100)" />
+          </svg>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right Content - Contact Form -->
+    <main class="contact-main">
+      <div class="form-wrapper">
+        <!-- Page Header -->
+        <div class="page-header">
+          <h1>Send us a Message</h1>
+          <p>Have a question or feedback? Fill out the form below and our team will get back to you shortly.</p>
+        </div>
+
+        <!-- Contact Form -->
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="modern-form">
+
+          <!-- Name & Email Row -->
+          <div class="form-row">
+            <div class="form-field">
+              <input type="text" id="name" formControlName="name" placeholder=" "
+                [class.error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+              <label for="name">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Full Name
+              </label>
+              <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="error-text">
+                Please enter a valid name
+              </div>
+            </div>
+
+            <div class="form-field">
+              <input type="email" id="email" formControlName="email" placeholder=" "
+                [class.error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+              <label for="email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Email Address
+              </label>
+              <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error-text">
+                Please enter a valid email
+              </div>
             </div>
           </div>
 
-          <div class="form-group">
+          <!-- Phone Field -->
+          <div class="form-field">
+            <input type="tel" id="phone" formControlName="phone" placeholder=" "
+              [class.error]="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched">
+            <label for="phone">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              Phone Number
+            </label>
+            <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="error-text">
+              Please enter a valid 10-digit phone number
+            </div>
+          </div>
+
+          <!-- Message Field -->
+          <div class="form-field">
+            <textarea id="message" formControlName="message" rows="5" placeholder=" "
+              [class.error]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
             <label for="message">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
               </svg>
-              Message <span class="required">*</span>
+              Your Message
             </label>
-            <textarea id="message" formControlName="message" rows="6" placeholder="Tell us how we can help you..."
-              [class.invalid]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
-            <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
-              class="error-message">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="8" x2="12" y2="12"></line>
-                <line x1="12" y1="16" x2="12.01" y2="16"></line>
-              </svg>
-              Message field cannot be empty
+            <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="error-text">
+              Please enter your message
             </div>
           </div>
 
-          <button type="submit" [disabled]="contactForm.invalid" class="submit-btn"
-            [class.disabled]="contactForm.invalid">
-            <span *ngIf="!contactForm.invalid">Send Message</span>
-            <span *ngIf="contactForm.invalid">Please fill all fields correctly</span>
+          <!-- Submit Button -->
+          <button type="submit" [disabled]="contactForm.invalid" class="submit-button">
+            <span>Send Message</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -177,49 +174,27 @@
             </svg>
           </button>
         </form>
-      </div>
-    </div>
-  </section>
 
-  <!-- Additional Info Section -->
-  <section class="additional-info-section">
-    <div class="container">
-      <div class="info-grid">
-        <div class="info-card">
-          <div class="info-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        <!-- Trust Indicators -->
+        <div class="trust-indicators">
+          <div class="indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span>Your data is secure</span>
+          </div>
+          <div class="indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
+            <span>24-hour response time</span>
           </div>
-          <h4>Response Time</h4>
-          <p>We aim to respond to all inquiries within 24 hours during business days</p>
-        </div>
-        <div class="info-card">
-          <div class="info-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-              </path>
-            </svg>
-          </div>
-          <h4>24/7 Support</h4>
-          <p>Our customer support team is available round the clock to assist you</p>
-        </div>
-        <div class="info-card">
-          <div class="info-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-          </div>
-          <h4>Visit Our Office</h4>
-          <p>Feel free to visit us at our registered office during business hours</p>
         </div>
       </div>
-    </div>
-  </section>
+    </main>
+
+  </div>
 </div>

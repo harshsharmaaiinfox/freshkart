@@ -109,6 +109,28 @@
       line-height: 1.3;
     }
 
+    &__category {
+      margin-bottom: 16px;
+
+      .category-badge {
+        display: inline-block;
+        background-color: #102539;
+        color: #ffffff;
+        padding: 6px 16px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        font-family: 'Inter', 'Rubik', sans-serif;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #E08E1B;
+        }
+      }
+    }
+
     &__price {
       margin-bottom: 12px;
 

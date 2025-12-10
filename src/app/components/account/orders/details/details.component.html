@@ -1,75 +1,82 @@
 <div class="tab-pane fade show active">
     <div class="dashboard-home">
-        <!-- Full Width Menu Bar -->
-        <div class="dashboard-menu-bar">
-            <div class="menu-container">
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/dashboard']">
-                    <i class="ri-home-fill"></i>
-                    <span>{{ 'Dashboard' | translate }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/notifications']">
-                    <i class="ri-notification-fill"></i>
-                    <span>{{ 'Notifications' | translate }}</span>
-                    <span class="notification-badge" *ngIf="unreadNotificationCount">{{ unreadNotificationCount
-                        }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/bank-details']">
-                    <i class="ri-bank-fill"></i>
-                    <span>{{ 'Bank Details' | translate }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/order']">
-                    <i class="ri-file-text-fill"></i>
-                    <span>{{ 'My Orders' | translate }}</span>
-                </a>
-
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/refund']">
-                    <i class="ri-money-rupee-circle-fill"></i>
-                    <span>{{ 'Refund History' | translate }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/addresses']">
-                    <i class="ri-map-pin-fill"></i>
-                    <span>{{ 'Saved Address' | translate }}</span>
-                </a>
+        <!-- Hero Section with Gradient -->
+        <div class="dashboard-hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">{{ 'Order Details' | translate }}</h1>
+                    <p class="hero-subtitle" *ngIf="order">{{ 'Order' | translate }} #{{ order.order_number }}</p>
+                </div>
+                <div class="hero-actions" *ngIf="order">
+                    <a href="javascript:void(0)" class="hero-btn pay-btn"
+                        *ngIf="(order?.payment_status === 'FAILED' || order?.payment_status === 'PENDING') 
+                        && (order?.order_status && order?.order_status?.slug != 'cancelled') && order?.payment_method != 'cod'" (click)="payModal.openModal(order)">
+                        <i class="ri-refresh-line"></i>
+                        <span>{{ 'Pay Now' | translate }}</span>
+                    </a>
+                    <a (click)="download(order.order_number)" class="hero-btn invoice-btn" download="download"
+                        *ngIf="order?.invoice_url && order?.payment_status && order?.payment_status === 'COMPLETED' && isLogin">
+                        <i class="ri-download-2-fill"></i>
+                        <span>{{ 'Invoice' | translate }}</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-decoration">
+                <div class="decoration-circle circle-1"></div>
+                <div class="decoration-circle circle-2"></div>
+                <div class="decoration-circle circle-3"></div>
             </div>
         </div>
 
-        <!-- Dashboard Header -->
-        <div class="dashboard-header">
-            <div class="header-content">
-                <div class="header-text">
-                    <h2 class="dashboard-title">{{ 'My Dashboard' | translate }}</h2>
-                    <p class="dashboard-subtitle">{{ 'Hello' | translate }}, <strong>{{ (user$ | async)?.name! |
-                            titleCase }}</strong> - {{ "Welcome" | translate}}</p>
+        <!-- Quick Navigation Cards -->
+        <div class="quick-nav-section">
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/dashboard']">
+                        <div class="quick-nav-icon dashboard-icon">
+                            <i class="ri-home-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Dashboard' | translate }}</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/notifications']">
+                        <div class="quick-nav-icon notifications-icon">
+                            <i class="ri-notification-fill"></i>
+                            <span class="notification-badge" *ngIf="unreadNotificationCount">{{ unreadNotificationCount
+                                }}</span>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Notifications' | translate }}</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/order']">
+                        <div class="quick-nav-icon orders-icon">
+                            <i class="ri-shopping-bag-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'My Orders' | translate }}</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/bank-details']">
+                        <div class="quick-nav-icon bank-icon">
+                            <i class="ri-bank-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Bank Details' | translate }}</span>
+                    </a>
                 </div>
             </div>
         </div>
 
         <!-- Order Details Content -->
-        <div class="dashboard-content order-details-wrapper" *ngIf="order">
-            <!-- Order Header Card -->
-            <div class="order-header-card">
-                <div class="order-info">
-                    <h2 class="order-number">{{ 'order_number' | translate }}: #{{ order.order_number }}</h2>
-                </div>
-                <div class="order-actions">
-                    <a href="javascript:void(0)" class="btn-pay"
-                        *ngIf="(order?.payment_status === 'FAILED' || order?.payment_status === 'PENDING') 
-                        && (order?.order_status && order?.order_status?.slug != 'cancelled') && order?.payment_method != 'cod'"
-                        (click)="payModal.openModal(order)">
-                        <i class="ri-refresh-line"></i>
-                        {{ 'Pay Now' | translate }}
-                    </a>
-                    <a (click)="download(order.order_number)" class="btn-invoice" download="download"
-                        *ngIf="order?.invoice_url && order?.payment_status && order?.payment_status === 'COMPLETED' && isLogin">
-                        <i class="ri-download-2-fill"></i>
-                        {{ 'Invoice' | translate }}
-                    </a>
-                </div>
-            </div>
-
-            <!-- Tracking Card -->
+        <div class="order-details-section" *ngIf="order">
+            <!-- Order Tracking Card -->
             <div class="tracking-card">
-                <div class="tracking-panel">
+                <div class="tracking-header">
+                    <i class="ri-truck-line"></i>
+                    <h3>{{ 'Order Tracking' | translate }}</h3>
+                </div>
+                <div class="tracking-timeline">
                     <ul *ngIf="order && !order?.sub_orders?.length">
                         <ng-container *ngFor="let orderStatus of (orderStatus$ | async)?.data">
                             <li [class.active]="orderStatus?.sequence! <= order.order_status.sequence!" [ngClass]="{
@@ -77,23 +84,28 @@
                                     && (order.order_status && order.order_status.slug == 'cancelled')) ||
                                     orderStatus?.slug == 'cancelled' || (order.is_digital_only && (orderStatus?.slug == 'shipped' || orderStatus?.slug == 'out-for-delivery'))
                                 }">
-                                <div class="panel-content">
-                                    <div class="icon">
+                                <div class="timeline-item">
+                                    <div class="timeline-icon">
                                         <img src="assets/svg/tracking/{{orderStatus?.slug}}.svg" class="img-fluid"
                                             alt="order status tracking icon">
                                     </div>
-                                    <div class="status">{{ orderStatus?.name | titleCase }}</div>
+                                    <div class="timeline-content">
+                                        <span class="status-name">{{ orderStatus?.name | titleCase }}</span>
+                                    </div>
                                 </div>
                             </li>
                         </ng-container>
-                        <li class="active cancelled-box"
+                        <li class="active cancelled-status"
                             *ngIf="order?.order_status && order?.order_status?.slug == 'cancelled'">
-                            <div class="panel-content" *ngIf="order?.order_status">
-                                <div class="icon">
+                            <div class="timeline-item" *ngIf="order?.order_status">
+                                <div class="timeline-icon">
                                     <img src="assets/svg/tracking/{{order.order_status.slug}}.svg" class="img-fluid"
                                         alt="order status tracking icon">
                                 </div>
-                                <div class="status">{{ order.order_status.name.replace('_', ' ')! | titlecase }}</div>
+                                <div class="timeline-content">
+                                    <span class="status-name">{{ order.order_status.name.replace('_', ' ')! | titlecase
+                                        }}</span>
+                                </div>
                             </div>
                         </li>
                     </ul>
@@ -102,8 +114,12 @@
 
             <!-- Products Card -->
             <div class="products-card" *ngIf="order?.products?.length">
+                <div class="card-header">
+                    <i class="ri-shopping-cart-line"></i>
+                    <h3>{{ 'Order Items' | translate }}</h3>
+                </div>
                 <div class="table-responsive">
-                    <table class="styled-table">
+                    <table class="modern-table">
                         <thead>
                             <tr>
                                 <th>{{ 'Image' | translate }}</th>
@@ -124,18 +140,17 @@
                                             : 'assets/images/product.png'" class="img-fluid" alt="product">
                                 </td>
                                 <td>
-                                    <h6>{{ product?.pivot?.variation ? product?.pivot?.variation?.name : product?.name
-                                        }}
-                                    </h6>
+                                    <div class="product-name">{{ product?.pivot?.variation ?
+                                        product?.pivot?.variation?.name : product?.name }}</div>
                                 </td>
                                 <td>
-                                    <h6>{{ product?.pivot?.single_price | currencySymbol }}</h6>
+                                    <div class="product-price">{{ product?.pivot?.single_price | currencySymbol }}</div>
                                 </td>
                                 <td>
-                                    <h6>{{ product?.pivot?.quantity }}</h6>
+                                    <div class="product-qty">{{ product?.pivot?.quantity }}</div>
                                 </td>
                                 <td>
-                                    <h6>{{ product?.pivot?.subtotal | currencySymbol }}</h6>
+                                    <div class="product-subtotal">{{ product?.pivot?.subtotal | currencySymbol }}</div>
                                 </td>
                                 <td>
                                     <a class="btn-refund" href="javascript:void(0)" *ngIf="product?.is_return === 1 &&
@@ -172,19 +187,17 @@
             </div>
 
             <!-- Consumer Details & Summary Row -->
-            <div class="row g-3">
-                <div class="col-xxl-8 col-lg-12 col-md-7">
+            <div class="row g-4">
+                <div class="col-lg-7">
                     <div class="details-card">
                         <div class="card-header">
-                            <h4 class="card-title">
-                                <i class="ri-user-line"></i>
-                                {{ 'Consumer Details' | translate }}
-                            </h4>
+                            <i class="ri-user-line"></i>
+                            <h3>{{ 'Consumer Details' | translate }}</h3>
                         </div>
                         <div class="card-body">
                             <div class="details-grid">
                                 <div class="detail-item" *ngIf="order?.billing_address">
-                                    <label>{{ 'Billing Address' | translate }}</label>
+                                    <label><i class="ri-map-pin-line"></i> {{ 'Billing Address' | translate }}</label>
                                     <div class="detail-value" *ngIf="order?.billing_address?.state">
                                         {{ order.billing_address.street }},
                                         {{ order.billing_address.city }}, {{ order.billing_address.state.name }},
@@ -195,7 +208,7 @@
                                     </div>
                                 </div>
                                 <div class="detail-item" *ngIf="order?.shipping_address && !order?.is_digital_only">
-                                    <label>{{ 'Shipping Address' | translate }}</label>
+                                    <label><i class="ri-truck-line"></i> {{ 'Shipping Address' | translate }}</label>
                                     <div class="detail-value" *ngIf="order?.shipping_address?.state">
                                         {{ order.shipping_address.street }},
                                         {{ order.shipping_address.city }}, {{ order.shipping_address.state.name }},
@@ -206,11 +219,11 @@
                                     </div>
                                 </div>
                                 <div class="detail-item" *ngIf="order?.delivery_description && !order?.is_digital_only">
-                                    <label>{{ 'Delivery Slot' | translate }}</label>
+                                    <label><i class="ri-time-line"></i> {{ 'Delivery Slot' | translate }}</label>
                                     <div class="detail-value">Standard Delivery | Approx 10 to 15 Days</div>
                                 </div>
                                 <div class="detail-item" *ngIf="order?.payment_method">
-                                    <label>{{ 'Payment Mode' | translate }}</label>
+                                    <label><i class="ri-wallet-line"></i> {{ 'Payment Mode' | translate }}</label>
                                     <div class="detail-value">
                                         <span *ngIf="order?.payment_method === 'VastraVibe_nabu'">Pay By UPI INTENT
                                             3</span>
@@ -220,7 +233,7 @@
                                     </div>
                                 </div>
                                 <div class="detail-item" *ngIf="order?.payment_method">
-                                    <label>{{ 'Payment Status' | translate }}</label>
+                                    <label><i class="ri-check-line"></i> {{ 'Payment Status' | translate }}</label>
                                     <div class="detail-value">
                                         <span class="status-badge status-{{order.payment_status?.toLowerCase()}}">{{
                                             order.payment_status | uppercase }}</span>
@@ -230,35 +243,44 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xxl-4 col-lg-12 col-md-5">
+                <div class="col-lg-5">
                     <div class="summary-card">
                         <div class="card-header">
-                            <h4 class="card-title">
-                                <i class="ri-file-list-3-line"></i>
-                                {{ 'Summary' | translate }}
-                            </h4>
+                            <i class="ri-file-list-3-line"></i>
+                            <h3>{{ 'Order Summary' | translate }}</h3>
                         </div>
                         <div class="card-body">
                             <ul class="summary-list">
-                                <li>{{ 'Subtotal' | translate }} <span>{{ (order.amount ? order.amount : 0) |
-                                        currencySymbol
-                                        }}</span></li>
-                                <li *ngIf="!order?.is_digital_only">{{ 'shipping'| translate }} <span>{{
-                                        (order.shipping_total ? order.shipping_total : 0) | currencySymbol }}</span>
+                                <li>
+                                    <span>{{ 'Subtotal' | translate }}</span>
+                                    <span class="value">{{ (order.amount ? order.amount : 0) | currencySymbol }}</span>
                                 </li>
-                                <li>{{ 'tax'| translate }} <span>{{ (order.tax_total ? order.tax_total : 0) |
-                                        currencySymbol
-                                        }}</span></li>
-                                <li class="discount" *ngIf="order.points_amount != 0">{{ 'points'| translate }}
-                                    <span>-{{ order.points_amount | currencySymbol }}</span>
+                                <li *ngIf="!order?.is_digital_only">
+                                    <span>{{ 'shipping'| translate }}</span>
+                                    <span class="value">{{ (order.shipping_total ? order.shipping_total : 0) |
+                                        currencySymbol }}</span>
                                 </li>
-                                <li class="discount" *ngIf="order.wallet_balance != 0">{{ 'wallet_balance'|
-                                    translate }} <span>-{{ order.wallet_balance | currencySymbol }}</span></li>
-                                <li class="discount" *ngIf="order.coupon_total_discount != 0">{{ 'discount'|
-                                    translate }} <span>-{{ order.coupon_total_discount | currencySymbol }}</span></li>
-                                <li class="total">{{ 'Total'| translate }} <span>{{ (order.total ? order.total : 0) |
-                                        currencySymbol
-                                        }}</span></li>
+                                <li>
+                                    <span>{{ 'tax'| translate }}</span>
+                                    <span class="value">{{ (order.tax_total ? order.tax_total : 0) | currencySymbol
+                                        }}</span>
+                                </li>
+                                <li class="discount" *ngIf="order.points_amount != 0">
+                                    <span>{{ 'points'| translate }}</span>
+                                    <span class="value">-{{ order.points_amount | currencySymbol }}</span>
+                                </li>
+                                <li class="discount" *ngIf="order.wallet_balance != 0">
+                                    <span>{{ 'wallet_balance'| translate }}</span>
+                                    <span class="value">-{{ order.wallet_balance | currencySymbol }}</span>
+                                </li>
+                                <li class="discount" *ngIf="order.coupon_total_discount != 0">
+                                    <span>{{ 'discount'| translate }}</span>
+                                    <span class="value">-{{ order.coupon_total_discount | currencySymbol }}</span>
+                                </li>
+                                <li class="total">
+                                    <span>{{ 'Total'| translate }}</span>
+                                    <span class="value">{{ (order.total ? order.total : 0) | currencySymbol }}</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -267,8 +289,12 @@
 
             <!-- Sub Orders Table -->
             <div class="products-card" *ngIf="order?.sub_orders?.length">
+                <div class="card-header">
+                    <i class="ri-file-list-line"></i>
+                    <h3>{{ 'Sub Orders' | translate }}</h3>
+                </div>
                 <div class="table-responsive">
-                    <table class="styled-table">
+                    <table class="modern-table">
                         <thead>
                             <tr>
                                 <th>{{ 'Order_number' | translate }}</th>
@@ -281,13 +307,14 @@
                         <tbody>
                             <tr *ngFor="let subOrder of order.sub_orders">
                                 <td>
-                                    <h6>{{ '#'+subOrder.order_number }}</h6>
+                                    <div class="order-number">#{{ subOrder.order_number }}</div>
                                 </td>
                                 <td>
-                                    <h6>{{ subOrder.created_at | date: 'dd MMM yyyy hh:mm:a' }}</h6>
+                                    <div class="order-date">{{ subOrder.created_at | date: 'dd MMM yyyy hh:mm:a' }}
+                                    </div>
                                 </td>
                                 <td>
-                                    <h6>{{ subOrder.amount | currencySymbol }}</h6>
+                                    <div class="order-amount">{{ subOrder.amount | currencySymbol }}</div>
                                 </td>
                                 <td>
                                     <div class="status-badge status-{{subOrder.order_status.slug}}">
@@ -298,6 +325,7 @@
                                     <a href="javascript:void(0)" class="view-btn"
                                         [routerLink]="['/account/order/details', subOrder.order_number]">
                                         <i class="ri-eye-line"></i>
+                                        <span>View</span>
                                     </a>
                                 </td>
                             </tr>

@@ -1,124 +1,163 @@
 <div class="tab-pane fade show active">
     <div class="dashboard-home">
-        <!-- Full Width Menu Bar -->
-        <div class="dashboard-menu-bar">
-            <div class="menu-container">
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/dashboard']">
-                    <i class="ri-home-fill"></i>
-                    <span>{{ 'Dashboard' | translate }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/notifications']">
-                    <i class="ri-notification-fill"></i>
-                    <span>{{ 'Notifications' | translate }}</span>
-                    <span class="notification-badge" *ngIf="unreadNotificationCount">{{ unreadNotificationCount
-                        }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/bank-details']">
+        <!-- Hero Section with Gradient -->
+        <div class="dashboard-hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">{{ 'Bank Details' | translate }}</h1>
+                    <p class="hero-subtitle">{{ 'Manage your payment information securely' | translate }}</p>
+                </div>
+                <div class="hero-icon">
                     <i class="ri-bank-fill"></i>
-                    <span>{{ 'Bank Details' | translate }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/order']">
-
-                    <i class="ri-file-text-fill"></i>
-                    <span>{{ 'My Orders' | translate }}</span>
-                </a>
-
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/refund']">
-                    <i class="ri-money-rupee-circle-fill"></i>
-                    <span>{{ 'Refund History' | translate }}</span>
-                </a>
-                <a class="menu-item" [routerLinkActive]="['active']" [routerLink]="['/account/addresses']">
-                    <i class="ri-map-pin-fill"></i>
-                    <span>{{ 'Saved Address' | translate }}</span>
-                </a>
+                </div>
+            </div>
+            <div class="hero-decoration">
+                <div class="decoration-circle circle-1"></div>
+                <div class="decoration-circle circle-2"></div>
+                <div class="decoration-circle circle-3"></div>
             </div>
         </div>
 
-        <!-- Dashboard Header -->
-        <div class="dashboard-header">
-            <div class="header-content">
-                <div class="header-text">
-                    <h2 class="dashboard-title">{{ 'My Dashboard' | translate }}</h2>
-                    <p class="dashboard-subtitle">{{ 'Hello' | translate }}, <strong>{{ (user$ | async)?.name! |
-                            titleCase }}</strong> - {{ "Welcome" | translate}}</p>
+        <!-- Quick Navigation Cards -->
+        <div class="quick-nav-section">
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/dashboard']">
+                        <div class="quick-nav-icon dashboard-icon">
+                            <i class="ri-home-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Dashboard' | translate }}</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/notifications']">
+                        <div class="quick-nav-icon notifications-icon">
+                            <i class="ri-notification-fill"></i>
+                            <span class="notification-badge" *ngIf="unreadNotificationCount">{{ unreadNotificationCount
+                                }}</span>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Notifications' | translate }}</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/order']">
+                        <div class="quick-nav-icon orders-icon">
+                            <i class="ri-shopping-bag-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'My Orders' | translate }}</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a class="quick-nav-card" [routerLink]="['/account/addresses']">
+                        <div class="quick-nav-icon address-icon">
+                            <i class="ri-map-pin-fill"></i>
+                        </div>
+                        <span class="quick-nav-label">{{ 'Saved Address' | translate }}</span>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- Bank Details Content -->
-        <div class="dashboard-content">
-            <div class="bank-details-wrapper">
-                <!-- Bank Details Section -->
-                <div class="details-card">
-                    <div class="card-header">
-                        <h4 class="card-title">
-                            <i class="ri-bank-line"></i>
-                            {{ 'Bank Details' | translate }}
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <form class="bank-form" [formGroup]="form" (ngSubmit)="submit()">
-                            <div class="form-row">
-                                <label for="bank_account_no" class="form-label">{{ 'Bank Account No.'|
-                                    translate}}</label>
-                                <input type="text" class="form-control" id="bank_account_no"
-                                    placeholder="{{ 'Enter bank Account Number' | translate }}"
-                                    formControlName="bank_account_no" (keydown)="allowOnlyDigits($event)"
-                                    (input)="sanitizeDigitsInput($event, 'bank_account_no')"
-                                    (paste)="sanitizeDigitsPaste($event)">
+        <!-- Bank Details Forms Section -->
+        <div class="bank-details-section">
+            <div class="row g-4">
+                <!-- Bank Details Card -->
+                <div class="col-lg-6">
+                    <div class="details-card">
+                        <div class="card-header">
+                            <div class="card-header-content">
+                                <div class="card-icon">
+                                    <i class="ri-bank-fill"></i>
+                                </div>
+                                <h4 class="card-title">{{ 'Bank Details' | translate }}</h4>
                             </div>
-                            <div class="form-row">
-                                <label for="bank_name" class="form-label">{{ 'Bank Name'| translate}}</label>
-                                <input type="text" class="form-control" id="bank_name"
-                                    placeholder="{{ 'Enter Bank Name' | translate }}" formControlName="bank_name"
-                                    (keydown)="allowOnlyLetters($event)"
-                                    (input)="sanitizeLettersInput($event, 'bank_name')"
-                                    (paste)="sanitizeLettersPaste($event)">
-                            </div>
-                            <div class="form-row">
-                                <label for="bank_holder_name" class="form-label">{{ 'Holder Name'| translate}}</label>
-                                <input type="text" class="form-control" id="bank_holder_name"
-                                    placeholder="{{ 'Enter Bank Holder Name' | translate }}"
-                                    formControlName="bank_holder_name" (keydown)="allowOnlyLetters($event)"
-                                    (input)="sanitizeLettersInput($event, 'bank_holder_name')"
-                                    (paste)="sanitizeLettersPaste($event)">
-                            </div>
-                            <div class="form-row">
-                                <label for="swift" class="form-label">{{ 'Swift'| translate}}</label>
-                                <input type="text" class="form-control" id="swift"
-                                    placeholder="{{ 'Enter Swift' | translate }}" formControlName="swift">
-                            </div>
-                            <div class="form-row">
-                                <label for="ifsc" class="form-label">{{ 'IFSC'| translate}}</label>
-                                <input type="text" class="form-control" id="ifsc"
-                                    placeholder="{{ 'Enter IFSC' | translate }}" formControlName="ifsc">
-                            </div>
-                        </form>
+                        </div>
+                        <div class="card-body">
+                            <form class="bank-form" [formGroup]="form" (ngSubmit)="submit()">
+                                <div class="form-group">
+                                    <label for="bank_account_no" class="form-label">
+                                        <i class="ri-hashtag"></i>
+                                        {{ 'Bank Account No.' | translate }}
+                                    </label>
+                                    <input type="text" class="form-control" id="bank_account_no"
+                                        placeholder="{{ 'Enter bank Account Number' | translate }}"
+                                        formControlName="bank_account_no" (keydown)="allowOnlyDigits($event)"
+                                        (input)="sanitizeDigitsInput($event, 'bank_account_no')"
+                                        (paste)="sanitizeDigitsPaste($event)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bank_name" class="form-label">
+                                        <i class="ri-building-line"></i>
+                                        {{ 'Bank Name' | translate }}
+                                    </label>
+                                    <input type="text" class="form-control" id="bank_name"
+                                        placeholder="{{ 'Enter Bank Name' | translate }}" formControlName="bank_name"
+                                        (keydown)="allowOnlyLetters($event)"
+                                        (input)="sanitizeLettersInput($event, 'bank_name')"
+                                        (paste)="sanitizeLettersPaste($event)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bank_holder_name" class="form-label">
+                                        <i class="ri-user-line"></i>
+                                        {{ 'Holder Name' | translate }}
+                                    </label>
+                                    <input type="text" class="form-control" id="bank_holder_name"
+                                        placeholder="{{ 'Enter Bank Holder Name' | translate }}"
+                                        formControlName="bank_holder_name" (keydown)="allowOnlyLetters($event)"
+                                        (input)="sanitizeLettersInput($event, 'bank_holder_name')"
+                                        (paste)="sanitizeLettersPaste($event)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="swift" class="form-label">
+                                        <i class="ri-global-line"></i>
+                                        {{ 'Swift' | translate }}
+                                    </label>
+                                    <input type="text" class="form-control" id="swift"
+                                        placeholder="{{ 'Enter Swift' | translate }}" formControlName="swift">
+                                </div>
+                                <div class="form-group">
+                                    <label for="ifsc" class="form-label">
+                                        <i class="ri-code-line"></i>
+                                        {{ 'IFSC' | translate }}
+                                    </label>
+                                    <input type="text" class="form-control" id="ifsc"
+                                        placeholder="{{ 'Enter IFSC' | translate }}" formControlName="ifsc">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Paypal Details Section -->
-                <div class="details-card">
-                    <div class="card-header">
-                        <h4 class="card-title">
-                            <i class="ri-paypal-line"></i>
-                            {{ 'Paypal Details'| translate}}
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <form class="bank-form" [formGroup]="form" (ngSubmit)="submit()">
-                            <div class="form-row">
-                                <label for="paypal_email" class="form-label">{{'Paypal Email'| translate}}</label>
-                                <input type="email" class="form-control" id="paypal_email"
-                                    placeholder="{{ 'Enter Paypal Email' | translate }}" formControlName="paypal_email">
+                <!-- Paypal Details Card -->
+                <div class="col-lg-6">
+                    <div class="details-card">
+                        <div class="card-header">
+                            <div class="card-header-content">
+                                <div class="card-icon paypal-icon">
+                                    <i class="ri-paypal-fill"></i>
+                                </div>
+                                <h4 class="card-title">{{ 'Paypal Details' | translate }}</h4>
                             </div>
-                            <div class="form-actions">
-                                <app-button [class]="'btn btn-save'" [id]="'payout_btn'">
-                                    <i class="ri-save-line"></i>
-                                    {{ 'Save'| translate}}
-                                </app-button>
-                            </div>
-                        </form>
+                        </div>
+                        <div class="card-body">
+                            <form class="bank-form" [formGroup]="form" (ngSubmit)="submit()">
+                                <div class="form-group">
+                                    <label for="paypal_email" class="form-label">
+                                        <i class="ri-mail-line"></i>
+                                        {{ 'Paypal Email' | translate }}
+                                    </label>
+                                    <input type="email" class="form-control" id="paypal_email"
+                                        placeholder="{{ 'Enter Paypal Email' | translate }}"
+                                        formControlName="paypal_email">
+                                </div>
+                                <div class="save-button-wrapper">
+                                    <app-button [class]="'btn btn-save'" [id]="'payout_btn'">
+                                        <i class="ri-save-line"></i>
+                                        {{ 'Save' | translate }}
+                                    </app-button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

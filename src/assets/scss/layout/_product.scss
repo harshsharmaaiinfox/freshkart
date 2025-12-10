@@ -1607,7 +1607,7 @@
 }
 
 .product-category {
-  padding: calc(19px + (36 - 19) * ((100vw - 320px) / (1920 - 320))) calc(16px + (25 - 16) * ((100vw - 320px) / (1920 - 320)));
+  // padding: calc(19px + (36 - 19) * ((100vw - 320px) / (1920 - 320))) calc(16px + (25 - 16) * ((100vw - 320px) / (1920 - 320)));
   background-color: $light-gray;
 
   .product-category-list {

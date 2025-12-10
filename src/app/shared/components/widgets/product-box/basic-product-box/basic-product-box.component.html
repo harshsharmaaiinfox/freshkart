@@ -25,6 +25,15 @@
             <h3 class="product-title">{{ product.name }}</h3>
         </a>
 
+
+        <!-- Category Badge - Debug Mode -->
+        <div class="product-category">
+            <span class="category-badge">
+                {{ product?.category?.name || product?.categories?.[0]?.name || 'No Category Data' }}
+            </span>
+        </div>
+
+
         <div class="product-pricing">
             <div class="price-wrapper">
                 <span class="original-price" *ngIf="product.discount">{{ product.price | currencySymbol }}</span>

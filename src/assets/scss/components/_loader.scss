@@ -65,6 +65,7 @@
   z-index: 0;
 
   .box-loader {
+
     .loader-wrapper,
     .custom-loader-wrapper {
       position: absolute;
@@ -72,13 +73,13 @@
       left: 0;
       border-radius: 8px;
       @include pseudowh;
-      background-color: $light-gray;
+      background-color: $white;
       padding: 0;
       gap: 0;
       z-index: 8;
       align-items: flex-start;
 
-      > div {
+      >div {
         padding-top: 30%;
       }
     }
@@ -150,18 +151,16 @@ div#loading-bar {
     width: 100%;
     z-index: 1;
     display: flex;
-  } 
-  
+  }
+
 
   .placeholder-text {
     height: 20px;
     width: 100%;
-    background: linear-gradient(
-      90deg,
-      rgba(212, 212, 212, 0.41) 8%,
-      #cdcdcd 18%,
-      rgba(212, 212, 212, 0.41) 33%
-    );
+    background: linear-gradient(90deg,
+        rgba(212, 212, 212, 0.41) 8%,
+        #cdcdcd 18%,
+        rgba(212, 212, 212, 0.41) 33%);
     background-size: 800px 104px;
     animation: skeleton-loader 2s infinite linear;
     border-radius: 10px;
@@ -174,6 +173,7 @@ div#loading-bar {
     .home-detail {
       display: none;
     }
+
     .skeleton-banner-xl {
       background-color: #3c3c3c;
       height: 80vh;
@@ -182,21 +182,23 @@ div#loading-bar {
       left: 0;
       top: 0;
       width: 100%;
+
       @include mq-max(2xl) {
         height: 70vh;
       }
-  
+
       @include mq-max(xl) {
         height: 60vh;
       }
-  
+
       @include mq-max(sm) {
         height: 50vh;
       }
-  
+
       @media (max-width: 375px) {
         height: 60vh;
       }
+
       .skeleton-text-wrap {
         left: 50%;
         width: 50%;
@@ -208,6 +210,7 @@ div#loading-bar {
           width: 100%;
         }
       }
+
       .placeholder {
         margin: 0 auto;
       }
@@ -289,12 +292,10 @@ div#loading-bar {
 
     .placeholder {
       min-height: 4.3%;
-      background: linear-gradient(
-        90deg,
-        rgb(212, 212, 212, 0.41) 8%,
-        #cdcdcd 18%,
-        rgb(212, 212, 212, 0.41) 33%
-      );
+      background: linear-gradient(90deg,
+          rgb(212, 212, 212, 0.41) 8%,
+          #cdcdcd 18%,
+          rgb(212, 212, 212, 0.41) 33%);
       background-size: 800px 104px;
       animation: skeleton-loader 2s infinite linear;
       border-radius: 10px;
@@ -338,31 +339,27 @@ div#loading-bar {
     background-position: -500px 0;
     animation: skeletonShine 1s linear 0s infinite normal forwards;
     border-radius: 5px;
-    background-image: linear-gradient(
-      135deg,
-      #f6f7f8 0%,
-      #edeef1 20%,
-      #f6f7f8 40%,
-      #f6f7f8 100%
-    );
+    background-image: linear-gradient(135deg,
+        #f6f7f8 0%,
+        #edeef1 20%,
+        #f6f7f8 40%,
+        #f6f7f8 100%);
     background-repeat: no-repeat;
     background-size: 1000px 100%;
     width: 100%;
 
     [class="dark"] & {
       background-color: #1d1d22;
-      background-image: linear-gradient(
-        135deg,
-        #1d1d22 0%,
-        #2a2d2d 20%,
-        #1d1d22 40%,
-        #1d1d22 100%
-      );
+      background-image: linear-gradient(135deg,
+          #1d1d22 0%,
+          #2a2d2d 20%,
+          #1d1d22 40%,
+          #1d1d22 100%);
     }
   }
 }
 
-.skeleton__section + .skeleton__section {
+.skeleton__section+.skeleton__section {
   margin-top: 16px;
 }
 
@@ -431,13 +428,11 @@ div#loading-bar {
     background: #f6f7f8;
     background-position: -500px 0;
     animation: skeletonShine 1s linear 0s infinite normal forwards;
-    background-image: linear-gradient(
-      135deg,
-      #f6f7f8 0%,
-      #edeef1 20%,
-      #f6f7f8 40%,
-      #f6f7f8 100%
-    );
+    background-image: linear-gradient(135deg,
+        #f6f7f8 0%,
+        #edeef1 20%,
+        #f6f7f8 40%,
+        #f6f7f8 100%);
     background-repeat: no-repeat;
     background-size: 1000px 100%;
     border-radius: 4px;
@@ -470,13 +465,11 @@ div#loading-bar {
     background: #f6f7f8;
     background-position: -500px 0;
     animation: skeletonShine 1s linear 0s infinite normal forwards;
-    background-image: linear-gradient(
-      135deg,
-      #f6f7f8 0%,
-      #edeef1 20%,
-      #f6f7f8 40%,
-      #f6f7f8 100%
-    );
+    background-image: linear-gradient(135deg,
+        #f6f7f8 0%,
+        #edeef1 20%,
+        #f6f7f8 40%,
+        #f6f7f8 100%);
     background-repeat: no-repeat;
     background-size: 1000px 100%;
   }
@@ -487,13 +480,11 @@ div#loading-bar {
       background-position: -500px 0;
       animation: skeletonShine 1s linear 0s infinite normal forwards;
       border-radius: 5px;
-      background-image: linear-gradient(
-        135deg,
-        #f6f7f8 0%,
-        #edeef1 20%,
-        #f6f7f8 40%,
-        #f6f7f8 100%
-      );
+      background-image: linear-gradient(135deg,
+          #f6f7f8 0%,
+          #edeef1 20%,
+          #f6f7f8 40%,
+          #f6f7f8 100%);
       background-repeat: no-repeat;
       background-size: 1000px 100%;
       width: 50%;
@@ -505,13 +496,11 @@ div#loading-bar {
       background-position: -500px 0;
       animation: skeletonShine 1s linear 0s infinite normal forwards;
       border-radius: 5px;
-      background-image: linear-gradient(
-        135deg,
-        #f6f7f8 0%,
-        #edeef1 20%,
-        #f6f7f8 40%,
-        #f6f7f8 100%
-      );
+      background-image: linear-gradient(135deg,
+          #f6f7f8 0%,
+          #edeef1 20%,
+          #f6f7f8 40%,
+          #f6f7f8 100%);
       background-repeat: no-repeat;
       background-size: 1000px 100%;
       width: 20%;
@@ -528,13 +517,11 @@ div#loading-bar {
     background-position: -500px 0;
     animation: skeletonShine 1s linear 0s infinite normal forwards;
     border-radius: 5px;
-    background-image: linear-gradient(
-      135deg,
-      #f6f7f8 0%,
-      #edeef1 20%,
-      #f6f7f8 40%,
-      #f6f7f8 100%
-    );
+    background-image: linear-gradient(135deg,
+        #f6f7f8 0%,
+        #edeef1 20%,
+        #f6f7f8 40%,
+        #f6f7f8 100%);
     background-repeat: no-repeat;
     background-size: 1000px 100%;
     width: 50% !important;
@@ -594,13 +581,11 @@ div#loading-bar {
     background: #f6f7f8;
     background-position: -500px 0;
     animation: skeletonShine 1s linear 0s infinite normal forwards;
-    background-image: linear-gradient(
-      135deg,
-      #f6f7f8 0%,
-      #edeef1 20%,
-      #f6f7f8 40%,
-      #f6f7f8 100%
-    );
+    background-image: linear-gradient(135deg,
+        #f6f7f8 0%,
+        #edeef1 20%,
+        #f6f7f8 40%,
+        #f6f7f8 100%);
     background-repeat: no-repeat;
     background-size: 1000px 100%;
     border-radius: 7px;
@@ -612,13 +597,11 @@ div#loading-bar {
         background: #f6f7f8;
         background-position: -500px 0;
         animation: skeletonShine 1s linear 0s infinite normal forwards;
-        background-image: linear-gradient(
-          135deg,
-          #f6f7f8 0%,
-          #edeef1 20%,
-          #f6f7f8 40%,
-          #f6f7f8 100%
-        );
+        background-image: linear-gradient(135deg,
+            #f6f7f8 0%,
+            #edeef1 20%,
+            #f6f7f8 40%,
+            #f6f7f8 100%);
         background-repeat: no-repeat;
         background-size: 1000px 100%;
         width: 120px;
@@ -630,13 +613,11 @@ div#loading-bar {
         background: #f6f7f8;
         background-position: -500px 0;
         animation: skeletonShine 1s linear 0s infinite normal forwards;
-        background-image: linear-gradient(
-          135deg,
-          #f6f7f8 0%,
-          #edeef1 20%,
-          #f6f7f8 40%,
-          #f6f7f8 100%
-        );
+        background-image: linear-gradient(135deg,
+            #f6f7f8 0%,
+            #edeef1 20%,
+            #f6f7f8 40%,
+            #f6f7f8 100%);
         background-repeat: no-repeat;
         background-size: 1000px 100%;
         width: 30px;
@@ -649,13 +630,11 @@ div#loading-bar {
           background: #f6f7f8;
           background-position: -500px 0;
           animation: skeletonShine 1s linear 0s infinite normal forwards;
-          background-image: linear-gradient(
-            135deg,
-            #f6f7f8 0%,
-            #edeef1 20%,
-            #f6f7f8 40%,
-            #f6f7f8 100%
-          );
+          background-image: linear-gradient(135deg,
+              #f6f7f8 0%,
+              #edeef1 20%,
+              #f6f7f8 40%,
+              #f6f7f8 100%);
           background-repeat: no-repeat;
           background-size: 1000px 100%;
           width: 120px;
@@ -678,13 +657,11 @@ div#loading-bar {
           background-position: -500px 0;
           animation: skeletonShine 2s linear 0s infinite normal forwards;
           border-radius: 5px;
-          background-image: linear-gradient(
-            135deg,
-            #ffffff 0%,
-            #e1e1e1 20%,
-            #ffffff 40%,
-            #ffffff 100%
-          );
+          background-image: linear-gradient(135deg,
+              #ffffff 0%,
+              #e1e1e1 20%,
+              #ffffff 40%,
+              #ffffff 100%);
           background-repeat: no-repeat;
           background-size: 1000px 100%;
           opacity: 1;
@@ -704,13 +681,11 @@ div#loading-bar {
         background-position: -500px 0;
         animation: skeletonShine 2s linear 0s infinite normal forwards;
         border-radius: 5px;
-        background-image: linear-gradient(
-          135deg,
-          #ffffff 0%,
-          #e1e1e1 20%,
-          #ffffff 40%,
-          #ffffff 100%
-        );
+        background-image: linear-gradient(135deg,
+            #ffffff 0%,
+            #e1e1e1 20%,
+            #ffffff 40%,
+            #ffffff 100%);
         background-repeat: no-repeat;
         background-size: 1000px 100%;
         opacity: 1;
@@ -746,19 +721,17 @@ div#loading-bar {
       background-position: -500px 0;
       animation: skeletonShine 1s linear 0s infinite normal forwards;
       border-radius: 5px;
-      background-image: linear-gradient(
-        135deg,
-        #f6f7f8 0%,
-        #edeef1 20%,
-        #f6f7f8 40%,
-        #f6f7f8 100%
-      );
+      background-image: linear-gradient(135deg,
+          #f6f7f8 0%,
+          #edeef1 20%,
+          #f6f7f8 40%,
+          #f6f7f8 100%);
       background-repeat: no-repeat;
       background-size: 1000px 100%;
       opacity: 1;
       height: 24px;
 
-      + .placeholder {
+      +.placeholder {
         margin-top: 14px;
       }
     }
@@ -789,13 +762,11 @@ div#loading-bar {
       background: #f6f7f8;
       background-position: -500px 0;
       animation: skeletonShine 1s linear 0s infinite normal forwards;
-      background-image: linear-gradient(
-        135deg,
-        #f6f7f8 0%,
-        #edeef1 20%,
-        #f6f7f8 40%,
-        #f6f7f8 100%
-      );
+      background-image: linear-gradient(135deg,
+          #f6f7f8 0%,
+          #edeef1 20%,
+          #f6f7f8 40%,
+          #f6f7f8 100%);
       background-repeat: no-repeat;
       background-size: 1000px 100%;
       opacity: 1;
@@ -806,13 +777,11 @@ div#loading-bar {
       background-position: -500px 0;
       animation: skeletonShine 1s linear 0s infinite normal forwards;
       border-radius: 5px;
-      background-image: linear-gradient(
-        135deg,
-        #f6f7f8 0%,
-        #edeef1 20%,
-        #f6f7f8 40%,
-        #f6f7f8 100%
-      );
+      background-image: linear-gradient(135deg,
+          #f6f7f8 0%,
+          #edeef1 20%,
+          #f6f7f8 40%,
+          #f6f7f8 100%);
       background-repeat: no-repeat;
       background-size: 1000px 100%;
       opacity: 1;
@@ -838,12 +807,10 @@ div#loading-bar {
     &.skeleton-qa {
       li {
         h6 {
-          background: linear-gradient(
-            90deg,
-            rgb(212, 212, 212, 0.41) 8%,
-            #cdcdcd 18%,
-            rgb(212, 212, 212, 0.41) 33%
-          );
+          background: linear-gradient(90deg,
+              rgb(212, 212, 212, 0.41) 8%,
+              #cdcdcd 18%,
+              rgb(212, 212, 212, 0.41) 33%);
           background-size: 800px 104px;
           animation: skeleton-loader 2s infinite linear;
           height: 30px;
@@ -851,28 +818,24 @@ div#loading-bar {
 
           html.dark & {
             background: rgba(246, 247, 248, 0.05);
-            background-image: linear-gradient(
-              135deg,
-              #3f4242 0%,
-              rgba(237, 238, 241, 0.1) 20%,
-              #3f4242 40%,
-              #3f4242 100%
-            );
+            background-image: linear-gradient(135deg,
+                #3f4242 0%,
+                rgba(237, 238, 241, 0.1) 20%,
+                #3f4242 40%,
+                #3f4242 100%);
           }
         }
 
         .answer-box {
-          > div {
+          >div {
             width: 100%;
           }
 
           p {
-            background: linear-gradient(
-              90deg,
-              rgb(212, 212, 212, 0.41) 8%,
-              #cdcdcd 18%,
-              rgb(212, 212, 212, 0.41) 33%
-            );
+            background: linear-gradient(90deg,
+                rgb(212, 212, 212, 0.41) 8%,
+                #cdcdcd 18%,
+                rgb(212, 212, 212, 0.41) 33%);
             background-size: 800px 104px;
             animation: skeleton-loader 2s infinite linear;
             height: 25px;
@@ -881,13 +844,11 @@ div#loading-bar {
 
             html.dark & {
               background: rgba(246, 247, 248, 0.05);
-              background-image: linear-gradient(
-                135deg,
-                #3f4242 0%,
-                rgba(237, 238, 241, 0.1) 20%,
-                #3f4242 40%,
-                #3f4242 100%
-              );
+              background-image: linear-gradient(135deg,
+                  #3f4242 0%,
+                  rgba(237, 238, 241, 0.1) 20%,
+                  #3f4242 40%,
+                  #3f4242 100%);
             }
 
             &:nth-child(2) {

@@ -32,36 +32,42 @@ export class MenuComponent {
   public products: any[];
   public blogs: Blog[];
 
-  constructor(private store: Store, private router: Router, public menuService: MenuService){
+  constructor(private store: Store, private router: Router, public menuService: MenuService) {
     this.menu$.subscribe(menu => {
       const productIds = Array.from(new Set(this.concatDynamicProductKeys(menu, 'product_ids')));
-      if(productIds && productIds.length){
-        this.store.dispatch(new GetMenuProducts({ids: productIds?.join()})).subscribe({
+      if (productIds && productIds.length) {
+        this.store.dispatch(new GetMenuProducts({ ids: productIds?.join() })).subscribe({
           next: (val) => {
-            this.products = val.product.menuProducts.slice(0,2);
+            this.products = val.product.menuProducts.slice(0, 2);
           }
         })
       }
 
       const blogIds = Array.from(new Set(this.concatDynamicProductKeys(menu, 'blog_ids')));
-      if(blogIds && blogIds.length){
-        this.store.dispatch(new GetSelectedBlogs({status: 1, ids: blogIds?.join()})).subscribe({
+      if (blogIds && blogIds.length) {
+        this.store.dispatch(new GetSelectedBlogs({ status: 1, ids: blogIds?.join() })).subscribe({
           next: (val) => {
-            this.blogs = val.blog.selectedBlogs.slice(0,2);
+            this.blogs = val.blog.selectedBlogs.slice(0, 2);
           }
         })
       }
     })
   }
 
-  redirect(path:string){
-    this.router.navigateByUrl(path)
+  redirect(path: string, slug?: string) {
+    // If path is null or empty, construct it from the slug
+    if (!path && slug) {
+      path = `/collections?category=${slug}&sortBy=asc&page=1`;
+    }
+    if (path) {
+      this.router.navigateByUrl(path);
+    }
   }
 
-  toggle(menu: Menu){
-    if(!menu.active){
+  toggle(menu: Menu) {
+    if (!menu.active) {
       this.menu.forEach(item => {
-        if(this.menu.includes(menu)){
+        if (this.menu.includes(menu)) {
           item.active = false;
         }
       })
@@ -77,8 +83,8 @@ export class MenuComponent {
           result.push(...obj[key]);
         } else if (typeof obj[key] === 'object' && obj[key] !== null) {
           traverse(obj[key]);
-        }else {
-          if(key === keyName && obj.product_ids){
+        } else {
+          if (key === keyName && obj.product_ids) {
             result.push(obj.product_ids)
           };
         }
@@ -87,5 +93,5 @@ export class MenuComponent {
     traverse(obj);
     return result;
   }
-   
+
 }

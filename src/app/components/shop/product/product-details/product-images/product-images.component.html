@@ -39,6 +39,13 @@
       <div class="product-details">
         <h1 class="product-details__title">{{ product?.name }}</h1>
 
+        <!-- Product Category -->
+        <div class="product-details__category" *ngIf="product?.category?.name || product?.categories?.[0]?.name">
+          <span class="category-badge">
+            {{ product?.category?.name || product?.categories?.[0]?.name }}
+          </span>
+        </div>
+
         <div class="product-details__price" *ngIf="product">
           <span class="price-current">₹{{ product.sale_price || product.price }}</span>
         </div>
