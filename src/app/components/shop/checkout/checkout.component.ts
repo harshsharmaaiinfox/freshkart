@@ -688,39 +688,94 @@ export class CheckoutComponent {
       checkout: this.checkoutTotal
     };
 
-    this.cartService.initiateDeluxePayIntent({
+    // Prepare payment data with only required fields for DeluxePay API
+    // API expects: uuid (string), email (string), total (number), phone (number), name (string), address (string)
+    const paymentData: any = {
       uuid: payload.uuid,
-      email: payload.email,
+      email: payload.email || parsedUserData.email,
       total: this.checkoutTotal?.total?.total,
       phone: parsedUserData.phone,
       name: parsedUserData.name,
-      address: `${parsedUserData.address?.[0]?.city || ''} ${parsedUserData.address?.[0]?.area || ''}`
-    }).subscribe({
+      address: `${parsedUserData.address?.[0]?.city || ''} ${parsedUserData.address?.[0]?.area || ''}`.trim()
+    };
+
+    // Ensure total is a number (API expects number, not string)
+    if (paymentData.total !== undefined && paymentData.total !== null) {
+      paymentData.total = typeof paymentData.total === 'string' ? parseFloat(paymentData.total) : Number(paymentData.total);
+    }
+
+    // Ensure phone is a number (API expects pure number like 8525000120, not string)
+    if (paymentData.phone !== undefined && paymentData.phone !== null && paymentData.phone !== '') {
+      // Remove all non-numeric characters and convert to number
+      const phoneStr = String(paymentData.phone).replace(/\D/g, '');
+      if (phoneStr) {
+        paymentData.phone = parseInt(phoneStr, 10);
+      } else {
+        delete paymentData.phone; // Remove if invalid
+      }
+    }
+
+    // Remove undefined/null/empty values to avoid "No Data" error
+    const cleanedPaymentData: any = {};
+    Object.keys(paymentData).forEach(key => {
+      const value = paymentData[key];
+      // Allow 0 for numbers, but filter out undefined/null/empty strings
+      if (value !== undefined && value !== null && value !== '') {
+        cleanedPaymentData[key] = value;
+      }
+    });
+
+    // Log the payload for debugging
+    console.log('DeluxePay Payment Request:', cleanedPaymentData);
+    console.log('Raw User Data:', parsedUserData);
+    console.log('Checkout Total:', this.checkoutTotal);
+
+    // Validate required fields before sending
+    if (!cleanedPaymentData.uuid || !cleanedPaymentData.email || !cleanedPaymentData.total) {
+      console.error('DeluxePay: Missing required fields', {
+        uuid: cleanedPaymentData.uuid,
+        email: cleanedPaymentData.email,
+        total: cleanedPaymentData.total,
+        parsedUserData: parsedUserData,
+        checkoutTotal: this.checkoutTotal
+      });
+      this.loading = false;
+      return;
+    }
+
+    this.cartService.initiateDeluxePayIntent(cleanedPaymentData).subscribe({
       next: (response) => {
+        console.log('DeluxePay Response:', response);
         if (response?.R && response?.data) {
           try {
-            const deluxePayData = response.data;
+            // API returns payment URL directly as a string in response.data
+            const paymentUrl = typeof response.data === 'string' ? response.data : response.data?.payment_url;
 
-            if (deluxePayData?.payment_url) {
+            if (paymentUrl) {
               // Store payment info in session storage
               sessionStorage.setItem('payment_uuid', uuid);
               sessionStorage.setItem('payment_method', payment_method);
               sessionStorage.setItem('payment_action', JSON.stringify(this.form.value));
+              sessionStorage.setItem('payment_redirected', 'true'); // Flag to detect back button
               localStorage.setItem('order_id', JSON.stringify(order_result.order_number));
               // Open in current tab
-              window.location.href = deluxePayData.payment_url;
+              window.location.href = paymentUrl;
             } else {
-              console.error("Invalid response: Payment link is missing.");
+              console.error("Invalid response: Payment link is missing.", response);
+              this.loading = false;
             }
           } catch (error) {
             console.error("Error parsing DeluxePay response:", error);
+            this.loading = false;
           }
         } else {
-          console.error("Payment initiation failed:", response?.msg);
+          console.error("Payment initiation failed:", response?.msg || response);
+          this.loading = false;
         }
       },
       error: (err) => {
-        console.log("Error initiating payment:", err);
+        console.error("Error initiating DeluxePay payment:", err);
+        this.loading = false;
       }
     });
   }

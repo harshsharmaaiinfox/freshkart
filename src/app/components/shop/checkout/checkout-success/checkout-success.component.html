@@ -8,6 +8,21 @@
             <img style="max-height: 200px;" _ngcontent-ng-c642440284="" alt="no-data" class="img-fluid" src="assets/svg/tracking/out-for-delivery.svg">
         </div>
 
+        <div *ngIf="orderId" class="mb-3">
+            <p class="text-muted">Redirecting to order details in a few seconds...</p>
+            <p class="small">Order ID: <strong>{{ orderId }}</strong></p>
+        </div>
+
+        <app-button
+            *ngIf="orderId"
+            [class]="'btn left-dashboard-show btn-animation btn-md fw-bold d-block mb-3'"
+            [type]="'button'"
+            [id]="'view_order'"
+            (click)="goToOrderDetails()"
+            [spinner]="false">
+            {{ 'View Order Details' }}
+        </app-button>
+
         <app-button
             [class]="'btn left-dashboard-show btn-animation btn-md fw-bold d-block mb-4'"
             [type]="'button'"

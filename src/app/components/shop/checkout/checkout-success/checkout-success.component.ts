@@ -44,6 +44,8 @@ export class CheckoutSuccessComponent {
   private pollingInterval = 5000; // Poll every 5 seconds
 
   order_status: boolean;
+  orderId: string | null = null;
+  redirectTimer: any;
 
   // Sub Paisa Config
   // @ViewChild('SubPaisaSdk', { static: true }) containerRef!: ElementRef;
@@ -87,14 +89,54 @@ export class CheckoutSuccessComponent {
 
   ngOnInit() {
     this.products();
+    this.initiateRedirect();
   }
 
   products() {
     //
   }
 
+  initiateRedirect() {
+    // Clear payment redirect flag since payment is completed
+    sessionStorage.removeItem('payment_redirected');
+    
+    // Get order ID from localStorage (stored as JSON string)
+    const orderIdStr = localStorage.getItem('order_id');
+    
+    if (orderIdStr) {
+      try {
+        // Parse order_id (it's stored as JSON string)
+        this.orderId = JSON.parse(orderIdStr);
+      } catch (e) {
+        // If parsing fails, use as is
+        this.orderId = orderIdStr;
+      }
+    }
+
+    // Redirect to order details page after 3 seconds
+    if (this.orderId) {
+      this.redirectTimer = setTimeout(() => {
+        this.router.navigate(['/account/order/details', this.orderId]);
+      }, 3000); // 3 seconds delay
+    }
+  }
+
   goToHome() {
+    // Clear redirect timer if user clicks button
+    if (this.redirectTimer) {
+      clearTimeout(this.redirectTimer);
+    }
     this.router.navigateByUrl('/');
+  }
+
+  goToOrderDetails() {
+    // Clear redirect timer if user clicks button
+    if (this.redirectTimer) {
+      clearTimeout(this.redirectTimer);
+    }
+    if (this.orderId) {
+      this.router.navigate(['/account/order/details', this.orderId]);
+    }
   }
 
   selectShippingAddress(id: number) {
@@ -170,6 +212,10 @@ export class CheckoutSuccessComponent {
   }
 
   ngOnDestroy() {
+    // Clear redirect timer on component destroy
+    if (this.redirectTimer) {
+      clearTimeout(this.redirectTimer);
+    }
     this.destroy$.next();
     this.destroy$.complete();
   }

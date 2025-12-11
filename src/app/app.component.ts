@@ -98,14 +98,30 @@ export class AppComponent implements OnInit {
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        if (event.url.includes('/success')) {
-          console.log('Coming After Payment Successfully or Failed');
-          setTimeout(() => {
-            const getOrderId = localStorage.getItem('order_id');
-            if (getOrderId) {
-              this.router.navigate(['/account/order/details', getOrderId]);
+        // Handle back button from payment page - redirect to order details
+        const paymentRedirected = sessionStorage.getItem('payment_redirected');
+        const orderId = localStorage.getItem('order_id');
+        
+        // If user was redirected to payment page and came back (not through checkout-success),
+        // redirect them to order details page
+        if (paymentRedirected === 'true' && orderId) {
+          // Check if user is NOT on checkout-success or order details page
+          if (!event.url.includes('/checkout-success') && !event.url.includes('/account/order/details')) {
+            try {
+              const parsedOrderId = JSON.parse(orderId);
+              console.log('User clicked back from payment page, redirecting to order details');
+              // Clear the flag to prevent infinite redirects
+              sessionStorage.removeItem('payment_redirected');
+              this.router.navigate(['/account/order/details', parsedOrderId]);
+            } catch (e) {
+              console.log('User clicked back from payment page, redirecting to order details');
+              sessionStorage.removeItem('payment_redirected');
+              this.router.navigate(['/account/order/details', orderId]);
             }
-          }, 500);
+          } else if (event.url.includes('/checkout-success')) {
+            // Clear the flag when user reaches checkout-success (payment completed)
+            sessionStorage.removeItem('payment_redirected');
+          }
         }
       }
     });
