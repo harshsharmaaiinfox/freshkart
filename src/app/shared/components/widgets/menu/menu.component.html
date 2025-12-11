@@ -14,20 +14,17 @@
       <li
         [ngClass]="[menu.link_type == 'sub' && menu.child ? 'nav-item dropdown' : 'nav-item', menu.mega_menu ? 'dropdown-mega' : '']"
         [class.new-nav-item]="menu.badge_text">
-        <a class="nav-link dropdown-toggle" *ngIf="menu.link_type === 'sub'" (click)="redirect(menu.path, menu.slug)">
-          <i class="ri-arrow-right-s-line d-xl-none me-2"></i>
-          {{ menu.title | translate }}
+        <a class="nav-link dropdown-toggle" *ngIf="menu.link_type === 'sub'" (click)="toggle(menu)">
+          <span>{{ menu.title | translate }}</span>
           <label *ngIf="menu.badge_text" class="new-dropdown">{{ menu.badge_text | translate }}</label>
         </a>
         <a class="dropdown-item" [class.show]="menu.active" [class.nav-link]="!menu?.child?.length"
           (click)="redirect(menu.path, menu.slug)" *ngIf="menu.link_type === 'link' && menu.is_target_blank === 0">
-          <i class="ri-arrow-right-s-line d-xl-none me-2"></i>
           {{ menu.title | translate }}
           <label class="menu-label {{ menu.badge_color }}" *ngIf="menu.badge_text">{{ menu.badge_text | translate
             }}</label>
         </a>
         <a class="dropdown-item" [class.show]="menu.active" href="{{ menu.path }}" *ngIf="menu.is_target_blank === 1">
-          <i class="ri-arrow-right-s-line d-xl-none me-2"></i>
           {{ menu.title | translate }}
           <label class="menu-label {{ menu.badge_color }}" *ngIf="menu.badge_text">{{ menu.badge_text | translate
             }}</label>
