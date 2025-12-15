@@ -10,7 +10,6 @@ import { GetStores } from '../../../shared/action/store.action';
 import { ThemeOptionState } from '../../../shared/state/theme-option.state';
 import { Option } from '../../../shared/interface/theme-option.interface';
 import { ActivatedRoute } from '@angular/router';
-import { GetBlogs } from '../../../shared/action/blog.action';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -50,16 +49,15 @@ export class CairoComponent {
         paginate: this.data?.content?.products_ids.length,
         ids: this.data?.content?.products_ids?.join(',')
       }));  
-      const getBrand$ = this.store.dispatch(new GetBrands({ 
-        status: 1,
-        ids: this.data?.content?.brands?.brand_ids?.join()
-      }));
+      const getBrand$ = this.data?.content?.brands?.brand_ids?.length 
+        ? this.store.dispatch(new GetBrands({ 
+            status: 1,
+            ids: this.data?.content?.brands?.brand_ids?.join()
+          }))
+        : null;
       const getStore$ = this.store.dispatch(new GetStores({ 
         status: 1,
         ids: this.data?.content?.seller?.store_ids?.join()
-      }));
-      const getBlogs$ = this.store.dispatch(new GetBlogs({
-        status: 1
       }));
       const getCategoryProduct$ = this.store.dispatch(new GetCategoryProducts(
         { category_ids: this.data.content?.categories_products?.category_ids?.join(',') 
@@ -69,7 +67,9 @@ export class CairoComponent {
       document.body.classList.add('skeleton-body');
       document.body.classList.add('cairo');
 
-      forkJoin([getProducts$, getBrand$, getStore$, getBlogs$, getCategoryProduct$]).subscribe({
+      const requests = [getProducts$, getStore$, getCategoryProduct$];
+      if (getBrand$) requests.push(getBrand$);
+      forkJoin(requests.filter(r => r !== null)).subscribe({
         complete: () => {
           document.body.classList.remove('skeleton-body');
           this.themeOptionService.preloader = false;

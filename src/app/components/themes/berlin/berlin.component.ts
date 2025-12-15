@@ -37,10 +37,12 @@ export class BerlinComponent {
         paginate: this.data?.content?.products_ids.length,
         ids: this.data?.content?.products_ids?.join(',')
       }));
-      const getBrand$ = this.store.dispatch(new GetBrands({ 
-        status: 1,
-        ids: this.data?.content?.brands?.brand_ids?.join()
-      }));
+      const getBrand$ = this.data?.content?.brands?.brand_ids?.length 
+        ? this.store.dispatch(new GetBrands({ 
+            status: 1,
+            ids: this.data?.content?.brands?.brand_ids?.join()
+          }))
+        : null;
       const getStore$ = this.store.dispatch(new GetStores({ 
         status: 1,
         ids: this.data?.content?.main_content?.seller?.store_ids?.join()
@@ -49,7 +51,9 @@ export class BerlinComponent {
       // Skeleton Loader
       document.body.classList.add('skeleton-body');
 
-      forkJoin([getProducts$, getBrand$, getStore$]).subscribe({
+      const requests = [getProducts$, getStore$];
+      if (getBrand$) requests.push(getBrand$);
+      forkJoin(requests.filter(r => r !== null)).subscribe({
         complete: () => {
           document.body.classList.remove('skeleton-body');
           this.themeOptionService.preloader = false;

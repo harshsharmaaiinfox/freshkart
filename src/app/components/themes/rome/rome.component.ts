@@ -46,18 +46,22 @@ export class RomeComponent {
         paginate: this.data?.content?.products_ids.length,
         ids: this.data?.content?.products_ids?.join(',')
       }));
-      const getBrand$ = this.store.dispatch(new GetBrands({ 
-        status: 1,
-        ids: this.data?.content?.brands?.brand_ids?.join()
-      }));
+      const getBrand$ = this.data?.content?.brands?.brand_ids?.length 
+        ? this.store.dispatch(new GetBrands({ 
+            status: 1,
+            ids: this.data?.content?.brands?.brand_ids?.join()
+          }))
+        : null;
       const getStore$ = this.store.dispatch(new GetStores({ 
         status: 1,
         ids: this.data?.content?.seller?.store_ids?.join()
       }));
-      const getBlogs$ = this.store.dispatch(new GetBlogs({
-        status: 1,
-        ids: this.data?.content?.featured_blogs?.blog_ids?.join(',')
-      }));
+      const getBlogs$ = this.data?.content?.featured_blogs?.blog_ids?.length 
+        ? this.store.dispatch(new GetBlogs({
+            status: 1,
+            ids: this.data?.content?.featured_blogs?.blog_ids?.join(',')
+          }))
+        : null;
 
       const getCatProducts$ = this.store.dispatch(new GetCategoryProducts({
          category_ids: this.data?.content?.categories_products?.category_ids?.join(',') 
@@ -66,7 +70,10 @@ export class RomeComponent {
       // Skeleton Loader
       document.body.classList.add('skeleton-body');
 
-      forkJoin([getProducts$, getBlogs$, getCatProducts$, getBrand$, getStore$]).subscribe({
+      const requests = [getProducts$, getCatProducts$, getStore$];
+      if (getBrand$) requests.push(getBrand$);
+      if (getBlogs$) requests.push(getBlogs$);
+      forkJoin(requests.filter(r => r !== null)).subscribe({
         complete: () => {
           document.body.classList.remove('skeleton-body');
           this.themeOptionService.preloader = false;
