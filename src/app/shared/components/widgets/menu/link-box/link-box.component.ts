@@ -17,7 +17,7 @@ export class LinkBoxComponent {
   redirect(path: string) {
     // If path is null or empty, construct it from the menu slug
     if (!path && this.menu?.slug) {
-      path = `/collections?category=${this.menu.slug}&sortBy=asc&page=1`;
+      path = `/collections?sortBy=asc&category=${this.menu.slug}&page=1`;
     }
     if (path) {
       this.router.navigateByUrl(path);

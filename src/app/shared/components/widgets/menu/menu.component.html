@@ -12,9 +12,9 @@
   <ng-template #recursiveMenu let-menus>
     <ng-container *ngFor="let menu of menus">
       <li
-        [ngClass]="[menu.link_type == 'sub' && menu.child ? 'nav-item dropdown' : 'nav-item', menu.mega_menu ? 'dropdown-mega' : '']"
+        [ngClass]="[menu.link_type == 'sub' && menu.child ? 'nav-item dropdown' : 'nav-item', menu.mega_menu ? 'dropdown-mega' : '', menu.active ? 'active' : '']"
         [class.new-nav-item]="menu.badge_text">
-        <a class="nav-link dropdown-toggle" *ngIf="menu.link_type === 'sub'" (click)="toggle(menu)">
+        <a class="nav-link dropdown-toggle" *ngIf="menu.link_type === 'sub'" (click)="toggle(menu, menus)">
           <span>{{ menu.title | translate }}</span>
           <label *ngIf="menu.badge_text" class="new-dropdown">{{ menu.badge_text | translate }}</label>
         </a>

@@ -57,22 +57,29 @@ export class MenuComponent {
   redirect(path: string, slug?: string) {
     // If path is null or empty, construct it from the slug
     if (!path && slug) {
-      path = `/collections?category=${slug}&sortBy=asc&page=1`;
+      path = `/collections?sortBy=asc&category=${slug}&page=1`;
     }
     if (path) {
       this.router.navigateByUrl(path);
     }
   }
 
-  toggle(menu: Menu) {
-    if (!menu.active) {
-      this.menu.forEach(item => {
-        if (this.menu.includes(menu)) {
-          item.active = false;
-        }
-      })
+  toggle(menu: Menu, allMenus?: Menu[]) {
+    // Close all other menus when opening a new one
+    if (!menu.active && allMenus) {
+      this.closeAllMenus(allMenus);
     }
     menu.active = !menu.active;
+  }
+
+  private closeAllMenus(menus: Menu[]) {
+    if (!menus) return;
+    menus.forEach(item => {
+      item.active = false;
+      if (item.child && item.child.length > 0) {
+        this.closeAllMenus(item.child);
+      }
+    });
   }
 
   concatDynamicProductKeys(obj: any, keyName: string) {
