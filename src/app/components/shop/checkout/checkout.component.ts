@@ -24,9 +24,10 @@ import * as data from '../../../shared/data/country-code';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer } from '@angular/platform-browser';
 import { interval } from 'rxjs';
-import { delay, switchMap, takeWhile, tap } from 'rxjs/operators';
+import { debounceTime, delay, distinctUntilChanged, switchMap, takeWhile, tap } from 'rxjs/operators';
 import { OrderService } from '../../../shared/services/order.service';
 import { v4 as uuidv4 } from 'uuid';
+import { AuthService } from '../../../shared/services/auth.service';
 // import { PaymentInitModal } from 'pg-test-project';
 // import * as React from 'react';
 
@@ -70,6 +71,7 @@ export class CheckoutComponent {
   public codes = data.countryCodes;
 
   public formData!: any;
+  public pinCodeAreaOfficeCircleDataJSON: any[] = [];
 
   private pollingSubscription!: Subscription;
   private pollingInterval = 5000; // Poll every 5 seconds
@@ -95,7 +97,8 @@ export class CheckoutComponent {
     private formBuilder: FormBuilder, public cartService: CartService,
     private modalService: NgbModal,
     private sanitizer: DomSanitizer,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private authService: AuthService
   ) {
     // Settings are already loaded in app.component.ts and cached in state
     // No need to call GetSettingOption again here
@@ -111,28 +114,28 @@ export class CheckoutComponent {
       delivery_interval: new FormControl(),
       payment_method: new FormControl('', [Validators.required]),
       create_account: new FormControl(false),
-      name: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z\s]*$/)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       country_code: new FormControl('91', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]),
       password: new FormControl(),
       shipping_address: new FormGroup({
-        title: new FormControl('', [Validators.required]),
+        title: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z\s]*$/)]),
         street: new FormControl('', [Validators.required]),
-        city: new FormControl('', [Validators.required]),
-        phone: new FormControl('', [Validators.required]),
-        pincode: new FormControl('', [Validators.required]),
+        city: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z\s]*$/)]),
+        phone: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]),
+        pincode: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]),
         country_code: new FormControl('91', [Validators.required]),
         country_id: new FormControl('', [Validators.required]),
         state_id: new FormControl('', [Validators.required]),
       }),
       billing_address: new FormGroup({
         same_shipping: new FormControl(false),
-        title: new FormControl('', [Validators.required]),
+        title: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z\s]*$/)]),
         street: new FormControl('', [Validators.required]),
-        city: new FormControl('', [Validators.required]),
-        phone: new FormControl('', [Validators.required]),
-        pincode: new FormControl('', [Validators.required]),
+        city: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z\s]*$/)]),
+        phone: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]),
+        pincode: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]),
         country_code: new FormControl('91', [Validators.required]),
         country_id: new FormControl('', [Validators.required]),
         state_id: new FormControl('', [Validators.required]),
@@ -221,26 +224,241 @@ export class CheckoutComponent {
       this.checkout();
     });
 
-    this.form.controls['phone']?.valueChanges.subscribe((value) => {
-      if (value && value.toString().length > 10) {
-        this.form.controls['phone']?.setValue(+value.toString().slice(0, 10));
+    // Enforce digits-only + hard 10-digit max (keep as string, avoid numeric coercion)
+    this.form.get('phone')?.valueChanges.subscribe((value) => {
+      const str = value == null ? '' : String(value);
+      const digitsOnly = str.replace(/\D/g, '').slice(0, 10);
+      if (digitsOnly !== str) {
+        this.form.get('phone')?.setValue(digitsOnly, { emitEvent: false });
       }
     });
 
     this.form.get('shipping_address.phone')?.valueChanges.subscribe((value) => {
-      if (value && value.toString().length > 10) {
-        this.form.get('shipping_address.phone')?.setValue(+value.toString().slice(0, 10));
+      const str = value == null ? '' : String(value);
+      const digitsOnly = str.replace(/\D/g, '').slice(0, 10);
+      if (digitsOnly !== str) {
+        this.form.get('shipping_address.phone')?.setValue(digitsOnly, { emitEvent: false });
       }
     });
 
     this.form.get('billing_address.phone')?.valueChanges.subscribe((value) => {
-      if (value && value.toString().length > 10) {
-        this.form.get('billing_address.phone')?.setValue(+value.toString().slice(0, 10));
+      const str = value == null ? '' : String(value);
+      const digitsOnly = str.replace(/\D/g, '').slice(0, 10);
+      if (digitsOnly !== str) {
+        this.form.get('billing_address.phone')?.setValue(digitsOnly, { emitEvent: false });
       }
     });
 
     this.localUserCheck = JSON.parse(localStorage.getItem('account') || '');
 
+    // Load pincode → state/city mapping (same source used by address-modal)
+    this.authService.fetchAreaPINCodeJSON().subscribe({
+      next: (res) => {
+        this.pinCodeAreaOfficeCircleDataJSON = (res && res['data']) ? res['data'] : [];
+      },
+      error: () => {
+        this.pinCodeAreaOfficeCircleDataJSON = [];
+      }
+    });
+
+    // Auto-fill state + city when pincode is entered (guest checkout)
+    this.form.get('shipping_address.pincode')?.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((value) => this.applyPincodeAutofill('shipping', value));
+
+    this.form.get('billing_address.pincode')?.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((value) => this.applyPincodeAutofill('billing', value));
+
+  }
+
+  private applyPincodeAutofill(type: 'shipping' | 'billing', value: any) {
+    const pincode = (value == null ? '' : String(value)).replace(/\D/g, '').slice(0, 6);
+    if (pincode.length !== 6 || !this.pinCodeAreaOfficeCircleDataJSON?.length) return;
+
+    const match = this.pinCodeAreaOfficeCircleDataJSON.find((x: any) => String(x.Pincode) === pincode);
+    if (!match) return;
+
+    const group = type === 'shipping' ? 'shipping_address' : 'billing_address';
+
+    // Default country to India (356) if not selected yet
+    const currentCountry = this.form.get(`${group}.country_id`)?.value;
+    const countryId = currentCountry ? Number(currentCountry) : 356;
+    if (!currentCountry) {
+      this.form.get(`${group}.country_id`)?.setValue(countryId, { emitEvent: false });
+      if (type === 'shipping') {
+        this.shippingStates$ = this.store.select(StateState.states).pipe(map(filterFn => filterFn(countryId)));
+      } else {
+        this.billingStates$ = this.store.select(StateState.states).pipe(map(filterFn => filterFn(countryId)));
+      }
+    }
+
+    // City from dataset (District)
+    if (match.District) {
+      this.form.get(`${group}.city`)?.setValue(match.District, { emitEvent: false });
+    }
+
+    // State by matching label → value
+    const stateName = String(match.StateName || '').trim().toLowerCase();
+    if (stateName) {
+      const states = this.store.selectSnapshot(StateState.states)(countryId) as any[];
+      const found = states?.find(s => String(s.label || '').trim().toLowerCase() === stateName);
+      if (found?.value) {
+        this.form.get(`${group}.state_id`)?.setValue(found.value, { emitEvent: false });
+      }
+    }
+  }
+
+  // Input restrictions (same UX as Register/Contact)
+  allowOnlyLetters(event: KeyboardEvent): void {
+    const allowedControlKeys = [
+      'Backspace', 'Delete', 'Tab', 'Enter', 'Escape', 'ArrowLeft', 'ArrowRight', 'Home', 'End'
+    ];
+    if (allowedControlKeys.includes(event.key)) return;
+    if (event.ctrlKey || event.metaKey) return;
+    if (!/^[A-Za-z\s]$/.test(event.key)) {
+      event.preventDefault();
+    }
+  }
+
+  sanitizeNameInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const sanitized = (input.value || '').replace(/[^A-Za-z\s]/g, '');
+    if (sanitized !== input.value) {
+      input.value = sanitized;
+      this.form.get('name')?.setValue(sanitized, { emitEvent: false });
+    }
+  }
+
+  sanitizeNamePaste(event: ClipboardEvent): void {
+    const pasted = event.clipboardData?.getData('text') ?? '';
+    if (/[^A-Za-z\s]/.test(pasted)) {
+      event.preventDefault();
+      const sanitized = pasted.replace(/[^A-Za-z\s]/g, '');
+      const input = event.target as HTMLInputElement | null;
+      if (!input) return;
+      const start = input.selectionStart ?? input.value.length;
+      const end = input.selectionEnd ?? input.value.length;
+      input.value = input.value.slice(0, start) + sanitized + input.value.slice(end);
+      const nextPos = start + sanitized.length;
+      input.setSelectionRange(nextPos, nextPos);
+      this.form.get('name')?.setValue(input.value, { emitEvent: false });
+    }
+  }
+
+  sanitizeTitleInput(event: Event, controlPath: 'shipping_address.title' | 'billing_address.title'): void {
+    const input = event.target as HTMLInputElement;
+    const sanitized = (input.value || '').replace(/[^A-Za-z\s]/g, '');
+    if (sanitized !== input.value) {
+      input.value = sanitized;
+      this.form.get(controlPath)?.setValue(sanitized, { emitEvent: false });
+    }
+  }
+
+  sanitizeTitlePaste(event: ClipboardEvent, controlPath: 'shipping_address.title' | 'billing_address.title'): void {
+    const pasted = event.clipboardData?.getData('text') ?? '';
+    if (/[^A-Za-z\s]/.test(pasted)) {
+      event.preventDefault();
+      const sanitized = pasted.replace(/[^A-Za-z\s]/g, '');
+      const input = event.target as HTMLInputElement | null;
+      if (!input) return;
+      const start = input.selectionStart ?? input.value.length;
+      const end = input.selectionEnd ?? input.value.length;
+      const next = (input.value.slice(0, start) + sanitized + input.value.slice(end)).replace(/[^A-Za-z\s]/g, '');
+      input.value = next;
+      const nextPos = Math.min(start + sanitized.length, next.length);
+      input.setSelectionRange(nextPos, nextPos);
+      this.form.get(controlPath)?.setValue(next, { emitEvent: false });
+    }
+  }
+
+  sanitizeCityInput(event: Event, controlPath: 'shipping_address.city' | 'billing_address.city'): void {
+    const input = event.target as HTMLInputElement;
+    const sanitized = (input.value || '').replace(/[^A-Za-z\s]/g, '');
+    if (sanitized !== input.value) {
+      input.value = sanitized;
+      this.form.get(controlPath)?.setValue(sanitized, { emitEvent: false });
+    }
+  }
+
+  sanitizeCityPaste(event: ClipboardEvent, controlPath: 'shipping_address.city' | 'billing_address.city'): void {
+    const pasted = event.clipboardData?.getData('text') ?? '';
+    if (/[^A-Za-z\s]/.test(pasted)) {
+      event.preventDefault();
+      const sanitized = pasted.replace(/[^A-Za-z\s]/g, '');
+      const input = event.target as HTMLInputElement | null;
+      if (!input) return;
+      const start = input.selectionStart ?? input.value.length;
+      const end = input.selectionEnd ?? input.value.length;
+      const next = (input.value.slice(0, start) + sanitized + input.value.slice(end)).replace(/[^A-Za-z\s]/g, '');
+      input.value = next;
+      const nextPos = Math.min(start + sanitized.length, next.length);
+      input.setSelectionRange(nextPos, nextPos);
+      this.form.get(controlPath)?.setValue(next, { emitEvent: false });
+    }
+  }
+
+  allowOnlyDigits(event: KeyboardEvent): void {
+    const allowedControlKeys = [
+      'Backspace', 'Delete', 'Tab', 'Enter', 'Escape', 'ArrowLeft', 'ArrowRight', 'Home', 'End'
+    ];
+    if (allowedControlKeys.includes(event.key)) return;
+    if (event.ctrlKey || event.metaKey) return;
+    if (!/^[0-9]$/.test(event.key)) {
+      event.preventDefault();
+    }
+  }
+
+  sanitizePhoneInput(event: Event, controlPath: 'phone' | 'shipping_address.phone' | 'billing_address.phone'): void {
+    const input = event.target as HTMLInputElement;
+    const digitsOnly = (input.value || '').replace(/\D/g, '').slice(0, 10);
+    if (digitsOnly !== input.value) {
+      input.value = digitsOnly;
+      this.form.get(controlPath)?.setValue(digitsOnly, { emitEvent: false });
+    }
+  }
+
+  sanitizePhonePaste(event: ClipboardEvent, controlPath: 'phone' | 'shipping_address.phone' | 'billing_address.phone'): void {
+    const pasted = event.clipboardData?.getData('text') ?? '';
+    if (/\D/.test(pasted) || pasted.length > 10) {
+      event.preventDefault();
+      const sanitized = pasted.replace(/\D/g, '').slice(0, 10);
+      const input = event.target as HTMLInputElement | null;
+      if (!input) return;
+      const start = input.selectionStart ?? input.value.length;
+      const end = input.selectionEnd ?? input.value.length;
+      const next = (input.value.slice(0, start) + sanitized + input.value.slice(end)).replace(/\D/g, '').slice(0, 10);
+      input.value = next;
+      const nextPos = Math.min(start + sanitized.length, next.length);
+      input.setSelectionRange(nextPos, nextPos);
+      this.form.get(controlPath)?.setValue(next, { emitEvent: false });
+    }
+  }
+
+  sanitizePincodeInput(event: Event, controlPath: 'shipping_address.pincode' | 'billing_address.pincode'): void {
+    const input = event.target as HTMLInputElement;
+    const digitsOnly = (input.value || '').replace(/\D/g, '').slice(0, 6);
+    if (digitsOnly !== input.value) {
+      input.value = digitsOnly;
+      this.form.get(controlPath)?.setValue(digitsOnly, { emitEvent: false });
+    }
+  }
+
+  sanitizePincodePaste(event: ClipboardEvent, controlPath: 'shipping_address.pincode' | 'billing_address.pincode'): void {
+    const pasted = event.clipboardData?.getData('text') ?? '';
+    if (/\D/.test(pasted) || pasted.length > 6) {
+      event.preventDefault();
+      const sanitized = pasted.replace(/\D/g, '').slice(0, 6);
+      const input = event.target as HTMLInputElement | null;
+      if (!input) return;
+      const start = input.selectionStart ?? input.value.length;
+      const end = input.selectionEnd ?? input.value.length;
+      const next = (input.value.slice(0, start) + sanitized + input.value.slice(end)).replace(/\D/g, '').slice(0, 6);
+      input.value = next;
+      const nextPos = Math.min(start + sanitized.length, next.length);
+      input.setSelectionRange(nextPos, nextPos);
+      this.form.get(controlPath)?.setValue(next, { emitEvent: false });
+    }
   }
 
   get productControl(): FormArray {
@@ -323,7 +541,7 @@ export class CheckoutComponent {
       case 'ORDINOME_nabu':
         this.checkout(value);
         break;
-      case 'deluxe_pay':
+      case 'deluxe_pay_ordinomeevents':
         this.checkout(value);
         break;
       default:
@@ -979,6 +1197,7 @@ export class CheckoutComponent {
         })
       ).subscribe({
         next: (result) => {
+          this.store.dispatch(new ClearCart());
           if (this.payment_method === 'cash_free') {
             this.initiateCashFreePaymentIntent(this.payment_method, uuid, result);
           }
@@ -1000,7 +1219,7 @@ export class CheckoutComponent {
           if (this.payment_method === 'ORDINOME_nabu') {
             this.initiateORDINOMENabuPaymentIntent(this.payment_method, uuid, result);
           }
-          if (this.payment_method === 'deluxe_pay') {
+          if (this.payment_method === 'deluxe_pay_ordinomeevents') {
             this.initiateDeluxePayPaymentIntent(this.payment_method, uuid, result);
           }
           // Note: loading state is not reset here as payment flow continues
@@ -1024,7 +1243,7 @@ export class CheckoutComponent {
 
   ngOnDestroy() {
     // this.store.dispatch(new Clear());
-    this.store.dispatch(new ClearCart());
+    // this.store.dispatch(new ClearCart());
     this.form.reset();
     this.pollingSubscription && this.pollingSubscription.unsubscribe();
   }

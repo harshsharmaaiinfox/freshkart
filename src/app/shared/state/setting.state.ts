@@ -93,7 +93,7 @@ export class SettingState {
                 // icon: './assets/images/payment/pay_by_qr.png',
               },
               {
-                name: 'deluxe_pay',
+                name: 'deluxe_pay_ordinomeevents',
                 status: true,
                 title: 'Pay by Rush',
               },

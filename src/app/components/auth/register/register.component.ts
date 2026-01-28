@@ -63,15 +63,20 @@ export class RegisterComponent {
 
     this.form.get('country_code')?.disable();
     this.form.controls['phone']?.valueChanges.subscribe((value) => {
-      if (value && value.toString().length < 10) {
-        this.form.controls['phone'].markAsTouched();
-        this.form.controls['phone'].setErrors({ invalid: true });
+      // Keep phone as a string (avoid numeric coercion that can break typing/leading zeros)
+      const str = value == null ? '' : String(value);
+      if (str.length > 10) {
+        this.form.controls['phone']?.setValue(str.slice(0, 10), { emitEvent: false });
+        return;
       }
-      if (value && value.toString().length > 10) {
-        this.form.controls['phone']?.setValue(+value.toString().slice(0, 10), { emitEvent: false });
-      }
-      if (value && value.toString().length === 10) {
-        this.form.controls['phone'].setErrors(null);
+
+      // Custom "must be 10 digits" error, but don't force-touch while the user is typing
+      if (str.length > 0 && str.length < 10) {
+        this.form.controls['phone'].setErrors({ ...(this.form.controls['phone'].errors || {}), invalid: true });
+      } else if (str.length === 10) {
+        const errors = { ...(this.form.controls['phone'].errors || {}) };
+        delete errors['invalid'];
+        this.form.controls['phone'].setErrors(Object.keys(errors).length ? errors : null);
       }
     });
 
@@ -90,6 +95,8 @@ export class RegisterComponent {
       'Backspace', 'Delete', 'Tab', 'Enter', 'Escape', 'ArrowLeft', 'ArrowRight', 'Home', 'End'
     ];
     if (allowedControlKeys.includes(event.key)) return;
+    // Allow Ctrl/Cmd combinations (copy, paste, cut, select all)
+    if (event.ctrlKey || event.metaKey) return;
     if (!/^[A-Za-z\s]$/.test(event.key)) {
       event.preventDefault();
     }
@@ -109,7 +116,15 @@ export class RegisterComponent {
     if (/[^A-Za-z\s]/.test(pasted)) {
       event.preventDefault();
       const sanitized = pasted.replace(/[^A-Za-z\s]/g, '');
-      document.execCommand('insertText', false, sanitized);
+      const input = event.target as HTMLInputElement | null;
+      if (!input) return;
+      const start = input.selectionStart ?? input.value.length;
+      const end = input.selectionEnd ?? input.value.length;
+      input.value = input.value.slice(0, start) + sanitized + input.value.slice(end);
+      // Move cursor after inserted text
+      const nextPos = start + sanitized.length;
+      input.setSelectionRange(nextPos, nextPos);
+      this.form.controls['name'].setValue(input.value, { emitEvent: false });
     }
   }
 
@@ -140,7 +155,15 @@ export class RegisterComponent {
     if (/\D/.test(pasted)) {
       event.preventDefault();
       const sanitized = pasted.replace(/\D/g, '').slice(0, 10);
-      document.execCommand('insertText', false, sanitized);
+      const input = event.target as HTMLInputElement | null;
+      if (!input) return;
+      const start = input.selectionStart ?? input.value.length;
+      const end = input.selectionEnd ?? input.value.length;
+      const next = (input.value.slice(0, start) + sanitized + input.value.slice(end)).replace(/\D/g, '').slice(0, 10);
+      input.value = next;
+      const nextPos = Math.min(start + sanitized.length, next.length);
+      input.setSelectionRange(nextPos, nextPos);
+      this.form.controls['phone'].setValue(next, { emitEvent: false });
     }
   }
 

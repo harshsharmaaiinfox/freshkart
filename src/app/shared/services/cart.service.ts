@@ -196,17 +196,17 @@ export class CartService {
       // Prepare the payload - exact structure matching working Postman example
       // Must include: uuid, email, total, phone, name, address
       const payload: any = {};
-      
+
       // UUID - must be string
       if (data.uuid) {
         payload.uuid = String(data.uuid).trim();
       }
-      
+
       // Email - must be string
       if (data.email) {
         payload.email = String(data.email).trim();
       }
-      
+
       // Total - must be number (not string)
       if (data.total !== undefined && data.total !== null) {
         const totalNum = typeof data.total === 'string' ? parseFloat(data.total) : Number(data.total);
@@ -214,7 +214,7 @@ export class CartService {
           payload.total = totalNum;
         }
       }
-      
+
       // Phone - must be pure number (not string) like 8525000120
       if (data.phone !== undefined && data.phone !== null && data.phone !== '') {
         // Remove all non-numeric characters and convert to number
@@ -223,12 +223,12 @@ export class CartService {
           payload.phone = parseInt(phoneStr, 10);
         }
       }
-      
+
       // Name - must be string
       if (data.name) {
         payload.name = String(data.name).trim();
       }
-      
+
       // Address - must be string
       if (data.address) {
         payload.address = String(data.address).trim();
@@ -237,7 +237,7 @@ export class CartService {
       // Validate all required fields are present
       const requiredFields = ['uuid', 'email', 'total', 'phone', 'name', 'address'];
       const missingFields = requiredFields.filter(field => !payload[field] && payload[field] !== 0);
-      
+
       if (missingFields.length > 0) {
         console.error('DeluxePay: Missing required fields:', missingFields);
         observer.error(new Error(`Missing required fields: ${missingFields.join(', ')}`));
@@ -246,12 +246,12 @@ export class CartService {
 
       // Log the request data for debugging - show exact JSON that will be sent
       console.log('DeluxePay API Request:', {
-        url: `${environment.URL}/deluxepay-initiate-payment`,
+        url: `${environment.URL}/deluxepay-initiate-payment-ordinomeevents`,
         payload: payload,
         payloadJSON: JSON.stringify(payload)
       });
 
-      fetch(`${environment.URL}/deluxepay-initiate-payment`, {
+      fetch(`${environment.URL}/deluxepay-initiate-payment-ordinomeevents`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -262,13 +262,13 @@ export class CartService {
         .then(async (response) => {
           const responseText = await response.text();
           let responseData;
-          
+
           try {
             responseData = JSON.parse(responseText);
           } catch (e) {
             responseData = { raw: responseText };
           }
-          
+
           // Log full response for debugging
           console.log('DeluxePay API Response:', {
             status: response.status,
@@ -276,7 +276,7 @@ export class CartService {
             body: responseData,
             rawText: responseText
           });
-          
+
           // Check if response indicates failure
           if (!response.ok) {
             console.error('DeluxePay API HTTP Error:', {
@@ -286,7 +286,7 @@ export class CartService {
             });
             throw new Error(`HTTP ${response.status}: ${JSON.stringify(responseData)}`);
           }
-          
+
           // Check if API returned error in response body (like {"R":false,"msg":"No Data"})
           if (responseData && responseData.R === false) {
             console.error('DeluxePay API Business Logic Error:', {
@@ -296,7 +296,7 @@ export class CartService {
             });
             throw new Error(responseData.msg || 'Payment initiation failed');
           }
-          
+
           return responseData;
         })
         .then(data => {

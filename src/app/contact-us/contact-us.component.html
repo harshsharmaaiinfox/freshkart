@@ -99,6 +99,7 @@
           <div class="form-row">
             <div class="form-field">
               <input type="text" id="name" formControlName="name" placeholder=" "
+                (keydown)="allowOnlyLetters($event)" (input)="sanitizeNameInput($event)" (paste)="sanitizeNamePaste($event)"
                 [class.error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
               <label for="name">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -132,7 +133,8 @@
 
           <!-- Phone Field -->
           <div class="form-field">
-            <input type="tel" id="phone" formControlName="phone" placeholder=" "
+            <input type="tel" id="phone" formControlName="phone" placeholder=" " maxlength="10"
+              (keydown)="allowOnlyDigits($event)" (input)="sanitizePhoneInput($event)" (paste)="sanitizePhonePaste($event)"
               [class.error]="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched">
             <label for="phone">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"

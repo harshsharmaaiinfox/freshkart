@@ -69,8 +69,11 @@ export class AddressModalComponent {
     })
 
     this.form.controls['phone']?.valueChanges.subscribe((value) => {
-      if(value && value.toString().length > 10) {
-        this.form.controls['phone']?.setValue(+value.toString().slice(0, 10));
+      // Keep phone as a string (avoid numeric coercion that can break typing/leading zeros)
+      const str = value == null ? '' : String(value);
+      const digitsOnly = str.replace(/\D/g, '').slice(0, 10);
+      if (digitsOnly !== str) {
+        this.form.controls['phone']?.setValue(digitsOnly, { emitEvent: false });
       }
     });
 
@@ -356,6 +359,8 @@ export class AddressModalComponent {
       'Backspace','Delete','Tab','Enter','Escape','ArrowLeft','ArrowRight','Home','End'
     ];
     if (allowedControlKeys.includes(event.key)) return;
+    // Allow Ctrl/Cmd combinations (copy, paste, cut, select all)
+    if (event.ctrlKey || event.metaKey) return;
     if (!/^[A-Za-z\s]$/.test(event.key)) {
       event.preventDefault();
     }
@@ -375,7 +380,15 @@ export class AddressModalComponent {
     if (/[^A-Za-z\s]/.test(pasted)) {
       event.preventDefault();
       const sanitized = pasted.replace(/[^A-Za-z\s]/g, '');
-      document.execCommand('insertText', false, sanitized);
+      const input = event.target as HTMLInputElement | null;
+      if (!input) return;
+      const start = input.selectionStart ?? input.value.length;
+      const end = input.selectionEnd ?? input.value.length;
+      input.value = input.value.slice(0, start) + sanitized + input.value.slice(end);
+      const nextPos = start + sanitized.length;
+      input.setSelectionRange(nextPos, nextPos);
+      // Only title uses this handler today
+      this.form.controls['title'].setValue(input.value, { emitEvent: false });
     }
   }
 
@@ -401,10 +414,18 @@ export class AddressModalComponent {
 
   sanitizeDigitsPaste(event: ClipboardEvent): void {
     const pasted = event.clipboardData?.getData('text') ?? '';
-    if (/\D/.test(pasted)) {
+    if (/\D/.test(pasted) || pasted.length > 10) {
       event.preventDefault();
       const sanitized = pasted.replace(/\D/g, '').slice(0, 10);
-      document.execCommand('insertText', false, sanitized);
+      const input = event.target as HTMLInputElement | null;
+      if (!input) return;
+      const start = input.selectionStart ?? input.value.length;
+      const end = input.selectionEnd ?? input.value.length;
+      const next = (input.value.slice(0, start) + sanitized + input.value.slice(end)).replace(/\D/g, '').slice(0, 10);
+      input.value = next;
+      const nextPos = Math.min(start + sanitized.length, next.length);
+      input.setSelectionRange(nextPos, nextPos);
+      this.form.controls['phone'].setValue(next, { emitEvent: false });
     }
   }
 

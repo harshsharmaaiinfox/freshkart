@@ -9,7 +9,7 @@
                 </div>
                 <div class="hero-action">
                     <app-button [class]="'hero-btn add-address-btn'" [type]="'button'" [spinner]="false"
-                        [id]="'add_address'" (click)="AddressModal.openModal()">
+                        [id]="'add_address'" (click)="addressModal.openModal()">
                         <i class="ri-add-line"></i>
                         <span>{{ 'Add Address' | translate }}</span>
                     </app-button>
@@ -96,12 +96,12 @@
                         </div>
                         <div class="address-actions">
                             <app-button [class]="'btn-edit'" [type]="'button'" [spinner]="false"
-                                [id]="'edit_address'+address.id" (click)="AddressModal.openModal(address)">
+                                [id]="'edit_address'+address.id" (click)="addressModal.openModal(address)">
                                 <i class="ri-edit-box-line"></i>
                                 <span>{{ 'Edit' | translate }}</span>
                             </app-button>
                             <app-button [class]="'btn-delete'" [type]="'button'" [spinner]="false"
-                                [id]="'remove_address'+address.id" (click)="DeleteModal.openModal('delete', address)">
+                                [id]="'remove_address'+address.id" (click)="deleteModal.openModal('delete', address)">
                                 <i class="ri-delete-bin-line"></i>
                                 <span>{{ 'Remove' | translate }}</span>
                             </app-button>
@@ -118,7 +118,7 @@
                 <h3>{{ 'No Addresses Found' | translate }}</h3>
                 <p>{{ 'You have not added any addresses yet' | translate }}</p>
                 <app-button [class]="'btn-add-first'" [type]="'button'" [spinner]="false" [id]="'add_first_address'"
-                    (click)="AddressModal.openModal()">
+                    (click)="addressModal.openModal()">
                     <i class="ri-add-line"></i>
                     <span>{{ 'Add Your First Address' | translate }}</span>
                 </app-button>
